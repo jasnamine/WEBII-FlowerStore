@@ -1,0 +1,117 @@
+<?php
+include 'include/header.php';
+?>
+ <!--Start banner-->
+    <section
+      class="hero-wrap hero-wrap-2"
+      style="background-image: url('images/bg_2.jpg')"
+      data-stellar-background-ratio="0.5"
+    >
+      <div class="overlay"></div>
+      <div class="container">
+        <div
+          class="row no-gutters slider-text align-items-end justify-content-center"
+        >
+          <div class="col-md-9 ftco-animate mb-5 text-center">
+            <p class="breadcrumbs mb-0">
+              <span class="mr-2"
+                ><a href="index.html"
+                  >Home <i class="fa fa-chevron-right"></i></a
+              ></span>
+              <span>Register <i class="fa fa-chevron-right"></i></span>
+            </p>
+            <h2 class="mb-0 bread">Register</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!--End banner-->
+
+    <section class="ftco-section">
+      <section class="login_part section_padding">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+              <div class="login_part_text text-center">
+                <div class="login_part_text_iner">
+                  <h2 class="white-text">Welcome Back!</h2>
+                  <p class="white-text-p">
+                    It's great to see you again. Log in to access your account
+                    and explore the latest products.
+                  </p>
+                  <a href="login.php" class="btn_3">LOG IN</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="login_part_form">
+                <div class="login_part_form_iner">
+                  <h3>
+                    Join Us Now! <br />
+                    Create an Account to Get Started
+                  </h3>
+                  <!--Start form-->
+                  <form
+                    class="row contact_form"
+                    action="#"
+                    method="post"
+                    novalidate="novalidate"
+                  >
+                    <div class="col-md-12 form-group p_star">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        value=""
+                        placeholder="User name"
+                      />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        value=""
+                        placeholder="Email"
+                      />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        value=""
+                        placeholder="Password"
+                      />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirm-password"
+                        name="confirm-password"
+                        value=""
+                        placeholder="Confirm password"
+                      />
+                    </div>
+                    <div class="col-md-12 form-group">
+                      <button type="submit" value="submit" class="btn_3">
+                        Sign up
+                      </button>
+                    </div>
+                  </form>
+                  <!--End form-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+<?php
+include 'include/footer.php';
+?>
