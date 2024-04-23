@@ -1,7 +1,11 @@
 <?php
-// keets noois voiws csdl
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "");
-define("DB_NAME", "flowerstore");
+
+const _HOST = 'localhost';
+const _DB = 'flowerstore';
+const _USER = 'root';
+const _PASS = '';
+
+const _MODULE = 'home';
+const _ACTION = 'dashboard'
 ?>
+

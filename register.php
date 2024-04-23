@@ -1,4 +1,36 @@
 <?php
+
+require_once('lib/connect.php');
+require_once('config/config.php');
+require_once('lib/database.php');
+require_once('helpers/format.php');
+
+// $data = [
+//   'ID_customer' => 'd0001',
+//   'username_customer' => 'hung12222',
+//   'fullname_customer' => 'nvaddd',
+// ];
+// update('customer', $data, 'ID_customer = :d0001');
+
+// $data = [
+//   'ID_customer' => 'd0002',
+//   'username_customer' => 'hoang',
+// ];
+
+//insert('customer', $data);
+//update('customer', $data, "ID_customer = 'd0002'");
+//delete('customer', "ID_customer = 'd0002'");
+
+// $kq = getRows('SELECT * FROM customer');
+
+// echo '<pre>';
+// print_r($kq);
+// echo '</pre>';
+
+
+?>
+
+<?php
 include 'include/header.php';
 ?>
  <!--Start banner-->

@@ -1,0 +1,7 @@
+# Disable directory browsing
+Options -Indexes
+
+# Block all direct access to directories
+Deny from all
+
+

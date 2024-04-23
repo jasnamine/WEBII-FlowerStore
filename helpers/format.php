@@ -1,7 +1,5 @@
 <?php
-/**
- * Format Class
- */
+// các hàm dùng chung
 class Format {
     // format ngay thang nam tren website
     public function formatDate($date) {
