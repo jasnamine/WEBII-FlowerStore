@@ -1,7 +1,7 @@
 <?php
 
 const _HOST = 'localhost';
-const _DB = 'flowerstore';
+const _DB = 'flowershop';
 const _USER = 'root';
 const _PASS = '';
 

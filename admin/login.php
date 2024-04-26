@@ -1,16 +1,5 @@
 <?php
-include '../classes/adminlogin.php';
-
-?>
-
-<?php
-$class = new adminlogin();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     $emailAdmin = $_POST['emailAdmin'];
-     $passwordAdmin = $_POST['passwordAdmin'];
-
-     $login_check = $class->login_admin($emailAdmin, $passwordAdmin);
-}
+require_once '../modules/auth/loginadmin.php';
 ?>
 
 <!doctype html>
@@ -48,33 +37,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <span>Please sign in to your account below.</span>
                                         </h4>
                                     </div>
-                                    <form action="login.php" method="post" class="">
+                                    <form action="" method="post" class="">
                                         <div class="form-row">
                                             <div class="col-md-12">
                                                 <div class="position-relative form-group">
-                                                    <input name="emailAdmin" id="exampleEmail" placeholder="Email here..."
+                                                    <input name="email" id="exampleEmail" placeholder="Email here..."
                                                         type="email" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="position-relative form-group">
-                                                    <input name="passwordAdmin" id="examplePassword"
+                                                    <input name="password" id="examplePassword"
                                                         placeholder="Password here..." type="password"
                                                         class="form-control">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="position-relative form-check">
-                                            <input name="remember" id="exampleCheck" type="checkbox"
-                                                class="form-check-input">
-                                            <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
+
+                                        <div class="modal-footer-login clearfix">
+                                            <div class="float-right">
+                                                <button type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                            </div>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer clearfix">
-                                    <div class="float-right">
-                                        <button class="btn btn-primary btn-lg">Login to Dashboard</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>

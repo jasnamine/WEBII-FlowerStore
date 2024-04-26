@@ -1,14 +1,13 @@
 <?php
 
-require_once('lib/connect.php');
-require_once('config/config.php');
-require_once('lib/database.php');
-require_once('helpers/format.php');
+// require_once('lib/connect.php');
+// require_once('config/config.php');
+// require_once('lib/database.php');
+// require_once('helpers/format.php');
 
 // $data = [
-//   'ID_customer' => 'd0001',
-//   'username_customer' => 'hung12222',
-//   'fullname_customer' => 'nvaddd',
+//   'customer_username' => 'hung12222',
+//   'customer_email' => 'nvaddd',
 // ];
 // update('customer', $data, 'ID_customer = :d0001');
 
@@ -17,7 +16,7 @@ require_once('helpers/format.php');
 //   'username_customer' => 'hoang',
 // ];
 
-//insert('customer', $data);
+// insert('customers', $data);
 //update('customer', $data, "ID_customer = 'd0002'");
 //delete('customer', "ID_customer = 'd0002'");
 

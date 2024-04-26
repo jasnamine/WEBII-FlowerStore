@@ -30,8 +30,6 @@ if(!empty($_GET['action'])){
 	}
 }
 
-
-
 $path = 'modules/'. $module .'/'. $action. '.php';
 
 if(file_exists($path)){

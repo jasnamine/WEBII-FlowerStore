@@ -2,6 +2,18 @@
 include 'include/header.php';
 ?>
 
+<?php
+// require_once('lib/connect.php');
+// require_once('config/config.php');
+// require_once('lib/database.php');
+// require_once('helpers/format.php');
+// // include 'helpers/format.php';
+
+// // $kq = filter();
+// // echo '<pre>';
+// // print_r($kq);
+// // echo '</pre>';
+?>
 <!--Start Banner-->
 <section
       class="hero-wrap hero-wrap-2"

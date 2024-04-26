@@ -227,7 +227,7 @@
                   </a>
                   <ul>
                     <li>
-                      <a href="./user.php" class="mm-active">
+                      <a href="./index.php" class="mm-active">
                         <i class="metismenu-icon"></i>User
                       </a>
                     </li>
