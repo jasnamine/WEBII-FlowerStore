@@ -31,6 +31,7 @@
 
 <?php
 include 'include/header.php';
+include 'modules/auth/register.php';
 ?>
  <!--Start banner-->
     <section
@@ -84,6 +85,7 @@ include 'include/header.php';
                   <!--Start form-->
                   <form
                     class="row contact_form"
+                    id="register_form"
                     action="#"
                     method="post"
                     novalidate="novalidate"
@@ -92,10 +94,11 @@ include 'include/header.php';
                       <input
                         type="text"
                         class="form-control"
-                        id="name"
-                        name="name"
+                        id="username"
+                        name="username"
                         value=""
-                        placeholder="User name"
+                        placeholder="Username"
+                        required
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -106,6 +109,7 @@ include 'include/header.php';
                         name="email"
                         value=""
                         placeholder="Email"
+                        required
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -116,7 +120,25 @@ include 'include/header.php';
                         name="password"
                         value=""
                         placeholder="Password"
+                        required
                       />
+                      Password requirements: 
+                      <br>  
+                      + Minimum of 8 characters
+                      <br> 
+                      + Maximum of 20 characters
+                      <br> 
+                      + USE AT LEAST 3 of the following classes:
+                      <br> 
+                      - Lower case letters(s)
+                      <br> 
+                      - Upper case letter(s)
+                      <br>
+                      - Number(s)
+                      <br> 
+                      - Special Character(s) (@#$^&*+=)
+                      <br> 
+                      * Note that the % symbol is not allowed!
                     </div>
                     <div class="col-md-12 form-group p_star">
                       <input
@@ -126,10 +148,11 @@ include 'include/header.php';
                         name="confirm-password"
                         value=""
                         placeholder="Confirm password"
+                        required
                       />
                     </div>
                     <div class="col-md-12 form-group">
-                      <button type="submit" value="submit" class="btn_3">
+                      <button id="register_submit" value="submit" class="btn_3">
                         Sign up
                       </button>
                     </div>
@@ -142,6 +165,7 @@ include 'include/header.php';
         </div>
       </section>
     </section>
+    <script src="./js/handleJS/validationForm.js"></script>
 
 <?php
 include 'include/footer.php';

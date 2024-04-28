@@ -77,7 +77,7 @@ include 'include/header.php';
                         id="name"
                         name="name"
                         value=""
-                        placeholder="Email"
+                        placeholder="Username"
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
