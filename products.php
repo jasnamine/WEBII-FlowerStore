@@ -2,7 +2,7 @@
 include 'include/header.php'
 ?>
     <!--Start banner-->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -23,19 +23,17 @@ include 'include/header.php'
 							<div class="col-md-12 d-flex justify-content-between align-items-center">
 								<h4 class="product-select">Select Types of Products</h4>
 								<select class="selectpicker" multiple>
-				          <option>Brandy</option>
-				          <option>Gin</option>
-				          <option>Rum</option>
-				          <option>Tequila</option>
-				          <option>Vodka</option>
-				          <option>Whiskey</option>
+				          <option>Graduation Flowers</option>
+				          <option>Grand Opening Flowers</option>
+				          <option>Valentine Flowers</option>
+				          <option>The Wedding Flowers</option>
 				        </select>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-1.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/Cozy.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -46,15 +44,15 @@ include 'include/header.php'
 									</div>
 									<div class="text text-center">
 										<span class="sale">Sale</span>
-										<span class="category">Brandy</span>
-										<h2>Bacardi 151</h2>
-										<p class="mb-0"><span class="price price-sale">$69.00</span> <span class="price">$49.00</span></p>
+										<span class="category">Graduation Flowers</span>
+										<h2>Cozy</h2>
+										<p class="mb-0"><span class="price price-sale">750.000</span> <span class="price">580.000</span></p>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-2.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GrandOpeningFlower/GoldenTime.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -65,9 +63,9 @@ include 'include/header.php'
 									</div>
 									<div class="text text-center">
 										<span class="seller">Best Seller</span>
-										<span class="category">Gin</span>
-										<h2>Jim Beam Kentucky Straight</h2>
-										<span class="price">$69.00</span>
+										<span class="category">Grand Opening Flowers</span>
+										<h2>Golden Time</h2>
+										<span class="price">920.000</span>
 									</div>
 								</div>
 							</div>
@@ -84,15 +82,15 @@ include 'include/header.php'
 									</div>
 									<div class="text text-center">
 										<span class="new">New Arrival</span>
-										<span class="category">Rum</span>
-										<h2>Citadelle</h2>
-										<span class="price">$69.00</span>
+										<span class="category">The Wedding Flowers</span>
+										<h2>Enternal Love</h2>
+										<span class="price">640.000</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-4.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/Gracias.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -102,16 +100,16 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Rum</span>
-										<h2>The Glenlivet</h2>
-										<span class="price">$69.00</span>
+										<span class="category">Graduation Flowers</span>
+										<h2>Gracias</h2>
+										<span class="price">790.000</span>
 									</div>
 								</div>
 							</div>
 
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-5.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/FirstLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -121,15 +119,15 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Black Label</h2>
-										<span class="price">$69.00</span>
+										<span class="category">The Wedding Flowers</span>
+										<h2>First Love</h2>
+										<span class="price">910.000</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-6.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/MothersDream.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -139,15 +137,15 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Tequila</span>
-										<h2>Macallan</h2>
-										<span class="price">$69.00</span>
+										<span class="category">Graduation Flowers</span>
+										<h2>Mother's Dream</h2>
+										<span class="price">700.000</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-7.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/ValentineFlower/TrueLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -157,15 +155,15 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Vodka</span>
-										<h2>Old Monk</h2>
-										<span class="price">$69.00</span>
+										<span class="category">Valentine Flowers</span>
+										<h2>True Love</h2>
+										<span class="price">790.000</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-8.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/OnlyLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -175,9 +173,9 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Jameson Irish Whiskey</h2>
-										<span class="price">$69.00</span>
+										<span class="category">The Wedding Flowers</span>
+										<h2>Only Love</h2>
+										<span class="price">730.000</span>
 									</div>
 								</div>
 							</div>
@@ -193,63 +191,9 @@ include 'include/header.php'
 										</div>
 									</div>
 									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Screwball</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-10.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Screwball</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-11.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>McClelland's</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-12.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Plantation</h2>
-										<span class="price">$69.00</span>
+										<span class="category">Grand Opening Flowers</span>
+										<h2>New Beginning</h2>
+										<span class="price">800.000</span>
 									</div>
 								</div>
 							</div>
@@ -281,12 +225,10 @@ include 'include/header.php'
 	<div class="categories">
 	<h3>Product Types</h3>
 	<ul class="p-0">
-		<li><a href="#">Brandy <span class="fa fa-chevron-right"></span></a></li>
-		<li><a href="#">Gin <span class="fa fa-chevron-right"></span></a></li>
-		<li><a href="#">Rum <span class="fa fa-chevron-right"></span></a></li>
-		<li><a href="#">Tequila <span class="fa fa-chevron-right"></span></a></li>
-		<li><a href="#">Vodka <span class="fa fa-chevron-right"></span></a></li>
-		<li><a href="#">Whiskey <span class="fa fa-chevron-right"></span></a></li>
+		<li><a href="#">Graduation Flowers  <span class="fa fa-chevron-right"></span></a></li>
+		<li><a href="#">Grand Opening Flowers<span class="fa fa-chevron-right"></span></a></li>
+		<li><a href="#">Valentine Flowers  <span class="fa fa-chevron-right"></span></a></li>
+		<li><a href="#">The Wedding Flowers  <span class="fa fa-chevron-right"></span></a></li>
 	</ul>
 	</div>
 	<!--End filter by type-->
@@ -324,6 +266,14 @@ include 'include/header.php'
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="green" id="colorGreen">
                     <label class="form-check-label" for="colorGreen">Green</label>
+                </div>
+				<div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="white" id="colorGreen">
+                    <label class="form-check-label" for="colorWhite">White</label>
+                </div>
+				<div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="pink" id="colorGreen">
+                    <label class="form-check-label" for="colorPink">Pink</label>
                 </div>
                 <!-- Add more checkboxes for other colors as needed -->
             </div>
