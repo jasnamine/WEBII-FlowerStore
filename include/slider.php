@@ -1,5 +1,5 @@
 <!--Start slider-->
-    <section class="ftco-section testimony-section img " style="background-image: url(images/bg_4.jpg); margin-bottom: 150px;">
+    <section class="ftco-section testimony-section img " style="background-image: url(images/fl_about.jpg); margin-bottom: 150px;">
     	<div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center mb-5">

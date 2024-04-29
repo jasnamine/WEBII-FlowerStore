@@ -51,9 +51,9 @@
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+	                <li><span class="icon fa fa-map marker"></span><span class="text">182 Nguyen Van Linh Street, HCM City</span></li>
+	                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+84 907 392 721</span></a></li>
+	                <li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">tinle@domain.com</span></a></li>
 	              </ul>
 	            </div>
             </div>

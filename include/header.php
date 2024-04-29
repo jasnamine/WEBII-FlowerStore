@@ -52,7 +52,7 @@
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 			
-	      <a class="navbar-brand" href="index.php">Liquor <span>store</span></a>
+	      <a class="navbar-brand" href="index.php">Flower <span>store</span></a>
 		  
 	      <div class="order-lg-last btn-group">
 					  	<div class="input-group">

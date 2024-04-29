@@ -71,7 +71,7 @@ include 'include/header.php'
 							</div>
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-3.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/EnternalLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
