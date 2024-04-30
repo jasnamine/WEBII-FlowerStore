@@ -39,7 +39,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        echo $username . ' ' . $email . ' ' . $password;
+        // echo $username . ' ' . $email . ' ' . $password;
 
         // Kiểm tra xem username đã tồn tại trong cơ sở dữ liệu hay chưa
         $existingUser = oneRow("SELECT customer_username FROM customers WHERE customer_username = '$username'");

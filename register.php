@@ -153,7 +153,7 @@ include 'include/header.php';
                     </div>
                   </form>
                   <?php
-                    require('modules/auth/register.php');
+                    require('modules/auth/registercustomer.php');
                   ?>
                   <!--End form-->
                 </div>
@@ -163,7 +163,7 @@ include 'include/header.php';
         </div>
       </section>
     </section>
-    <script src="./js/handleJS/validationForm.js"></script>
+    <script src="./js/handleJS/register_validation.js"></script>
 
 <?php
 include 'include/footer.php';
