@@ -1,7 +1,6 @@
 
 <?php
-require_once 'connect.php'; 
-require_once 'config/config.php';
+require_once 'connect.php';
 
 // Hàm thực hiện truy vấn đến cơ sở dữ liệu
 function query($sql, $data = [], $check = false) {
@@ -26,6 +25,16 @@ function query($sql, $data = [], $check = false) {
         return $statement;
     }
     return $result;
+}
+
+// Hàm thoát các giá trị truy vấn
+function escape_values($data) {
+    global $conn;
+    $escaped_data = [];
+    foreach ($data as $key => $value) {
+        $escaped_data[$key] = $conn->real_escape_string($value);
+    }
+    return $escaped_data;
 }
 
 // function insert($table, $data){
@@ -100,7 +109,7 @@ function delete($table, $condition=''){
 }
 
 // Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu
-function getRaw($sql){
+function getRow($sql){
     $kq = query($sql, '', true);
     if(is_object($kq)){
         $dataFetch = $kq -> fetchAll(PDO::FETCH_ASSOC);
@@ -109,7 +118,7 @@ function getRaw($sql){
 }
 
 // Hàm lấy một dòng dữ liệu từ cơ sở dữ liệu
-function oneRaw($sql){
+function oneRow($sql){
     $kq = query($sql, '', true);
     if(is_object($kq)){
         $dataFetch = $kq -> fetch(PDO::FETCH_ASSOC);

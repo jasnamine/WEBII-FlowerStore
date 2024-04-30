@@ -5,7 +5,7 @@ register_submit.addEventListener('click', function(e){
     e.preventDefault();
     var isValid = validationForm();
     if (isValid == true) {
-        alert('Register successfully!');
+        // alert('Register successfully!');
         register_form.submit();
     }
 })

@@ -1,9 +1,9 @@
 <?php
 
-// require_once('lib/connect.php');
-// require_once('config/config.php');
-// require_once('lib/database.php');
-// require_once('helpers/format.php');
+require_once('lib/connect.php');
+require_once('config/config.php');
+require_once('lib/database.php');
+require_once('helpers/format.php');
 
 // $data = [
 //   'customer_username' => 'hung12222',
@@ -12,8 +12,8 @@
 // update('customer', $data, 'ID_customer = :d0001');
 
 // $data = [
-//   'ID_customer' => 'd0002',
-//   'username_customer' => 'hoang',
+//   'customer_username' => 'hoang',
+//   'customer_password' => '12345',
 // ];
 
 // insert('customers', $data);
@@ -31,7 +31,6 @@
 
 <?php
 include 'include/header.php';
-include 'modules/auth/register.php';
 ?>
  <!--Start banner-->
     <section
@@ -86,8 +85,8 @@ include 'modules/auth/register.php';
                   <form
                     class="row contact_form"
                     id="register_form"
-                    action="#"
-                    method="post"
+                    action=""
+                    method="POST"
                     novalidate="novalidate"
                   >
                     <div class="col-md-12 form-group p_star">
@@ -98,7 +97,6 @@ include 'modules/auth/register.php';
                         name="username"
                         value=""
                         placeholder="Username"
-                        required
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -109,7 +107,6 @@ include 'modules/auth/register.php';
                         name="email"
                         value=""
                         placeholder="Email"
-                        required
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -120,7 +117,6 @@ include 'modules/auth/register.php';
                         name="password"
                         value=""
                         placeholder="Password"
-                        required
                       />
                       Password requirements: 
                       <br>  
@@ -148,7 +144,6 @@ include 'modules/auth/register.php';
                         name="confirm-password"
                         value=""
                         placeholder="Confirm password"
-                        required
                       />
                     </div>
                     <div class="col-md-12 form-group">
@@ -157,6 +152,9 @@ include 'modules/auth/register.php';
                       </button>
                     </div>
                   </form>
+                  <?php
+                    require('modules/auth/register.php');
+                  ?>
                   <!--End form-->
                 </div>
               </div>
