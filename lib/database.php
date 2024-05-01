@@ -1,19 +1,18 @@
 
 <?php
-require_once 'connect.php'; 
-require_once 'config/config.php';
+require_once 'connect.php';
 
-
+// Hàm thực hiện truy vấn đến cơ sở dữ liệu
 function query($sql, $data = [], $check = false) {
     global $conn;
-    $ketqua = false;
+    $result = false;
 
     try {
         $statement = $conn->prepare($sql);
         if (!empty($data)) {
-            $ketqua = $statement->execute($data);
+            $result = $statement->execute($data);
         } else {
-            $ketqua = $statement->execute();
+            $result = $statement->execute();
         }
     } catch(Exception $exp) {
         echo $exp->getMessage() . '<br>';
@@ -25,7 +24,17 @@ function query($sql, $data = [], $check = false) {
     if($check){
         return $statement;
     }
-    return $ketqua;
+    return $result;
+}
+
+// Hàm thoát các giá trị truy vấn
+function escape_values($data) {
+    global $conn;
+    $escaped_data = [];
+    foreach ($data as $key => $value) {
+        $escaped_data[$key] = $conn->real_escape_string($value);
+    }
+    return $escaped_data;
 }
 
 // function insert($table, $data){
@@ -40,27 +49,23 @@ function query($sql, $data = [], $check = false) {
 
 // }
 
+// Hàm thực hiện thêm dữ liệu vào bảng
 function insert($table, $data){
     global $conn;
   
-    // Prepare column names and placeholders
     $columns = implode(',', array_keys($data));
     $placeholders = ':' . implode(',:', array_keys($data));
 
-    // Construct the SQL query with proper spacing
     $sql = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES (' . $placeholders . ')';
 
     try {
-        // Prepare the SQL statement
         $statement = $conn->prepare($sql);
         
-        // Execute the statement with data
         $kq = $statement->execute($data);
 
-        // Return the result
         return $kq;
     } catch(Exception $exp) {
-        // Handle exceptions
+        
         echo $exp->getMessage() . '<br>';
         echo 'File: '. $exp->getFile() . '<br>';
         echo 'Line: '.$exp->getLine();
@@ -68,7 +73,7 @@ function insert($table, $data){
     }
 }
 
-
+// Hàm thực hiện cập nhật dữ liệu trong bảng
 function update($table, $data, $condition=''){
     $update = '';
     foreach($data as $key => $value){
@@ -89,6 +94,7 @@ function update($table, $data, $condition=''){
     return $kq;
 }
 
+// Hàm thực hiện xóa dữ liệu từ bảng
 function delete($table, $condition=''){
     if(empty($condition)){
         $sql = 'DELETE FROM ' .$table;
@@ -102,8 +108,8 @@ function delete($table, $condition=''){
 
 }
 
-// lấy nhiều dòng dữ liệu
-function getRaw($sql){
+// Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu
+function getRow($sql){
     $kq = query($sql, '', true);
     if(is_object($kq)){
         $dataFetch = $kq -> fetchAll(PDO::FETCH_ASSOC);
@@ -111,8 +117,8 @@ function getRaw($sql){
     return $dataFetch;
 }
 
-// lấy 1 dòng dữ liệu
-function oneRaw($sql){
+// Hàm lấy một dòng dữ liệu từ cơ sở dữ liệu
+function oneRow($sql){
     $kq = query($sql, '', true);
     if(is_object($kq)){
         $dataFetch = $kq -> fetch(PDO::FETCH_ASSOC);
@@ -121,8 +127,8 @@ function oneRaw($sql){
 
 }
 
-// đếm số dòng dữ liệu
-function getRows($sql){
+// Hàm đếm số dòng dữ liệu từ cơ sở dữ liệu
+function countRows($sql){
     $kq = query($sql, '', true);
     if(!empty($kq)){
         return $kq -> rowCount();
@@ -131,8 +137,6 @@ function getRows($sql){
     
 
 }
-
-
 
 ?>
 

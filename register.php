@@ -6,18 +6,17 @@ require_once('lib/database.php');
 require_once('helpers/format.php');
 
 // $data = [
-//   'ID_customer' => 'd0001',
-//   'username_customer' => 'hung12222',
-//   'fullname_customer' => 'nvaddd',
+//   'customer_username' => 'hung12222',
+//   'customer_email' => 'nvaddd',
 // ];
 // update('customer', $data, 'ID_customer = :d0001');
 
 // $data = [
-//   'ID_customer' => 'd0002',
-//   'username_customer' => 'hoang',
+//   'customer_username' => 'hoang',
+//   'customer_password' => '12345',
 // ];
 
-//insert('customer', $data);
+// insert('customers', $data);
 //update('customer', $data, "ID_customer = 'd0002'");
 //delete('customer', "ID_customer = 'd0002'");
 
@@ -85,18 +84,19 @@ include 'include/header.php';
                   <!--Start form-->
                   <form
                     class="row contact_form"
-                    action="#"
-                    method="post"
+                    id="register_form"
+                    action=""
+                    method="POST"
                     novalidate="novalidate"
                   >
                     <div class="col-md-12 form-group p_star">
                       <input
                         type="text"
                         class="form-control"
-                        id="name"
-                        name="name"
+                        id="username"
+                        name="username"
                         value=""
-                        placeholder="User name"
+                        placeholder="Username"
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -118,6 +118,23 @@ include 'include/header.php';
                         value=""
                         placeholder="Password"
                       />
+                      Password requirements: 
+                      <br>  
+                      + Minimum of 8 characters
+                      <br> 
+                      + Maximum of 20 characters
+                      <br> 
+                      + USE AT LEAST 3 of the following classes:
+                      <br> 
+                      - Lower case letters(s)
+                      <br> 
+                      - Upper case letter(s)
+                      <br>
+                      - Number(s)
+                      <br> 
+                      - Special Character(s) (@#$^&*+=)
+                      <br> 
+                      * Note that the % symbol is not allowed!
                     </div>
                     <div class="col-md-12 form-group p_star">
                       <input
@@ -130,11 +147,14 @@ include 'include/header.php';
                       />
                     </div>
                     <div class="col-md-12 form-group">
-                      <button type="submit" value="submit" class="btn_3">
+                      <button id="register_submit" value="submit" class="btn_3">
                         Sign up
                       </button>
                     </div>
                   </form>
+                  <?php
+                    require('modules/auth/registercustomer.php');
+                  ?>
                   <!--End form-->
                 </div>
               </div>
@@ -143,6 +163,7 @@ include 'include/header.php';
         </div>
       </section>
     </section>
+    <script src="./js/handleJS/register_validation.js"></script>
 
 <?php
 include 'include/footer.php';

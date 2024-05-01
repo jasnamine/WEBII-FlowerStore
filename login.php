@@ -1,6 +1,34 @@
 <?php
+session_start();
+ob_start();
+
 include 'include/header.php';
 ?>
+
+<?php
+require_once('lib/connect.php');
+require_once('config/config.php');
+require_once('lib/database.php');
+require_once('helpers/format.php');
+
+// // $kq = filter();
+// // echo '<pre>';
+// // print_r($kq);
+// // echo '</pre>';
+
+?>
+
+<?php
+// Kiểm tra xem có thông báo lỗi trong session không
+if (isset($_REQUEST['error'])) {
+    // Hiển thị thông báo lỗi
+    // echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
+    echo '<div class="error-message"> Invalid username or password </div>';
+    // Xóa thông báo lỗi khỏi session để nó không được hiển thị nữa
+    // unset($_SESSION['error']);
+}
+?>
+
 
 <!--Start Banner-->
 <section
@@ -54,18 +82,19 @@ include 'include/header.php';
                   <!--Start form-->
                   <form
                     class="row contact_form"
-                    action="#"
+                    id="login_form"
+                    action=""
                     method="post"
                     novalidate="novalidate"
                   >
                     <div class="col-md-12 form-group p_star">
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
-                        id="name"
-                        name="name"
+                        id="username"
+                        name="username"
                         value=""
-                        placeholder="Email"
+                        placeholder="Username"
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -79,11 +108,14 @@ include 'include/header.php';
                       />
                     </div>
                     <div class="col-md-12 form-group">
-                      <button type="submit" value="submit" class="btn_3">
+                      <button id="login_submit" value="submit" class="btn_3">
                         log in
                       </button>
-                      <a class="lost_pass" href="#">forget password?</a>
+                      <!-- <a class="lost_pass" href="#">forget password?</a> -->
                     </div>
+                    <?php
+                      require "modules/auth/logincustomer.php";
+                    ?>
                   </form>
                   <!--End form-->
                 </div>
@@ -93,6 +125,7 @@ include 'include/header.php';
         </div>
       </section>
     </section>
+    <!-- <script src="js/handleJS/login_validation"></script> -->
 
     <?php
     include 'include/footer.php';
