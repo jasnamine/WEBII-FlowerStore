@@ -128,7 +128,7 @@ function oneRow($sql){
 }
 
 // Hàm đếm số dòng dữ liệu từ cơ sở dữ liệu
-function getRows($sql){
+function countRows($sql){
     $kq = query($sql, '', true);
     if(!empty($kq)){
         return $kq -> rowCount();

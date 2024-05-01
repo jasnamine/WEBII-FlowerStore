@@ -1,5 +1,3 @@
-<script src="regex.js"></script>
-
 const register_submit = document.getElementById('register_submit');
 const register_form = document.getElementById('register_form');
 
@@ -12,12 +10,35 @@ register_submit.addEventListener('click', function(e){
     }
 })
 
+// Hàm kiểm tra tên người dùng
+function isValidUsername(username) {
+    // Biểu thức chính quy để kiểm tra tên người dùng
+    var usernameRegex = /^[a-zA-Z0-9_]{1,32}$/;
+    
+    // Kiểm tra tên người dùng với regex
+    return usernameRegex.test(username);
+}
+
+function isValidEmail(email) {
+    // Biểu thức chính quy để kiểm tra email
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Kiểm tra email với regex
+    return emailRegex.test(email);
+}
+
+function isValidPassword(password) {
+    // Biểu thức chính quy để kiểm tra mật khẩu
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$^&*+=])[A-Za-z\d@#$^&*+=]{8,20}$/;
+
+    // Kiểm tra mật khẩu với regex
+    return passwordRegex.test(password);
+}
+
 function confirmPassword(password, confirm_password) {
     // Kiểm tra xem mật khẩu và mật khẩu xác nhận có trùng khớp không
     return password === confirm_password;
 }
-
-
 
 function validationForm() {
     var form_valid = true;
