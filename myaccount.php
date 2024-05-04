@@ -1,7 +1,36 @@
 <?php
+// session_start();
+ob_start();
 include 'include/header.php';
-
 ?>
+
+<?php
+require_once 'lib/session.php';
+
+// Kiểm tra xem session 'username' đã tồn tại chưa và có giá trị không
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    // Nếu đã đăng nhập, hiển thị thông báo
+    $username = getSession('username');
+    echo "Chào mừng $username";
+} 
+else {
+    // Nếu chưa đăng nhập, chạy trang login
+    // Chuyển hướng người dùng đến trang login.php
+    header("Location: login.php");
+    exit; // Đảm bảo không có mã PHP nào được thực thi sau khi chuyển hướng
+}
+?>
+
+
+<?php
+
+    if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+        destroySession();
+        ob_end_flush();
+    }
+?>
+
+
     <section
       class="hero-wrap hero-wrap-2"
       style="background-image: url('images/bg_2.jpg')"
@@ -35,7 +64,7 @@ include 'include/header.php';
                             <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab">Dashboard</a>
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">Orders</a>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab">Account Details</a>
-                            <a class="nav-link" href="index.php">Logout</a>
+                            <a class="nav-link" href="?action=logout">Logout</a>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -112,6 +141,10 @@ include 'include/header.php';
                 </div>
             </div>
         </div>
+        <?php
+            // $session_test = getSession('username');
+            // echo $session_test;
+        ?>
         <!-- My Account End -->
 
  <?php

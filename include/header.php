@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,31 +28,39 @@
   <body>
 
   	<div class="wrap">
-			<div class="container">
-				<!--Header-->
-<div class="row">
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
-							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
-							<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+		<div class="container">
+			
+			<!--Header-->
+			<div class="row">
+				<div class="col-md-6 d-flex align-items-center">
+					<p class="mb-0 phone pl-md-2">
+						<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
+						<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+					</p>
+				</div>
+				<div class="col-md-6 d-flex justify-content-md-end">
+					<div class="social-media mr-4">
+						<p class="mb-0 d-flex">
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 						</p>
 					</div>
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media mr-4">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
-		        <div class="reg">
-		        	<p class="mb-0"><a href="register.php" class="mr-2">Sign Up</a> <a href="login.php">Log In</a></p>
-		        </div>
+					<div class="reg">
+						<p class="mb-0">
+							<?php if (isset($_SESSION['username'])) { ?>
+							<a href="myaccount.php" class="mr-2">Account</a>
+							<?php } else { ?>
+							<a href="register.php" class="mr-2">Sign Up</a>
+							<a href="login.php" class="mr-2">Log In</a>
+							<?php } ?>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
@@ -94,7 +107,7 @@
 				    		<p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity: 01</span></p>
 				    	</div>
 				    </div>
-				    <a class="dropdown-item text-center btn-link d-block w-100" href="cart.html">
+				    <a class="dropdown-item text-center btn-link d-block w-100" href="cart.php">
 				    	View All
 				    	<span class="ion-ios-arrow-round-forward"></span>
 				    </a>
@@ -122,7 +135,6 @@
             </li>
 	          
 	          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-			  <li class="nav-item"><a href="myaccount.php" class="nav-link">Account</a></li>
 	        </ul>
 	      </div>
 	    </div>

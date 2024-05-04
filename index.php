@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+// session_start();
 require_once('lib/connect.php');
 require_once('config/config.php');
 require_once('lib/database.php');
@@ -45,7 +45,6 @@ include 'include/header.php';
 include 'include/banner.php';
 include 'include/introduce.php';
 ?>
-
 
       <!--Start categories-->
 		<section class="ftco-section ftco-no-pb">

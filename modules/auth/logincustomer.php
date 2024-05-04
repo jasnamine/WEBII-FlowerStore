@@ -155,9 +155,7 @@ if (isPost()) {
         ob_end_flush();
         exit();
     } else {
-        echo "Error";
         // Đăng nhập không thành công, chuyển hướng người dùng đến trang đăng nhập lại với thông báo lỗi
-        // setFlashData('error', 'Invalid username or password');
         header("Location: login.php?error=1");
         ob_end_flush();
         exit();
@@ -165,7 +163,7 @@ if (isPost()) {
 } 
 // else {
 //     // Nếu người dùng truy cập trực tiếp trang này mà không thông qua form, chuyển hướng về trang đăng nhập
-//     header("Location: ../../login.php");
+//     header("Location: login.php");
 //     exit();
 // }
 ?>
