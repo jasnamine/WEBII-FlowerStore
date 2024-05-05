@@ -54,13 +54,16 @@
 			
 	      <a class="navbar-brand" href="index.php">Flower <span>store</span></a>
 		  
-	      <div class="order-lg-last btn-group">
-					  	<div class="input-group">
-						      <input type="text"  placeholder="Search..">
-						      <span class="input-group-btn" >
-						        <button class="btn btn-search" type="button"><i class="fa fa-search"></i></button>
-						      </span>
-			</div>
+				<div class="order-lg-last btn-group">
+			<form action="products.php" method="get">
+				<div class="input-group">
+					<input type="text" name="search" placeholder="Search..">
+					<span class="input-group-btn">
+						<button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+			</form>
+		</div>
 			
           <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           	<span class="flaticon-shopping-bag"></span>
