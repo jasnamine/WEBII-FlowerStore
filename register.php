@@ -33,6 +33,7 @@
 include 'include/header.php';
 ?>
  <!--Start banner-->
+
     <section
       class="hero-wrap hero-wrap-2"
       style="background-image: url('images/bg_2.jpg')"
@@ -142,6 +143,7 @@ include 'include/header.php';
         </div>
       </section>
     </section>
+    <script src="./js/handleJS/validate.js"></script>
 
 <?php
 include 'include/footer.php';

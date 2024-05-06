@@ -1,7 +1,5 @@
-
 <?php
 require_once 'connect.php'; 
-require_once 'config/config.php';
 
 // Hàm thực hiện truy vấn đến cơ sở dữ liệu
 function query($sql, $data = [], $check = false) {
@@ -125,9 +123,10 @@ function getRows($sql){
         return $kq -> rowCount();
         
     }
-    
-
 }
 
-?>
 
+
+
+
+?>
