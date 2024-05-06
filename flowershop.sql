@@ -32,7 +32,8 @@ CREATE TABLE `admins` (
   `admin_password` text NOT NULL,
   `admin_email` varchar(100) DEFAULT NULL,
   `admin_phone` varchar(12) DEFAULT NULL,
-  `admin_fullname` text DEFAULT NULL
+  `admin_fullname` text DEFAULT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

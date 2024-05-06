@@ -33,6 +33,7 @@ require_once('helpers/format.php');
 include 'include/header.php';
 ?>
  <!--Start banner-->
+
     <section
       class="hero-wrap hero-wrap-2"
       style="background-image: url('images/bg_2.jpg')"

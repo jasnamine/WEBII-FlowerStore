@@ -1,7 +1,49 @@
 <?php
-require_once './modules/users/list.php';
-require_once './modules/users/edit.php';
+require_once '../lib/database.php';
+require_once '../lib/session.php';
 
+// Ban Admin Function
+function ban_admin($username) {
+        $sql = "UPDATE admins SET active = 0 WHERE admin_username = :username";
+        $result = query($sql, [':username' => $username]); // Utilizing the existing query function
+        
+        if ($result) {
+            setFlashData("success", "Admin has been banned successfully.");
+            // Admin has been banned successfully
+            return true;
+        } else {
+          setFlashData("error", "Admin not found or failed to ban the admin.");
+            // Handle ban failure
+            return false;
+        }
+    
+}
+
+function unban_admin($username) {
+   $data = array(
+       'active' => '1'
+   );
+
+   $condition = "admin_username = '$username'";
+   update('admins', $data, $condition, array(':username' => $username));
+}
+
+if (isset($_GET['ban'])) {
+   $username = $_GET['ban'];
+   ban_admin($username);
+}
+
+if (isset($_GET['unban'])) {
+   $username = $_GET['unban'];
+   unban_admin($username);
+}
+
+
+// truy vấn vào bảng users
+$listUsers = getRaw("SELECT admin_username, admin_email, active FROM admins ORDER BY admin_username");
+        // echo '<pre>';
+        // print_r($listUsers);
+        // echo '</pre>';
 ?>
 <?php
 include 'inc/header.php'
@@ -17,18 +59,12 @@ include 'inc/header.php'
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        User
+                        Admin
                         <div class="page-title-subheading">
                             View, create, update, delete and manage.
                         </div>
                     </div>
                 </div>
-
-                <?php
-        if(!empty($msg)){
-            getMsg($msg, $msgType);
-        }
-        ?>
 
                 <div class="page-title-actions">
                     <a href="./user-create.php" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
@@ -98,32 +134,36 @@ include 'inc/header.php'
                                                     </div>
                                                 </div>
                                                 <div class="widget-content-left flex2">
-                                                    <div class="widget-heading"><?php echo $item['customer_username'];?>
+                                                    <div class="widget-heading"><?php echo $item['admin_username'];?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center"><?php echo $item['customer_email'];?></td>
+                                    <td class="text-center"><?php echo $item['admin_email'];?></td>
 
                                     <td class="text-center">
-                                        <a href="user-show.php?username=<?php echo $item['customer_username'];?>"
+                                        <a href="./user-show.php"
                                             class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                             Details
                                         </a>
-                                        <a href="./user-edit.php?username=<?php echo $item['customer_username'];?>"
-                                            data-toggle="tooltip" title="Edit" data-placement="bottom"
-                                            class="btn btn-outline-warning border-0 btn-sm">
+                                        <a href="./user-edit.php" data-toggle="tooltip" title="Edit"
+                                            data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
                                             <span class="btn-icon-wrapper opacity-8">
                                                 <i class="fa fa-edit fa-w-20"></i>
                                             </span>
                                         </a>
 
                                     </td>
+
                                     <td class="text-center">
-                                        <div class="form-check form-switch ml-4">
-                                            <input class="form-check-input" type="checkbox" id="switchChecked" checked>
-                                        </div>
+                                        <?php if ($item['active']) : ?>
+                                        <button style="width: 45%;" class="btn btn-danger btn-sm"
+                                            onclick="confirmBan('<?php echo $item['admin_username']; ?>')">Ban</button>
+                                        <?php else : ?>
+                                        <button style="width: 45%;" class="btn btn-success btn-sm"
+                                            onclick="confirmUnban('<?php echo $item['admin_username']; ?>')">Unban</button>
+                                        <?php endif; ?>
                                     </td>
 
                                 </tr>
@@ -135,7 +175,7 @@ include 'inc/header.php'
                         </table>
                     </div>
 
-                    <div class=" d-block card-footer">
+                    <div class="d-block card-footer">
                         <nav role="navigation" aria-label="Pagination Navigation"
                             class="flex items-center justify-between">
                             <div class="flex justify-between flex-1 sm:hidden">
@@ -208,8 +248,42 @@ include 'inc/header.php'
     <!-- End Main -->
 
 </div>
-<script type="text/javascript" src="./assets/scripts/handle/main.js"></script>
 <?php
-include 'inc/footer.php';
-?>
+          include 'inc/footer.php';
+          ?>
 </div>
+
+<!-- Modal Confirm
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Xác nhận hành động</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmText"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary" id="confirmAction">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<script>
+function confirmBan(username) {
+    if (confirm('Bạn có chắc muốn khóa admin này không?')) {
+        window.location.href = 'admin.php?ban=' + username;
+    }
+}
+
+function confirmUnban(username) {
+    if (confirm('Bạn có chắc muốn mở khóa admin này không?')) {
+        window.location.href = 'admin.php?unban=' + username;
+    }
+}
+</script>

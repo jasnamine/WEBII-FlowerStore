@@ -1,4 +1,3 @@
-
 <?php
 require_once 'connect.php';
 
@@ -134,9 +133,10 @@ function countRows($sql){
         return $kq -> rowCount();
         
     }
-    
-
 }
 
-?>
 
+
+
+
+?>

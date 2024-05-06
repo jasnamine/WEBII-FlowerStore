@@ -1,9 +1,7 @@
 
 <?php
-// session_start();
-require_once('lib/connect.php');
-require_once('config/config.php');
-require_once('lib/database.php');
+session_start();
+
 require_once('helpers/format.php');
 require_once('lib/session.php');
 
@@ -11,33 +9,33 @@ require_once('lib/session.php');
 // var_dump($session_test);
 
 // removeSession('hi');
-// echo getSession('hi');
+//echo getSession('hi');
 
 // setFlashData('msg', 'cain dat thanh cong');
 // echo getFlashData('msg');
 
-$module = _MODULE;
-$action = _ACTION;
-if(!empty($_GET['module'])){
-	if(is_string($_GET['module'])){
-		$module = trim($_GET['module']);
-	}
-}
+// $module = _MODULE;
+// $action = _ACTION;
+// if(!empty($_GET['module'])){
+// 	if(is_string($_GET['module'])){
+// 		$module = trim($_GET['module']);
+// 	}
+// }
 
-if(!empty($_GET['action'])){
-	if(is_string($_GET['action'])){
-		$action = trim($_GET['action']);
-	}
-}
+// if(!empty($_GET['action'])){
+// 	if(is_string($_GET['action'])){
+// 		$action = trim($_GET['action']);
+// 	}
+// }
 
-$path = 'modules/'. $module .'/'. $action. '.php';
+// $path = 'modules/'. $module .'/'. $action. '.php';
 
-if(file_exists($path)){
-	require_once($path);
-}
-else{
-	require_once('modules/error/404notfound.php');
-}
+// if(file_exists($path)){
+// 	require_once($path);
+// }
+// else{
+// 	require_once('modules/error/404notfound.php');
+// }
 ?>
 
 <?php
