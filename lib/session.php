@@ -30,6 +30,12 @@ function removeSession(){
     }
 }
 
+// Hàm hủy session quay trở lại trang login
+function destroySession() {
+    session_destroy();
+    header('Location: login.php');
+}
+
 // Hàm setFlashData: Thiết lập dữ liệu flash vào session
 function setFlashData($key, $value){
     $key = 'flash_' .$key;

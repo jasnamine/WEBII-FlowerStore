@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ob_start();
 
 include 'include/header.php';
@@ -10,6 +10,7 @@ require_once('lib/connect.php');
 require_once('config/config.php');
 require_once('lib/database.php');
 require_once('helpers/format.php');
+require_once('lib/session.php');
 
 // // $kq = filter();
 // // echo '<pre>';
@@ -19,16 +20,18 @@ require_once('helpers/format.php');
 ?>
 
 <?php
-// Kiểm tra xem có thông báo lỗi trong session không
+// Kiểm tra xem có thông báo lỗi không
 if (isset($_REQUEST['error'])) {
     // Hiển thị thông báo lỗi
-    // echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
     echo '<div class="error-message"> Invalid username or password </div>';
-    // Xóa thông báo lỗi khỏi session để nó không được hiển thị nữa
-    // unset($_SESSION['error']);
 }
+
+
 ?>
 
+<?php
+  require "modules/auth/logincustomer.php";
+?>
 
 <!--Start Banner-->
 <section
@@ -113,9 +116,6 @@ if (isset($_REQUEST['error'])) {
                       </button>
                       <!-- <a class="lost_pass" href="#">forget password?</a> -->
                     </div>
-                    <?php
-                      require "modules/auth/logincustomer.php";
-                    ?>
                   </form>
                   <!--End form-->
                 </div>
