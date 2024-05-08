@@ -12,7 +12,7 @@ if(!empty($filterAll['username'])){
     //echo "Username ID: $usernameID";
 
     // kiểm tra xem username có tồn tại trong customers không
-    $userDetail = oneRaw("SELECT customer_username, customer_fullname, customer_email, customer_phone,
+    $userDetail = oneRow("SELECT customer_username, customer_fullname, customer_email, customer_phone,
                                  customer_city, customer_district, customer_address, customer_password
                         FROM customers WHERE customer_username = '$usernameID'");
     if(!empty($userDetail)){

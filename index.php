@@ -1,6 +1,4 @@
-
 <?php
-session_start();
 
 require_once('helpers/format.php');
 require_once('lib/session.php');
@@ -45,6 +43,18 @@ include 'include/introduce.php';
 ?>
 
       <!--Start categories-->
+	<!-- <div id="sessionExpiredModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="modal-body">
+				<p>Your Session has been expired.</p>
+			</div>
+			<div class="modal-footer">
+				<button id="modalCloseBtn" class="btn btn-secondary">OK</button>
+			</div>
+		</div>
+	</div> -->
+
 		<section class="ftco-section ftco-no-pb">
 			<div class="container">
 				<div class="row">

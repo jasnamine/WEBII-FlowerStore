@@ -1,7 +1,28 @@
 <?php
 session_start();
 
+require_once 'lib/session.php';
+require_once 'lib/database.php';
+
+// $username = 'customer';
+// setSession('username', $username);
+// Kiểm tra xem session 'username' đã tồn tại chưa và có giá trị không
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) 
+// if (checkSession('username'))
+{
+    $username = getSession('username');
+    // Nếu đã đăng nhập, hiển thị thông báo
+    // if (!authenticate_customer($username)) {
+    //     // Tài khoản người dùng bị khóa, chuyển hướng đến trang đăng nhập lại với thông báo lỗi
+    //     removeSession('username');
+    //     header("Location: login.php?error_active=1");
+    //     ob_end_flush();
+    //     exit();
+    // }
+    // echo "Chào mừng $username";
+} 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +49,13 @@ session_start();
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/error-popup.css">
 </head>
 
 <body>
-
   	<div class="wrap">
 		<div class="container">
-			
+		
 			<!--Header-->
 			<div class="row">
 				<div class="col-md-6 d-flex align-items-center">
@@ -142,10 +163,23 @@ session_start();
               </div> -->
             </li>
 	          
-	          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <!--End header-->
+			<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+		</ul>
+	</div>
+</div>
+</nav>
+
+		<!-- <div id="sessionExpiredModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="modal-body">
+					<p>Your Session has been expired.</p>
+				</div>
+				<div class="modal-footer">
+					<button id="modalCloseBtn" class="btn btn-secondary">OK</button>
+				</div>
+			</div>
+		</div> -->
+<!-- END nav -->
+<!--End header-->
+

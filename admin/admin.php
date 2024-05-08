@@ -40,7 +40,7 @@ if (isset($_GET['unban'])) {
 
 
 // truy vấn vào bảng users
-$listUsers = getRaw("SELECT admin_username, admin_email, active FROM admins ORDER BY admin_username");
+$listUsers = getRow("SELECT admin_username, admin_email, active FROM admins ORDER BY admin_username");
         // echo '<pre>';
         // print_r($listUsers);
         // echo '</pre>';

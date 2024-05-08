@@ -135,7 +135,19 @@ function countRows($sql){
     }
 }
 
+// hàm kiểm tra status cho customers (banned or not)
+function authenticate_customer($username) {
 
+    $sql = "SELECT customer_status FROM customers WHERE customer_username = '$username'";
+    $customer = oneRow($sql);
+
+    if ($customer && $customer['customer_status'] === 1) {
+        return true; // Trả về true nếu customer active (not banned)
+    } else {
+        return false; // Trả về false nếu customer không active (banned)
+    }
+
+}
 
 
 

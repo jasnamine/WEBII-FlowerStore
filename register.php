@@ -1,7 +1,5 @@
 <?php
 
-require_once('lib/connect.php');
-require_once('config/config.php');
 require_once('lib/database.php');
 require_once('helpers/format.php');
 
@@ -107,7 +105,7 @@ include 'include/header.php';
                         id="email"
                         name="email"
                         value=""
-                        placeholder="Email"
+                        placeholder="Email (example: Tinle123@gmail.com)"
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">

@@ -1,7 +1,7 @@
 <?php
 
 // Kết nối với database
-require_once '../config/config.php';
+require_once './config/config.php';
 
 try {
     if (class_exists('PDO')) {

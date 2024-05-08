@@ -21,7 +21,7 @@ if(isPost()){
         $password = $filterAll['password'];
 
         // truy vấn thông tin users theo username
-        $userQuery = oneRaw("SELECT admin_password FROM admins WHERE admin_username = '$username'");
+        $userQuery = oneRow("SELECT admin_password FROM admins WHERE admin_username = '$username'");
 
         if(!empty($userQuery)){
             $passwordHash = $userQuery['admin_password'];

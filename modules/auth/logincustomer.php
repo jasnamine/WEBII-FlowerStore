@@ -29,86 +29,6 @@ ob_start();
     // }
 ?>
 
-<script>
-  const login_submit = document.getElementById('login_submit');
-  const login_form = document.getElementById('login_form');
-
-  login_submit.addEventListener('click', function(e){
-      e.preventDefault();
-      var isValid = validationForm();
-      if (isValid == true) {
-          // alert('Login successfully!');
-          login_form.submit();
-      }
-  })
-
-
-  // Hàm kiểm tra tên người dùng
-  function isValidUsername(username) {
-      // Biểu thức chính quy để kiểm tra tên người dùng
-      var usernameRegex = /^[a-zA-Z0-9_]{1,32}$/;
-      
-      // Kiểm tra tên người dùng với regex
-      return usernameRegex.test(username);
-  }
-
-  function isValidPassword(password) {
-      // Biểu thức chính quy để kiểm tra mật khẩu
-      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$^&*+=])[A-Za-z\d@#$^&*+=]{8,20}$/;
-
-      // Kiểm tra mật khẩu với regex
-      return passwordRegex.test(password);
-  }
-
-  function validationForm() {
-      var form_valid = true;
-      var errors = [];
-
-      var username = document.forms['login_form']['username'].value;
-      var password = document.forms['login_form']['password'].value;
-
-      console.log("username: " + username);
-      console.log("password: " + password);
-
-      console.log("Username valid: ", isValidUsername(username)); 
-      console.log("Password valid: ", isValidPassword(password));
-
-      // Tất cả các trường input đều trống
-      if (username === '' && password === '') {
-          alert('All fields are required');
-          form_valid = false;
-          return form_valid;
-      }
-
-      if (username === '') {
-          errors.push('Please enter an username!');
-          // form_valid = false;
-      }
-      else if (!(isValidUsername(username))) {
-          errors.push('You have entered an invalid username or password!');
-          // form_valid = false;
-      }
-
-      if (password === '') {
-          errors.push('Please enter a password!');
-          // form_valid = false;
-      }
-      else if (!(isValidPassword(password))) {
-          errors.push('You have entered an invalid username or password!');
-          // form_valid = false;
-      }
-
-      if (errors.length > 0) {
-          var errors_msg = errors.join('\n');
-          alert(errors_msg);
-          return form_valid = false;
-      }
-      else return form_valid = true;
-
-  }
-
-</script>
-
 <?php
 require_once('lib/database.php');
 require_once('helpers/format.php');
@@ -137,7 +57,7 @@ if (isPost()) {
     // $hashed_password = md5($password);
 
     // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
-    $sql = "SELECT * FROM customers WHERE customer_username = '$username' AND customer_password = '$password'";
+    $sql = "SELECT * FROM customers WHERE customer_username = '$username' AND customer_password = '$password' " ;
     $data = array(
         'customer_username' => $username,
         'customer_password' => $password,
@@ -146,17 +66,27 @@ if (isPost()) {
 
 
     $user = oneRow($sql, $data);
-
-    if ($user) {
-        // Đăng nhập thành công, đặt phiên cho người dùng và chuyển hướng đến trang chính
-        // echo "Logined successfully!";
-        setSession('username', $username);
-        header("Location: index.php"); // Chuyển hướng đến trang chính
-        ob_end_flush();
-        exit();
-    } else {
+    
+    if ($user){
+        if (authenticate_customer($username))
+        {
+            // Đăng nhập thành công, đặt phiên cho người dùng và chuyển hướng đến trang chính
+            // echo "Logined successfully!";
+            setSession('username', $username);
+            header("Location: index.php"); // Chuyển hướng đến trang chính
+            ob_end_flush();
+            exit();
+        } 
+        else {
+            // Tài khoản người dùng bị khóa, chuyển hướng đến trang đăng nhập lại với thông báo lỗi
+            header("Location: login.php?error_active=1");
+            ob_end_flush();
+            exit();
+        }
+    } 
+    else {
         // Đăng nhập không thành công, chuyển hướng người dùng đến trang đăng nhập lại với thông báo lỗi
-        header("Location: login.php?error=1");
+        header("Location: login.php?error_login=1");
         ob_end_flush();
         exit();
     }

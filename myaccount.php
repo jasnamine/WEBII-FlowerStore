@@ -1,16 +1,25 @@
 <?php
-// session_start();
 ob_start();
 include 'include/header.php';
 ?>
 
 <?php
 require_once 'lib/session.php';
+require_once 'lib/database.php';
 
 // Kiểm tra xem session 'username' đã tồn tại chưa và có giá trị không
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    // Nếu đã đăng nhập, hiển thị thông báo
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) 
+// if (checkSession('username'))
+{
     $username = getSession('username');
+    // Nếu đã đăng nhập, hiển thị thông báo
+    if (!authenticate_customer($username)) {
+        // Tài khoản người dùng bị khóa, chuyển hướng đến trang đăng nhập lại với thông báo lỗi
+        header("Location: login.php?error_active=1");
+        removeSession('username');
+        ob_end_flush();
+        exit();
+    }
     echo "Chào mừng $username";
 } 
 else {
@@ -116,25 +125,27 @@ else {
                             
                             <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                                 <h4>Account Details</h4>
+                                <?php
+
+                                ?>
                                 <div class="row">
+
                                     <div class="col-md-6">
-                                        <input class="input-account" type="text" placeholder="User name">
+                                        <input class="input-account" type="text" placeholder="Username" disabled>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input class="input-account" type="text" placeholder="Mobile">
-                                    </div>
+                                        <!-- <div class="col-md-6">
+                                            <input class="input-account" type="text" placeholder="Mobile">
+                                        </div> -->
                                     <div class="col-md-6">
                                         <input class="input-account" type="text" placeholder="Email">
                                     </div>
                                     <div class="col-md-6">
                                         <input class="input-account" type="text" placeholder="Address">
                                     </div>
-                                    <div class="col-md-6">
-                                        <button class="button-account">Update Account</button>
-                                        
-                                    </div>
                                 </div>
-                                
+                                <div>
+                                    <button class="button-account" href="?action=update">Update Account</button>
+                                </div>
                             </div>
                         </div>
                     </div>

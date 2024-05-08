@@ -1,4 +1,18 @@
-	<!--Start footer-->
+<?php if(isset($_SESSION['username']) && !empty($_SESSION['username']) && !authenticate_customer($username)): ?>
+<div id="sessionExpiredModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <p>Your Session has been expired.</p>
+    </div>
+    <div class="modal-footer">
+      <button id="modalCloseBtn" class="btn btn-secondary">OK</button>
+    </div>
+  </div>
+</div>
+<?php endif;?>
+    	
+  <!--Start footer-->
     <footer class="ftco-footer">
       <div class="container">
         <div class="row mb-5">
@@ -132,6 +146,40 @@
 		});
 	</script>
   
+<script type="text/javascript"> 
+	// JavaScript
+	document.addEventListener("DOMContentLoaded", function() {
+	// Lấy modal
+		var modal = document.getElementById('sessionExpiredModal');
+
+		// Lấy nút đóng modal
+		var closeButton = document.getElementsByClassName('close')[0];
+
+		// Khi người dùng nhấn nút đóng hoặc nút OK
+		function closeModal() {
+			modal.style.display = "none";
+			location.reload();
+			// console.log('closing modal');
+
+		}
+
+		// Khi người dùng nhấn nút đóng
+		closeButton.onclick = function() {
+			closeModal();
+		};
+
+		// Khi người dùng nhấn nút OK
+		document.getElementById('modalCloseBtn').onclick = function() {
+			closeModal();
+		};
+
+		// Hiển thị modal
+		<?php if (isset($_SESSION['username']) && !empty($_SESSION['username']) && !authenticate_customer($username)): removeSession('username'); ?>
+			modal.style.display = "block";
+		<?php endif; ?>
+	});
+
+</script>
     
   </body>
 </html>

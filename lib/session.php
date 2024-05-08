@@ -55,11 +55,11 @@ function destroySession() {
     header('Location: login.php');
 }
 
-// Hàm setFlashData: Thiết lập dữ liệu flash vào session
-function setFlashData($key, $value){
-    $key = 'flash_' .$key;
-    return setSession($key, $value);
-}
+// // Hàm setFlashData: Thiết lập dữ liệu flash vào session
+// function setFlashData($key, $value){
+//     $key = 'flash_' .$key;
+//     return setSession($key, $value);
+// }
 
 // // Hàm getFlashData: Lấy dữ liệu flash từ session và xóa nó sau khi lấy
 // function getFlashData($key){
@@ -96,13 +96,13 @@ function destroy(){
 }
 
 // hàm check session
-function checkSession() {
+function checkSession($key) {
     //session_start();
     if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+        session_start();
+    }
 
-    if (!isset($_SESSION["adminlogin"]) || $_SESSION["adminlogin"] !== true) {
+    if (!isset($_SESSION[$key]) || $_SESSION[$key] !== true) {
         destroy();
         header("Location: login.php");
         exit(); 
@@ -127,7 +127,7 @@ function checkLogin() {
 function authenticate_admin($username) {
 
         $sql = "SELECT active FROM admins WHERE admin_username = '$username'";
-        $admin = oneRaw($sql);
+        $admin = oneRow($sql);
 
         if ($admin && $admin['active'] === 1) {
             return true; // Trả về true nếu admin active
@@ -136,6 +136,8 @@ function authenticate_admin($username) {
         }
  
 }
+
+
 
 
 
