@@ -103,7 +103,7 @@ include 'include/introduce.php';
 							<span class="sale">Sale</span>
 										<span class="category">Graduation Flowers</span>
 										<h2>Cozy</h2>
-										<p class="mb-0"><span class="price price-sale">750.000VND</span> <span class="price">580.000VND</span></p>
+										<p class="mb-0"><span class="price price-sale">750,000VND</span> <span class="price">580,000VND</span></p>
 									</div>
 								</div>
 							</div>
@@ -112,9 +112,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GrandOpeningFlower/GoldenTime.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -122,7 +120,7 @@ include 'include/introduce.php';
 										<span class="seller">Best Seller</span>
 										<span class="category">Grand Opening Flowers</span>
 										<h2>Golden Time</h2>
-										<span class="price">920.000VND</span>
+										<span class="price">920,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -131,9 +129,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/EnternalLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -141,7 +137,7 @@ include 'include/introduce.php';
 										<span class="new">New Arrival</span>
 										<span class="category">The Wedding Flowers</span>
 										<h2>Enternal Love</h2>
-										<span class="price">640.000VND</span>
+										<span class="price">640,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -150,16 +146,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/Gracias.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">Graduation Flowers</span>
 										<h2>Gracias</h2>
-										<span class="price">790.000VND</span>
+										<span class="price">790,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -169,16 +163,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/FirstLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">The Wedding Flowers</span>
 										<h2>First Love</h2>
-										<span class="price">910.000VND</span>
+										<span class="price">910,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -187,16 +179,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/MothersDream.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">Graduation Flowers</span>
 										<h2>Mother's Dream</h2>
-										<span class="price">700.000VND</span>
+										<span class="price">700,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -205,16 +195,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/ValentineFlower/TrueLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">Valentine Flowers</span>
 										<h2>True Love</h2>
-										<span class="price">790.000VND</span>
+										<span class="price">790,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -223,16 +211,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/OnlyLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">The Wedding Flowers</span>
 										<h2>Only Love</h2>
-										<span class="price">730.000VND</span>
+										<span class="price">730,000VND</span>
 									</div>
 								</div>
 							</div>
@@ -241,16 +227,14 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GrandOpeningFlower/NewBegining.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
 									<div class="text text-center">
 										<span class="category">Grand Opening Flowers</span>
 										<h2>New Beginning</h2>
-										<span class="price">800.000VND</span>
+										<span class="price">800,000VND</span>
 									</div>
 						</div>
 					</div>
