@@ -107,14 +107,59 @@ function delete($table, $condition=''){
 
 }
 
-// Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu
-function getRow($sql){
-    $kq = query($sql, '', true);
-    if(is_object($kq)){
-        $dataFetch = $kq -> fetchAll(PDO::FETCH_ASSOC);
+// // Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu
+// function getRow($sql){
+//     $kq = query($sql, '', true);
+//     if(is_object($kq)){
+//         $dataFetch = $kq -> fetchAll(PDO::FETCH_ASSOC);
+//     }
+//     return $dataFetch;
+// }
+
+// // Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu
+// function getRow($sql, $params = array()) {
+//     global $conn;
+
+//     try {
+//         $statement = $conn->prepare($sql);
+
+//        // Nếu có tham số được truyền vào
+//        if (!empty($params)) {
+//             // Ràng buộc các giá trị trong mảng $params vào câu truy vấn
+//             foreach ($params as $key => $value) {
+//                 $statement->bindValue(($key + 1), $value); // Sử dụng key + 1 vì số thứ tự của tham số bắt đầu từ 1
+//             }
+//         }
+
+//         // Thực thi truy vấn
+//         $statement->execute();
+
+//         // Trả về kết quả
+//         return $statement->fetchAll(PDO::FETCH_ASSOC);
+//     } catch(Exception $exp) {
+//         echo $exp->getMessage() . '<br>';
+//         echo 'File: '. $exp->getFile() . '<br>';
+//         echo 'Line: '.$exp->getLine();
+//         die();
+//     }
+// }
+
+// Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu sử dụng hàm query()
+function getRow($sql, $params = []) {
+    // Sử dụng hàm query() để thực hiện truy vấn
+    $result = query($sql, $params, true);
+
+    // Kiểm tra nếu kết quả trả về là một đối tượng
+    if(is_object($result)){
+        // Sử dụng fetchAll để lấy tất cả các dòng dữ liệu và trả về kết quả
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
-    return $dataFetch;
+
+    // Nếu không có kết quả, trả về mảng rỗng
+    return [];
 }
+
+
 
 // Hàm lấy một dòng dữ liệu từ cơ sở dữ liệu
 function oneRow($sql){

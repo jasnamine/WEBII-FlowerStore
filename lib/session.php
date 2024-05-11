@@ -102,7 +102,7 @@ function checkSession($key) {
         session_start();
     }
 
-    if (!isset($_SESSION[$key]) || $_SESSION[$key] !== true) {
+    if (!isset($_SESSION[$key])) {
         destroy();
         exit(); 
     }
