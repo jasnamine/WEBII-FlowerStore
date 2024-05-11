@@ -73,7 +73,7 @@ include 'include/header.php';
 									echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
 									echo '<div class="prd_desc">';
 									echo '<p class="meta-prod d-flex">';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
+									echo '<a href="product-detail.php?prd_ID=' . $row["prd_ID"] . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
 									echo '</p>';
 									echo '</div>';
 									echo '</div>';
@@ -113,7 +113,7 @@ include 'include/header.php';
                                 echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
                                 echo '<div class="prd_desc">';
                                 echo '<p class="meta-prod d-flex">';
-                                echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
+                                echo '<a href="product-detail.php?prd_ID=' . $row["prd_ID"] . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
                                 echo '</p>';
                                 echo '</div>';
                                 echo '</div>';
@@ -151,7 +151,7 @@ include 'include/header.php';
                                         echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
                                         echo '<div class="prd_desc">';
                                         echo '<p class="meta-prod d-flex">';
-                                        echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
+                                        echo '<a href="product-detail.php?prd_ID=' . $row["prd_ID"] . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
                                         echo '</p>';
                                         echo '</div>';
                                         echo '</div>';
@@ -171,6 +171,7 @@ include 'include/header.php';
                                 echo "Vui lòng nhập giá cả để tìm kiếm sản phẩm.";
                             }
                         }
+
                     }
                     ?>
                 </div>
@@ -218,13 +219,13 @@ include 'include/header.php';
                     <div class="categories">
                         <h3  class="mt-4 mb-2">Filter by Price</h3>
                         <form class="row" method="get">
-                            <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" id="minPrice"   placeholder="From" min="0" max="100000000">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" id="maxPrice" placeholder="To" min="0" max="100000000">
-                            </div>
-                            <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
+                        <input type="number" class="form-control-price" name="minPrice" id="minPrice" placeholder="From" min="0" max="100000000">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="number" class="form-control-price" name="maxPrice" id="maxPrice" placeholder="To" min="0" max="100000000">
+                    </div>
+                    <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-primary btn-block">Apply</button>
                             </div>
                         </form>
