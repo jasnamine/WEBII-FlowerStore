@@ -51,14 +51,19 @@ function removeSession($key = '') {
 
 
 
-// // Hàm setFlashData: Thiết lập dữ liệu flash vào session
+// Hàm setFlashData: Thiết lập dữ liệu flash vào session
 // function setFlashData($key, $value){
+//         if (session_status() == PHP_SESSION_NONE) {
+//     session_start();}
 //     $key = 'flash_' .$key;
 //     return setSession($key, $value);
 // }
 
-// // Hàm getFlashData: Lấy dữ liệu flash từ session và xóa nó sau khi lấy
+// Hàm getFlashData: Lấy dữ liệu flash từ session và xóa nó sau khi lấy
 // function getFlashData($key){
+//         if (session_status() == PHP_SESSION_NONE) {
+//     session_start();
+//         }
 //     $key = 'flash_' .$key;
 //     $data = getSession($key);
 //     removeSession($key);
@@ -66,24 +71,55 @@ function removeSession($key = '') {
 
 // }
 
+// function getFlashData($key){
+//     if (session_status() === PHP_SESSION_NONE) {
+//         session_start();
+//     }
+//     $key = 'flash_' . $key;
+//     if (isset($_SESSION[$key])) {
+//         $value = $_SESSION[$key];
+//         unset($_SESSION[$key]);
+//         return $value;
+//     }
+//     return null;
+// }
+
+
+// function setFlashData($key, $value) {
+//     if (session_status() == PHP_SESSION_NONE) {
+//     session_start();
+// }
+//     $_SESSION[$key] = $value;
+// }
+
+// function getFlashData($key) {
+//     if (session_status() == PHP_SESSION_NONE) {
+//     session_start();
+// }
+//     if(isset($_SESSION[$key])) {
+//         $value = $_SESSION[$key];
+//         unset($_SESSION[$key]); // Make sure to unset if it's only meant to be used once
+//         return $value;
+//     }
+//     return null;
+// }
+
 function setFlashData($key, $value) {
-    if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $_SESSION[$key] = $value;
 }
 
 function getFlashData($key) {
-    if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-    if(isset($_SESSION[$key])) {
-        $value = $_SESSION[$key];
-        unset($_SESSION[$key]); // Make sure to unset if it's only meant to be used once
-        return $value;
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
-    return null;
+    $value = isset($_SESSION[$key]) ? $_SESSION[$key] : null;
+    unset($_SESSION[$key]); // Xóa sau khi truy xuất để không hiển thị lại
+    return $value;
 }
+
 
 // hàm hủy session quay trở lại trang login
 function destroy(){

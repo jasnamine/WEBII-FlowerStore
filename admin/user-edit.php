@@ -1,5 +1,6 @@
 <?php 
 require_once './modules/users/edit.php';
+require_once '../helpers/format.php';
 ?>
 
 <?php include 'inc/header.php' ?>
@@ -32,7 +33,7 @@ require_once './modules/users/edit.php';
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form method="post">
+                        <form method="post" action="user-edit.php">
 
                             <div class="position-relative row form-group">
                                 <label for="username" class="col-md-3 text-md-right col-form-label">User name</label>
@@ -136,7 +137,9 @@ require_once './modules/users/edit.php';
                                 </div>
                             </div>
 
-                            <div class="position-relative row form-group mb-1">
+                            <input type="hidden" name="username" value="<?php echo $usernameID ?>">
+
+                            <div class=" position-relative row form-group mb-1">
                                 <div class="col-md-9 col-xl-8 offset-md-2">
                                     <a href="#" class="border-0 btn btn-outline-danger mr-1">
                                         <span class="btn-icon-wrapper pr-1 opacity-8">
@@ -164,7 +167,7 @@ require_once './modules/users/edit.php';
 
 <?php include 'inc/footer.php' ?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/handle/jquery-3.2.1.min.js"></script>
 
 <script>
 $(document).ready(function() {

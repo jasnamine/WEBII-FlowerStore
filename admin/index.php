@@ -107,7 +107,7 @@ include 'inc/header.php'
                                     <td class="text-center"><?php echo $item['customer_email'];?></td>
 
                                     <td class="text-center">
-                                        <a href="user-show.php?username=<?php echo $item['customer_username'];?>"
+                                        <a href="./user-show.php?username=<?php echo $item['customer_username'];?>"
                                             class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                             Details
                                         </a>
@@ -121,9 +121,13 @@ include 'inc/header.php'
 
                                     </td>
                                     <td class="text-center">
-                                        <div class="form-check form-switch ml-4">
-                                            <input class="form-check-input" type="checkbox" id="switchChecked" checked>
-                                        </div>
+                                        <?php if ($item['customer_status']) : ?>
+                                        <button style="width: 45%;" class="btn btn-danger btn-sm"
+                                            onclick="confirmBan('<?php echo $item['customer_username']; ?>')">Ban</button>
+                                        <?php else : ?>
+                                        <button style="width: 45%;" class="btn btn-success btn-sm"
+                                            onclick="confirmUnban('<?php echo $item['customer_username']; ?>')">Unban</button>
+                                        <?php endif; ?>
                                     </td>
 
                                 </tr>
@@ -209,6 +213,20 @@ include 'inc/header.php'
 
 </div>
 <script type="text/javascript" src="./assets/scripts/handle/main.js"></script>
+<script>
+function confirmBan(username) {
+    if (confirm('Are you sure you want to ban this customer?')) {
+        window.location.href = 'index.php?ban=' + username;
+    }
+}
+
+function confirmUnban(username) {
+    if (confirm('Are you sure you want to unban this customer?')) {
+        window.location.href = 'index.php?unban=' + username;
+    }
+}
+</script>
+
 <?php
 include 'inc/footer.php';
 ?>

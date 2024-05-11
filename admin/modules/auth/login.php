@@ -35,7 +35,7 @@ if(isPost()){
             exit();
         } else {
             // Nếu admin không active, chuyển hướng về trang đăng nhập
-            setFlashData('msg', "Tài khoản của bạn không được phép truy cập.");
+            setFlashData('msg', "Your account is not allowed to access.");
             setFlashData('msg_type', 'danger');
             header("Location: login.php");
             exit();
@@ -43,28 +43,23 @@ if(isPost()){
     }
     else {
                 // Nếu mật khẩu sai, thông báo lỗi cho người dùng
-                setFlashData('msg', 'Mật khẩu không chính xác.');
+                setFlashData('msg', 'Incorrect password.');
                 setFlashData('msg_type', 'danger');
             }
 
         }
         else{
-            setFlashData('msg', 'User name không tồn tại.');
+            setFlashData('msg', 'User name does not exist.');
             setFlashData('msg_type', 'danger');
         
         }
-        //redirect('login.php');
-        // echo '<pre>';
-        // print_r($userQuery);
-        // echo '</pre>';
+
     }
     else{
-        setFlashData('msg', 'Nhập lại username và mật khẩu.');
+        setFlashData('msg', 'Please enter your username and password.');
         setFlashData('msg_type', 'danger');
         redirect('login.php');
     }
-
-
 
 }
 

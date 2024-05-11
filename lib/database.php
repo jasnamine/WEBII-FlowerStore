@@ -5,6 +5,7 @@ require_once 'connect.php';
 function query($sql, $data = [], $check = false) {
     global $conn;
     $result = false;
+    //echo $sql;
 
     try {
         $statement = $conn->prepare($sql);
@@ -62,11 +63,12 @@ function insert($table, $data){
     }
 }
 
-// Hàm thực hiện cập nhật dữ liệu trong bảng
+//Hàm thực hiện cập nhật dữ liệu trong bảng
 function update($table, $data, $condition=''){
+    
     $update = '';
     foreach($data as $key => $value){
-        $update .= $key .'= :' . $key . ',';
+        $update .= $key .' =:' . $key . ',';
     }
 
     $update = trim($update, ',');
@@ -82,6 +84,7 @@ function update($table, $data, $condition=''){
     $kq = query($sql, $data);
     return $kq;
 }
+
 
 // Hàm thực hiện xóa dữ liệu từ bảng
 function delete($table, $condition=''){
@@ -124,8 +127,6 @@ function getRows($sql){
         
     }
 }
-
-
 
 
 
