@@ -73,15 +73,13 @@ include 'include/header.php';
 									echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
 									echo '<div class="prd_desc">';
 									echo '<p class="meta-prod d-flex">';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>';
 									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
 									echo '</p>';
 									echo '</div>';
 									echo '</div>';
 									echo '<div class="text text-center">';
 									echo '<h2>' . $row["prd_name"] . '</h2>';
-									echo '<span class="name">' . $row["prd_price"] . '</span>';
+									echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
 									echo '</div>';
 									echo '</div>';
 									echo '</div>';
@@ -115,15 +113,13 @@ include 'include/header.php';
                                 echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
                                 echo '<div class="prd_desc">';
                                 echo '<p class="meta-prod d-flex">';
-                                echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>';
-                                echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>';
                                 echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
                                 echo '</p>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '<div class="text text-center">';
                                 echo '<h2>' . $row["prd_name"] . '</h2>';
-                                echo '<span class="name">' . $row["prd_price"] . '</span>';
+                                echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
@@ -133,46 +129,48 @@ include 'include/header.php';
                         }
 
 						// Truy vấn theo giá cả
-						if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-							$minPrice = intval($_GET['minPrice']);
-							$maxPrice = intval($_GET['maxPrice']);
-							
-							// Câu truy vấn SQL để lấy sản phẩm theo giá cả
-							$sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE CAST(prd_price AS UNSIGNED) >= ? AND CAST(prd_price AS UNSIGNED) <= ?";
-							
-							// Chuẩn bị và thực thi truy vấn
-							$stmt = $conn->prepare($sql);
-							$stmt->bind_param("ii", $minPrice, $maxPrice);
-							$stmt->execute();
-							$result = $stmt->get_result();
-	
-							// Hiển thị kết quả truy vấn
-							if ($result->num_rows > 0) {
-								while ($row = $result->fetch_assoc()) {
-									echo '<div class="col-md-4 d-flex">';
-									echo '<div class="product ftco-animate">';
-									echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
-									echo '<div class="prd_desc">';
-									echo '<p class="meta-prod d-flex">';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>';
-									echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
-									echo '</p>';
-									echo '</div>';
-									echo '</div>';
-									echo '<div class="text text-center">';
-									echo '<h2>' . $row["prd_name"] . '</h2>';
-									echo '<span class="name">' . $row["prd_price"] . '</span>';
-									echo '</div>';
-									echo '</div>';
-									echo '</div>';
-								}
-							} else {
-								echo "Không có sản phẩm nào trong khoảng giá này.";
-							}
-						}	
-						
-                        $stmt->close();
+                        if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
+                            $minPrice = floatval($_GET['minPrice']);
+                            $maxPrice = floatval($_GET['maxPrice']);
+
+                            // Kiểm tra xem có giá trị nhập vào hay không
+                            if (!empty($minPrice) && !empty($maxPrice)) {
+                                // Câu truy vấn SQL để lấy sản phẩm trong khoảng giá đã chọn
+                                $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_price BETWEEN ? AND ?";
+                                // Chuẩn bị và thực thi truy vấn
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("dd", $minPrice, $maxPrice);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                // Hiển thị kết quả truy vấn
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<div class="col-md-4 d-flex">';
+                                        echo '<div class="product ftco-animate">';
+                                        echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
+                                        echo '<div class="prd_desc">';
+                                        echo '<p class="meta-prod d-flex">';
+                                        echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
+                                        echo '</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '<div class="text text-center">';
+                                        echo '<h2>' . $row["prd_name"] . '</h2>';
+                                        // Thêm dấu chấm và chữ "VND" vào giá cả
+                                        echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                } else {
+                                    echo "Không có sản phẩm nào trong khoảng giá này.";
+                                }
+                                $stmt->close();
+                            } else {
+                                echo "Vui lòng nhập giá cả để tìm kiếm sản phẩm.";
+                            }
+                        }
                     }
                     ?>
                 </div>
@@ -219,7 +217,7 @@ include 'include/header.php';
                     <!--Start filter by price-->
                     <div class="categories">
                         <h3  class="mt-4 mb-2">Filter by Price</h3>
-                        <form class="row">
+                        <form class="row" method="get">
                             <div class="form-group col-md-6">
                                 <input type="number" class="form-control-price" id="minPrice"   placeholder="From" min="0" max="100000000">
                             </div>
