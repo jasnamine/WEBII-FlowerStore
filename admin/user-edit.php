@@ -38,7 +38,7 @@ require_once './modules/users/edit.php';
                                 <label for="username" class="col-md-3 text-md-right col-form-label">User name</label>
                                 <div class="col-md-9 col-xl-8">
 
-                                    <input name="username" id="username" placeholder="User name" type="text"
+                                    <input  name="username" id="username" placeholder="User name" type="text"
                                         class="form-control" value="<?php echo old('customer_username', $old); ?>">
 
                                     <?php echo form_error('username', '<span class="error">', '</span>', $errors); ?>
@@ -47,8 +47,7 @@ require_once './modules/users/edit.php';
                             </div>
 
                             <div class=" position-relative row form-group">
-                                <label for="name" class="col-md-3 text-md-right col-form-label">Full
-                                    name</label>
+                                <label for="name" class="col-md-3 text-md-right col-form-label">Fullname</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input name="fullname" id="fullname" placeholder="Full name" type="text"
                                         class="form-control" value="<?php echo old('customer_fullname', $old); ?>">
@@ -164,7 +163,7 @@ require_once './modules/users/edit.php';
 
 <?php include 'inc/footer.php' ?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/scripts/jquery-3.2.2.min.js"></script>
 
 <script>
 $(document).ready(function() {

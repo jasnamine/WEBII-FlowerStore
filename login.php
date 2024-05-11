@@ -153,37 +153,36 @@ $msg_banned = 'You have been BANNED. Please contact administrator to solve the p
     </section>
     <script src="js/handleJS/login_validation.js"></script>
     <script type="text/javascript"> 
-	// JavaScript
-	document.addEventListener("DOMContentLoaded", function() {
-	// Lấy modal
-		var e_modal = document.getElementById('ErrorModal');
+    // JavaScript
+    document.addEventListener("DOMContentLoaded", function() {
+    // Lấy modal
+      var e_modal = document.getElementById('ErrorModal');
 
-		// Lấy nút đóng modal
-		var closeButton = document.getElementsByClassName('error-close')[0];
+      // Lấy nút đóng modal
+      var closeButton = document.getElementsByClassName('error-close')[0];
 
-		// Khi người dùng nhấn nút đóng hoặc nút OK
-		function closeModal() {
-			e_modal.style.display = "none";
-      // console.log('OK btn submit');
-		}
+      // Khi người dùng nhấn nút đóng hoặc nút OK
+      function closeModal() {
+        e_modal.style.display = "none";
+        // console.log('OK btn submit');
+      }
 
-		// Khi người dùng nhấn nút đóng
-		closeButton.onclick = function() {
-			closeModal();
-		};
+      // Khi người dùng nhấn nút đóng
+      closeButton.onclick = function() {
+        closeModal();
+      };
 
-		// Khi người dùng nhấn nút OK
-		document.getElementById('modalOkBtn').onclick = function() {
-			closeModal();
-		};
+      // Khi người dùng nhấn nút OK
+      document.getElementById('modalOkBtn').onclick = function() {
+        closeModal();
+      };
 
-    // Hiển thị model
-    <?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
-			e_modal.style.display = "block";
-		<?php endif; ?>
-	});
-
-</script>
+      // Hiển thị model
+      <?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
+        e_modal.style.display = "block";
+      <?php endif; ?>
+	  });
+    </script>
 
     <?php
     include 'include/footer.php';

@@ -35,11 +35,11 @@ const login_form = document.getElementById('login_form');
       var username = document.forms['login_form']['username'].value;
       var password = document.forms['login_form']['password'].value;
 
-      console.log("username: " + username);
-      console.log("password: " + password);
+    //   console.log("username: " + username);
+    //   console.log("password: " + password);
 
-      console.log("Username valid: ", isValidUsername(username)); 
-      console.log("Password valid: ", isValidPassword(password));
+    //   console.log("Username valid: ", isValidUsername(username)); 
+    //   console.log("Password valid: ", isValidPassword(password));
 
       // Tất cả các trường input đều trống
       if (username === '' && password === '') {

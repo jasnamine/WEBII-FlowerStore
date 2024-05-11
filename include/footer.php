@@ -145,6 +145,18 @@
 		    
 		});
 	</script>
+
+  <script> 
+  //jQuery for password requirements
+  $(document).ready(function(){
+    $("#toggle-button").click(function(e){
+      // Stop acting like a button
+      e.preventDefault();
+      
+      $("#passwordRequirements").slideToggle("slow");
+    });
+  });
+  </script>
   
 <script type="text/javascript"> 
 	// JavaScript

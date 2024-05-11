@@ -1,35 +1,5 @@
 <?php
 ob_start();
-    // require_once ('helpers/format.php');
-    // require_once ('lib/database.php');
-    // // Kiểm tra xem người dùng đã gửi dữ liệu form chưa
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //     // Lấy thông tin đăng nhập từ form
-    //     $username = $_POST["username"];
-    //     $password = $_POST["password"];
-
-    //     // Thực hiện kiểm tra thông tin đăng nhập
-    //     // Ở đây bạn có thể thêm logic để kiểm tra thông tin với cơ sở dữ liệu
-    //     // hoặc kiểm tra với thông tin đã được xác định trước
-
-    //     // Ví dụ đơn giản: nếu username là "admin" và password là "password", chấp nhận đăng nhập
-    //     if ($username === "admin" && $password === "password") {
-    //         // Đăng nhập thành công, chuyển hướng đến trang chính
-    //         header("Location: main.php");
-    //         exit();
-    //     } else {
-    //         // Đăng nhập không thành công, chuyển hướng người dùng đến trang đăng nhập lại với thông báo lỗi
-    //         header("Location: login.html?error=1");
-    //         exit();
-    //     }
-    // } else {
-    //     // Nếu người dùng truy cập trực tiếp trang này mà không thông qua form, chuyển hướng về trang đăng nhập
-    //     header("Location: login.html");
-    //     exit();
-    // }
-?>
-
-<?php
 require_once('lib/database.php');
 require_once('helpers/format.php');
 require_once('lib/session.php');
@@ -54,13 +24,13 @@ if (isPost()) {
     $password = $_POST["password"];
 
     // // Mã hóa mật khẩu trước khi so sánh với dữ liệu trong cơ sở dữ liệu
-    // $hashed_password = md5($password);
+    $hashed_password = md5($password);
 
     // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
-    $sql = "SELECT * FROM customers WHERE customer_username = '$username' AND customer_password = '$password' " ;
+    $sql = "SELECT * FROM customers WHERE customer_username = '$username' AND customer_password = '$hashed_password' " ;
     $data = array(
         'customer_username' => $username,
-        'customer_password' => $password,
+        'customer_password' => $hashed_password,
     );
         // echo $username . ' ' . $password;
 
@@ -91,9 +61,5 @@ if (isPost()) {
         exit();
     }
 } 
-// else {
-//     // Nếu người dùng truy cập trực tiếp trang này mà không thông qua form, chuyển hướng về trang đăng nhập
-//     header("Location: login.php");
-//     exit();
-// }
+
 ?>

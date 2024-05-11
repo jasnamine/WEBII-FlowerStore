@@ -22,3 +22,20 @@ function isValidPassword(password) {
     // Kiểm tra mật khẩu với regex
     return passwordRegex.test(password);
 }
+
+function isValidPhoneNumber(phoneNumber) {
+    // Biểu thức chính quy để kiểm tra số điện thoại
+    var phoneRegex = /^0\d{9}$/;
+
+    // Kiểm tra số điện thoại với regex
+    return phoneRegex.test(phoneNumber);
+}
+
+function isValidAddress(address) {
+    // Biểu thức chính quy để kiểm tra địa chỉ nhà (không chấp nhận kí tự lạ)
+    var addressRegex = /^[.0-9a-zA-Z\s\/,àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]+$/ug;
+
+    // Kiểm tra địa chỉ với regex
+    return addressRegex.test(address)
+}
+

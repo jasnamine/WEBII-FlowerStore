@@ -104,7 +104,6 @@ function checkSession($key) {
 
     if (!isset($_SESSION[$key]) || $_SESSION[$key] !== true) {
         destroy();
-        header("Location: login.php");
         exit(); 
     }
 }

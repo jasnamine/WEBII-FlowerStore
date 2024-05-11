@@ -1,3 +1,4 @@
+/* Warning box */
 .modal, .modal-warning {
     display: none;
     position: fixed;
@@ -9,18 +10,6 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
   }
-
-  /* .modal-warning {
-    display: block;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  } */
   
   .modal-content {
     position: relative;
@@ -62,3 +51,26 @@
     cursor: pointer;
   }
   
+
+/* Button for password requirements */
+.password-requirements {
+  margin-top: 2%;
+}
+
+.toggle-button {
+  background-color: #b7472a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5cap;
+}
+
+.toggle-button:hover {
+  background-color: #a23f25;
+}
+
+#passwordRequirements {
+  padding-top: 10px;
+  display: none;
+}

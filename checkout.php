@@ -1,5 +1,9 @@
 <?php
-include 'include/header.php'
+ob_start();
+include 'include/header.php';
+
+checkSession('username');
+ob_end_flush();
 ?>
     
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">

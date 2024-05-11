@@ -76,7 +76,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']))
 					<div class="reg">
 						<p class="mb-0">
 							<?php if (isset($_SESSION['username'])) { ?>
-							<a href="myaccount.php" class="mr-2">Account</a>
+							<a href="myaccount.php" class="mr-2">
+								<i class="fa fa-user-circle"></i>
+							</a>
 							<?php } else { ?>
 							<a href="register.php" class="mr-2">Sign Up</a>
 							<a href="login.php" class="mr-2">Log In</a>
@@ -103,11 +105,12 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']))
 				</div>
 			</form>
 		</div>
-			
-          <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          	<span class="flaticon-shopping-bag"></span>
-          	<div class="d-flex justify-content-center align-items-center"><small>3</small></div>
-          </a>
+			<?php if(isset($_SESSION['username'])): ?>
+				<a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="flaticon-shopping-bag"></span>
+					<div class="d-flex justify-content-center align-items-center"><small>3</small></div>
+				</a>
+			<?php endif; ?>
 
 
 

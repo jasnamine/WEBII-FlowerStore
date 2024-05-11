@@ -117,23 +117,26 @@ include 'include/header.php';
                         value=""
                         placeholder="Password"
                       />
-                      Password requirements: 
-                      <br>  
-                      + Minimum of 8 characters
-                      <br> 
-                      + Maximum of 20 characters
-                      <br> 
-                      + USE AT LEAST 3 of the following classes:
-                      <br> 
-                      - Lower case letters(s)
-                      <br> 
-                      - Upper case letter(s)
-                      <br>
-                      - Number(s)
-                      <br> 
-                      - Special Character(s) (@#$^&*+=)
-                      <br> 
-                      * Note that the % symbol is not allowed!
+                      <div class="password-requirements">	
+                        <button class="toggle-button" id="toggle-button">Show Password Requirements</button>
+                        <div class="requirements-content" id="passwordRequirements" style="display: none;">
+                          + Minimum of 8 characters
+                          <br> 
+                          + Maximum of 20 characters
+                          <br> 
+                          + USE AT LEAST 3 of the following classes:
+                          <br> 
+                          - Lower case letters(s)
+                          <br> 
+                          - Upper case letter(s)
+                          <br>
+                          - Number(s)
+                          <br> 
+                          - Special Character(s) (@#$^&*+=)
+                          <br> 
+                          * Note that the % symbol is not allowed!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-12 form-group p_star">
                       <input
