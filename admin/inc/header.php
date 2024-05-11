@@ -1,4 +1,7 @@
 <?php
+require_once './modules/categories/list.php';
+?>
+<?php
 require_once '../lib/session.php';
 checkSession('adminlogin');
 
@@ -8,6 +11,7 @@ checkSession('adminlogin');
 if(isset($_GET['action']) && $_GET['action'] == 'logout'){
   destroy();
 }
+
 ?>
 
 
@@ -36,6 +40,20 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
     <link href="./main.css" rel="stylesheet" />
     <link href="./my_style.css" rel="stylesheet" />
     <link href="../css/info.css" rel="stylesheet" />
+    <style>
+    .popup {
+        position: absolute;
+        top: 50px;
+        /* Điều chỉnh khoảng cách từ top của trang */
+        left: 50%;
+        /* Đảm bảo modal được căn giữa trang */
+        transform: translateX(-50%);
+        z-index: 9999;
+        /* Đảm bảo modal hiển thị trên cùng */
+        /* Thêm các thuộc tính CSS khác cần thiết */
+    }
+    </style>
+
 
 </head>
 
@@ -111,6 +129,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                                                 <div style="color: #333;" class="widget-content-left">
                                                                     <div class="widget-heading">
                                                                         Alina Mcloughlin
+
                                                                     </div>
                                                                     <div class="widget-subheading opacity-8">
                                                                         A short profile description
@@ -210,6 +229,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                             <i class="metismenu-icon"></i>Product
                                         </a>
                                     </li>
+
+
+
+
                                     <li>
                                         <a href="./category.php">
                                             <i class="metismenu-icon"></i>Category
@@ -222,3 +245,34 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                     </div>
                 </div>
             </div>
+            <script>
+            < script >
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Lưu trữ dropdown của product
+                    var productDropdown = document.querySelector('.app-sidebar .mm-dropdown');
+
+                    // Lắng nghe sự kiện click trên menu
+                    var menuItems = document.querySelectorAll('.app-sidebar .vertical-nav-menu li');
+                    menuItems.forEach(function(item) {
+                        item.addEventListener('click', function() {
+                            // Lấy tiêu đề của menu item được click
+                            var menuItemTitle = this.querySelector('a').innerText.trim();
+
+                            // Kiểm tra nếu menu item được click là "Product"
+                            if (menuItemTitle === 'Product') {
+                                // Loại bỏ lớp mm-active khỏi tất cả các menu items
+                                menuItems.forEach(function(innerItem) {
+                                    innerItem.classList.remove('mm-active');
+                                });
+
+                                // Thêm lớp mm-active cho menu item được chọn
+                                this.classList.add('mm-active');
+                            } else {
+                                // Ẩn dropdown của product khi click vào các menu item khác ngoại trừ Product
+                                productDropdown.classList.remove('mm-show');
+                                productDropdown.lastElementChild.classList.remove('mm-show');
+                            }
+                        });
+                    });
+                });
+            </script>

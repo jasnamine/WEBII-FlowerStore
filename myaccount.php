@@ -90,8 +90,8 @@ $update_error_msg = "There was an error updating!";
             <h2 class="mb-0 bread">My account</h2>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
         <!-- My Account Start -->
         <div class="my-account">
@@ -108,48 +108,48 @@ $update_error_msg = "There was an error updating!";
                     <div class="col-md-9">
                         <div class="tab-content">
 
-                            <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Product</th>
-                                                <th>Date</th>
-                                                <th>Price</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$22</td>
-                                                <td>Approved</td>
-                                                <td><button>View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$22</td>
-                                                <td>Approved</td>
-                                                <td><button>View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$22</td>
-                                                <td>Approved</td>
-                                                <td><button>View</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Product</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Product Name</td>
+                                        <td>01 Jan 2020</td>
+                                        <td>$22</td>
+                                        <td>Approved</td>
+                                        <td><button>View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Product Name</td>
+                                        <td>01 Jan 2020</td>
+                                        <td>$22</td>
+                                        <td>Approved</td>
+                                        <td><button>View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Product Name</td>
+                                        <td>01 Jan 2020</td>
+                                        <td>$22</td>
+                                        <td>Approved</td>
+                                        <td><button>View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                             <!-- Cần bao gồm thư viện jQuery trước khi sử dụng -->
                             <script src="js/jquery.min.js"></script>
@@ -355,6 +355,6 @@ $update_error_msg = "There was an error updating!";
         </script>
         <!-- My Account End -->
 
- <?php
+<?php
 include 'include/footer.php';
 ?>

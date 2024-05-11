@@ -118,8 +118,6 @@ function isPhone($phone){
     return false;
 
 }  
-
-
 //Thông báo lỗi
 function getMsg($msg, $type = 'danger') {
     echo '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">';
@@ -130,11 +128,19 @@ function getMsg($msg, $type = 'danger') {
     echo '</div>';
 }
 
-// Hàm chuyển hướng
-function redirect($path='index.php') {
-    header("Location: $path");
-    exit;
+// // Hàm chuyển hướng
+// function redirect($path='') {
+//     header("Location: $path");
+//     exit();
+// }
+function redirect($url){
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    header('Location: ' . $url);
+    exit();
 }
+
 
 // Hàm thông báo error cho form
 function form_error($fileName, $beforeHtml='', $afterHtml='', $errors){

@@ -1,6 +1,6 @@
 <?php 
 include 'inc/header.php';
-require_once './modules/users/add.php';
+require_once './modules/users/detail.php';
 ?>
 
 <div class="app-main__outer">
@@ -51,90 +51,67 @@ require_once './modules/users/add.php';
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
-                        <?php
-                        if(!empty($listUsers)):
-                          $count = 0;
-                          foreach($listUsers as $item):
-                          $count++;
-                        ?>
+
 
                         <div class="position-relative row form-group">
                             <label for="name" class="col-md-3 text-md-right col-form-label">
                                 Name
                             </label>
                             <div class="col-md-9 col-xl-8">
-                                <p><?php echo $item['customer_username'];?></p>
+
+                                <p><?php echo $listUsers['customer_username'];?></p>
+
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
                             <label for="email" class="col-md-3 text-md-right col-form-label">Email</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>info@CodeLean.vn</p>
+                                <p><?php echo $listUsers['customer_email'];?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="company_name" class="col-md-3 text-md-right col-form-label">
-                                Company Name
+                            <label for="fullname" class="col-md-3 text-md-right col-form-label">
+                                Full name
                             </label>
                             <div class="col-md-9 col-xl-8">
-                                <p>CodeLean</p>
+                                <p><?php echo $listUsers['customer_fullname'];?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="country" class="col-md-3 text-md-right col-form-label">Country</label>
+                            <label for="phone" class="col-md-3 text-md-right col-form-label">Country</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>Viet Nam</p>
+                                <p><?php echo $listUsers['customer_phone'];?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="street_address" class="col-md-3 text-md-right col-form-label">
+                            <label for="city" class="col-md-3 text-md-right col-form-label">
+                                City</label>
+                            <div class="col-md-9 col-xl-8">
+                                <p><?php echo $listUsers['customer_city'];?></p>
+                            </div>
+                        </div>
+
+                        <div class="position-relative row form-group">
+                            <label for="district" class="col-md-3 text-md-right col-form-label">
+                                District</label>
+                            <div class="col-md-9 col-xl-8">
+                                <p><?php echo $listUsers['customer_district'];?></p>
+                            </div>
+                        </div>
+
+                        <div class="position-relative row form-group">
+                            <label for="street-address" class="col-md-3 text-md-right col-form-label">
                                 Street Address</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>Mon City, Mỹ Đình 2, Nam Từ Liêm</p>
+                                <p><?php echo $listUsers['customer_address'];?></p>
                             </div>
                         </div>
 
-                        <div class="position-relative row form-group">
-                            <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">
-                                Postcode Zip</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>10000</p>
-                            </div>
-                        </div>
 
-                        <div class="position-relative row form-group">
-                            <label for="town_city" class="col-md-3 text-md-right col-form-label">
-                                Town City</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>Ha Noi</p>
-                            </div>
-                        </div>
-
-                        <div class="position-relative row form-group">
-                            <label for="phone" class="col-md-3 text-md-right col-form-label">Phone</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>0123456789</p>
-                            </div>
-                        </div>
-
-                        <div class="position-relative row form-group">
-                            <label for="level" class="col-md-3 text-md-right col-form-label">Level</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>Admin</p>
-                            </div>
-                        </div>
-
-                        <div class="position-relative row form-group">
-                            <label for="description" class="col-md-3 text-md-right col-form-label">Description</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <?php endforeach; endif; ?>
                     </div>
                 </div>
             </div>
