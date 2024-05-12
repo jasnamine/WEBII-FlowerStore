@@ -1,7 +1,6 @@
-<?php if(isset($_SESSION['username']) && !empty($_SESSION['username']) && !authenticate_customer($username)): ?>
 <div id="sessionExpiredModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close" id="closeBtn">&times;</span>
     <div class="modal-body">
       <p>Your Session has been expired.</p>
     </div>
@@ -10,7 +9,6 @@
     </div>
   </div>
 </div>
-<?php endif;?>
     	
   <!--Start footer-->
     <footer class="ftco-footer">
@@ -165,7 +163,7 @@
 		var modal = document.getElementById('sessionExpiredModal');
 
 		// Lấy nút đóng modal
-		var closeButton = document.getElementsByClassName('close')[0];
+		var closeButton = document.getElementById('closeBtn');
 
 		// Khi người dùng nhấn nút đóng hoặc nút OK
 		function closeModal() {
@@ -186,7 +184,10 @@
 		};
 
 		// Hiển thị modal
-		<?php if (isset($_SESSION['username']) && !empty($_SESSION['username']) && !authenticate_customer($username)): removeSession('username'); ?>
+		<?php if (
+      (isset($_SESSION['username']) && empty($_SESSION['username'])) ||
+      (isset($_SESSION['username']) && !empty($_SESSION['username']) && !authenticate_customer($username))
+    ): removeSession('username'); ?>
 			modal.style.display = "block";
 		<?php endif; ?>
 	});

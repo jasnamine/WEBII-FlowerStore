@@ -197,4 +197,52 @@ function authenticate_customer($username) {
 
 }
 
+// Hàm truy vấn giỏ hàng của một khách hàng
+function getCart($username) {
+	$sql = "SELECT * FROM orders WHERE customer_username = '$username' AND order_status = -1";
+	return oneRow($sql);
+}
+
+// Hàm truy vấn chi tiết sản phẩm trong giỏ hàng
+function getCartItems($orderID) {
+	$sql = "SELECT * FROM order_details WHERE order_ID = $orderID";
+	return getRow($sql);
+}
+
+// Hàm cập nhật số lượng của sản phẩm trong giỏ hàng
+function updateCartItemQuantity($od_ID, $quantity) {
+    // Chuẩn bị câu truy vấn SQL để cập nhật số lượng sản phẩm
+    $sql = "UPDATE order_details SET od_quantity = :quantity WHERE od_ID = :od_ID";
+
+    // Dữ liệu được truyền vào truy vấn
+    $data = [
+        ':quantity' => $quantity,
+        ':od_ID' => $od_ID
+    ];
+
+    // Thực hiện truy vấn cập nhật
+    $result = query($sql, $data);
+
+    // Trả về kết quả của truy vấn (true hoặc false)
+    return $result;
+}
+
+// Hàm cập nhật trường order_total-price trong bảng orders
+function updateCartTotalPrice($orderID, $totalPrice) {
+    // Chuẩn bị câu truy vấn SQL để cập nhật trường order_total-price
+    $sql = "UPDATE orders SET `order_total-price` = :totalPrice WHERE order_ID = :orderID";
+
+    // Dữ liệu được truyền vào truy vấn
+    $data = [
+        ':totalPrice' => $totalPrice,
+        ':orderID' => $orderID
+    ];
+
+    // Thực hiện truy vấn cập nhật
+    $result = query($sql, $data);
+
+    // Trả về kết quả của truy vấn (true hoặc false)
+    return $result;
+}
+
 ?>

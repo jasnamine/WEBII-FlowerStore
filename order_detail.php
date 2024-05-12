@@ -1,40 +1,7 @@
 <?php
-ob_start();
 include 'include/header.php';
 ?>
 
-
-<?php
-
-// echo isset($_SESSION['username']) ? "Chào mừng " . $_SESSION['username'] : "Không có người dùng";
-
-// Kiểm tra xem session 'username' đã tồn tại chưa và có giá trị không
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) 
-// if (checkSession('username'))
-{
-	$username = getSession('username');
-	// Nếu đã đăng nhập, hiển thị thông báo
-	if (!authenticate_customer($username)) {
-		// Tài khoản người dùng bị khóa, chuyển hướng đến trang đăng nhập lại với thông báo lỗi
-		header("Location: login.php?error_active=1");
-		removeSession('username');
-		ob_end_flush();
-		exit();
-	}
-} 
-else {
-	// Nếu chưa đăng nhập, chạy trang login
-	// Chuyển hướng người dùng đến trang login.php
-	header("Location: login.php");
-	exit; // Đảm bảo không có mã PHP nào được thực thi sau khi chuyển hướng
-}
-?>
-
-
-
-<?php
-require_once 'modules/manageCart/updatecart.php';
-?>
 
 <?php
 
@@ -115,32 +82,7 @@ function displayCartItems($username) {
 }
 ?>
 
-		<div id="ErrorModal" class="modal-warning">
-          <div class="modal-content">
-            <span class="msg-close">&times;</span>
-            <div class="modal-body">
-              <p>
-                <?php 
-                  $delmsg_success = 'Item has been deleted';
-				  $delmsg_error = 'Something went wrong';
-				  if (isset($_REQUEST['delete_success'])) {
-					echo $delmsg_success;
-				  }
-				  else if (isset($_REQUEST['delete_error'])) {
-					echo $delmsg_error;
-				  }
-                ?>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button id="modalOkBtn" class="btn btn-secondary">OK</button>
-            </div>
-          </div>
-        </div>
-
-
-
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');"
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');"
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
@@ -150,9 +92,9 @@ function displayCartItems($username) {
 					<span class="mr-2">
 						<a href="index.php">Home <i class="fa fa-chevron-right"></i></a>
 					</span>
-					<span>Cart <i class="fa fa-chevron-right"></i></span>
+					<span>Order <i class="fa fa-chevron-right"></i></span>
 				</p>
-				<h2 class="mb-0 bread">My Cart</h2>
+				<h2 class="mb-0 bread">Order Detail</h2>
 			</div>
 		</div>
 	</div>
@@ -187,14 +129,9 @@ function displayCartItems($username) {
                 <div class="cart-total mb-3">
                     <h3>Cart Totals</h3>
                     <hr>
-					<!-- Thêm trường input ẩn để lưu giá trị tổng số tiền của giỏ hàng -->
-					<input type="hidden" id="total-price" name="total-price" value="">
                     <p class="d-flex total-price" id="cart-total">
-						<?php
-							// echo $totalPrice;
-						?>
                         <span>Total</span>
-                        <span>0 VND</span> <!-- Giá trị mặc định -->
+                        <span>$0.00</span> <!-- Giá trị mặc định -->
                     </p>
                 </div>
                 <p class="text-center">
@@ -206,39 +143,7 @@ function displayCartItems($username) {
 	</div>
 </section>
 
-<script src="js/handleJS/cart.js"></script>
-<script type="text/javascript"> 
-    // JavaScript
-    document.addEventListener("DOMContentLoaded", function() {
-    // Lấy modal
-      var e_modal = document.getElementById('ErrorModal');
 
-      // Lấy nút đóng modal
-      var closeButton = document.getElementsByClassName('msg-close')[0];
-
-      // Khi người dùng nhấn nút đóng hoặc nút OK
-      function closeModal() {
-        e_modal.style.display = "none";
-        // console.log('OK btn submit');
-      }
-
-      // Khi người dùng nhấn nút đóng
-      closeButton.onclick = function() {
-        closeModal();
-      };
-
-      // Khi người dùng nhấn nút OK
-      document.getElementById('modalOkBtn').onclick = function() {
-        closeModal();
-      };
-
-      // Hiển thị model
-      <?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
-        e_modal.style.display = "block";
-      <?php endif; ?>
-	  });
-</script>
-
-<?php
-include 'include/footer.php'
+<?php 
+include 'include/footer.php';
 ?>
