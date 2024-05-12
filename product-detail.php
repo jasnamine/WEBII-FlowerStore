@@ -54,23 +54,8 @@ include 'include/header.php'
 						</div>
 						<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 							<h3><?php echo $row['prd_name']; ?></h3>
-							<div class="rating d-flex">
-								<p class="text-left mr-4">
-									<a href="#" class="mr-2">5.0</a>
-									<a href="#"><span class="fa fa-star"></span></a>
-									<a href="#"><span class="fa fa-star"></span></a>
-									<a href="#"><span class="fa fa-star"></span></a>
-									<a href="#"><span class="fa fa-star"></span></a>
-									<a href="#"><span class="fa fa-star"></span></a>
-								</p>
-								<p class="text-left mr-4">
-									<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
-								</p>
-								<p class="text-left">
-									<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
-								</p>
-							</div>
 							<p><span>Designed With: </span></p>
+							
 							<?php
 							echo "<ul>";
 							foreach ($product_detail as $key => $value) {
@@ -87,7 +72,7 @@ include 'include/header.php'
 										<i class="fa fa-minus"></i>
 										</button>
 									</span>
-									<input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+									<input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100" style="color: #b7472a;">
 									<span class="input-group-btn ml-2">
 										<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 											<i class="fa fa-plus"></i>

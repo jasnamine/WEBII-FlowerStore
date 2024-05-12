@@ -70,7 +70,7 @@ session_start();
 				<div class="order-lg-last btn-group">
 			<form action="products.php" method="get">
 				<div class="input-group">
-					<input type="text" name="search" placeholder="Search..">
+					<input type="text" name="search" placeholder="Search.." style="color: #ffd700;">
 					<span class="input-group-btn">
 						<button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
 					</span>
