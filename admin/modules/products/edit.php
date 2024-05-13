@@ -102,7 +102,7 @@ if ($uploadOk == 1) {
             'prd_size' => $filterAll['size'],
             'prd_price' => $filterAll['price'],
             'prd_desc' => $filterAll['description'],
-            'cate_ID' => $filterAll['product_category']
+            //'cate_ID' => $filterAll['product_category']
         ];
 
         $update = update('products', $data, "prd_ID = '$productID'");
@@ -123,7 +123,7 @@ if ($uploadOk == 1) {
             'prd_size' => $filterAll['size'],
             'prd_price' => $filterAll['price'],
             'prd_desc' => $filterAll['description'],
-            'cate_ID' => $filterAll['product_category']
+            //'cate_ID' => $filterAll['product_category']
         ];
 
         $updateProduct = update('products', $dataUpdate, "prd_ID = '$productID'");

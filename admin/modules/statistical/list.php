@@ -3,14 +3,12 @@ require_once '../lib/database.php';
 require_once '../lib/session.php';
 
 // truy vấn vào bảng users
-$listOrders = getRaw("SELECT o.order_ID AS ID,
+$listOrders = getRaw("SELECT 
                              c.customer_username AS Customer,
-                             o.order_address AS Address,
-                             SUM(od.od_quantity) AS Amount,
-                             SUM(od.od_quantity * p.prd_price) AS Total,
+                             SUM('o.oder_total-price') AS Total,
                              o.order_status AS Status,
                              o.order_date,
-                             o.*,
+                             o.order_ID,
 
                         CASE 
                         WHEN o.order_status = 1 THEN 'Pending'
@@ -27,7 +25,7 @@ $listOrders = getRaw("SELECT o.order_ID AS ID,
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
                     GROUP BY 
-                        o.order_ID, c.customer_username, o.order_address, 'o.order_total-price', o.order_status;
+                         c.customer_username, o.order_address, 'o.order_total-price', o.order_status;
 
 
 ");

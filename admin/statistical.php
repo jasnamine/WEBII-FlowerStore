@@ -1,5 +1,6 @@
 <?php
-require_once './modules/orders/filter.php';
+require_once './modules/statistical/filter.php';
+// require_once './modules/statistical/list.php';
 ?>
 <?php
 include 'inc/header.php';
@@ -16,7 +17,7 @@ include 'inc/header.php';
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Order
+                        Statistical
                         <div class="page-title-subheading">
                             View, create, update, delete and manage.
                         </div>
@@ -45,6 +46,7 @@ include 'inc/header.php';
                         <label for="startDate">From:</label>
                         <input type="date" id="startDate" name="startDate" data-date="" data-date-format="YYYY MM DD"
                             class="form-control">
+
                     </div>
 
                     <div class="form-group col-md-2">
@@ -52,60 +54,13 @@ include 'inc/header.php';
                         <input type="date" id="endDate" name="endDate" class="form-control" data-date=""
                             data-date-format="YYYY MM DD">
                     </div>
-                    <div class="form-group col-md-2">
-                        <label for="status">Status:</label>
-                        <select id="status" name="status" class="form-control">
-                            <option value="">Select status</option>
-                            <option value="1">Pending</option>
-                            <option value="2">Accepted/Delivering</option>
-                            <option value="3">Delivered</option>
-                            <option value="4">Canceled</option>
-                        </select>
-                    </div>
 
-                    <?php
-                    // Danh sách các quận
-                    $districts = array(
-
-                        "Quận 1", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", 
-                        "Quận 8", "Quận 10", "Quận 11", "Quận 12",
-                    );
-                    ?>
-                    <div class="form-group col-md-2">
-                        <label for="district">District:</label>
-                        <select id="district" name="district" class="form-control">
-                            <option value="">Select district</option>
-                            <?php foreach ($districts as $district): ?>
-                            <option value="<?php echo $district; ?>"><?php echo $district; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-
-                    </div>
                     <div class="form-group col-md-2 align-self-end">
                         <button type="submit" class="btn btn-primary ">Apply</button>
                     </div>
                 </form>
             </div>
 
-            <!-- <script>
-            // Lấy thẻ div chứa form filter
-            var filterForm = document.getElementById("filterForm");
-
-            // Lấy nút "Filter"
-            var filterButton = document.getElementById("filterButton");
-
-            // Gắn sự kiện click cho nút "Filter"
-            filterButton.addEventListener("click", function() {
-                // Kiểm tra trạng thái hiện tại của form filter
-                if (filterForm.style.display === "none") {
-                    // Nếu form đang bị ẩn, hiển thị nó lên
-                    filterForm.style.display = "block";
-                } else {
-                    // Nếu form đang hiển thị, ẩn nó đi
-                    filterForm.style.display = "none";
-                }
-            });
-            </script> -->
         </div>
 
         <div class="row">
@@ -141,13 +96,9 @@ include 'inc/header.php';
                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
+                                    <th class="text-center">ORDER NO</th>
                                     <th class="text-center">Username</th>
-                                    <th class="text-center">District</th>
-                                    <th class="text-center">Amount</th>
                                     <th class="text-center">Total</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Date</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -161,43 +112,13 @@ include 'inc/header.php';
 
                                 <tr>
 
-                                    <td class="text-center text-muted"><?php  echo $item['ID']; ?></td>
+                                    <td class="text-center text-muted"><?php  echo $count ; ?></td>
                                     <td class="text-center text-muted"><?php  echo $item['Customer']; ?></td>
-                                    <td class="text-center text-muted"><?php  echo $item['order_district']; ?></td>
-                                    <td class="text-center text-muted"><?php  echo $item['Amount']; ?></td>
-                                    <td class="text-center text-muted"><?php  echo $item['order_total-price']; ?></td>
+                                    <th class="text-center"><?php echo $item['Total']; ?></th>
 
 
                                     <td class="text-center">
-                                        <?php 
-                                        // Hiển thị nút dựa trên trạng thái của đơn hàng
-                                        switch ($item['Status']) {
-                                        case 'Pending':
-                                        echo '<a href="./order-status.php?id=' . $item['ID'] . '"
-                                                onclick="return confirm(\'Do you really want to change the status to Pending?\')">
-                                                <button class="btn btn-hover-shine btn-outline-secondary border-0 btn-sm">Pending</button>
-                                              </a>';
-                                        break;
-                                        case 'Accepted/Delivering':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">Accepted/Delivering</button>';
-                                        break;
-                                        case 'Delivered':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-success border-0 btn-sm">Delivered</button>';
-                                        break;
-                                        case 'Canceled':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-danger border-0 btn-sm">Canceled</button>';
-                                        break;
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="text-center text-muted"><?php  echo $item['order_date']; ?></td>
-
-
-                                    <td class="text-center">
-                                        <a href="./order-show.php?id=<?php echo $item['ID']; ?>"
+                                        <a href="./order-details.php?username=<?php echo $item['Customer']; ?>"
                                             class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                             Details
                                         </a>
@@ -233,14 +154,6 @@ include 'inc/header.php';
                         formatDateInput('endDate');
                     });
                     </script>
-
-
-
-
-
-
-
-
 
                     <?php
 include 'inc/footer.php';

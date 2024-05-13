@@ -34,11 +34,7 @@ $listOrders = getRaw("SELECT SUM(od.od_quantity) AS Amount,
                     WHERE
                         od.order_ID = $orderID
                     GROUP BY
-    o.order_ID, od.od_ID
-
-                       
-
-
+                        o.order_ID, od.od_ID, c.customer_username
 ");
 
 
@@ -49,6 +45,7 @@ if(!empty($listOrders)){
     else{
         redirect('order.php');
     }
+
 }
 
 

@@ -9,11 +9,12 @@ $sql = "SELECT o.order_ID AS ID,
                           SUM(od.od_price) AS TotalPrice,
                           o.order_status AS Status,
                           o.*,
+                          c.*,
                     CASE 
                     WHEN o.order_status = 1 THEN 'Pending'
                     WHEN o.order_status = 2 THEN 'Accepted/Delivering'
                     WHEN o.order_status = 3 THEN 'Delivered'
-                    WHEN o.order_status = 0 THEN 'Canceled'
+                    WHEN o.order_status = 4 THEN 'Canceled'
                     END AS Status
                     FROM 
                         orders o
@@ -48,8 +49,9 @@ if(isPost()){
 }
 
 // echo $sql;
+$sql .= " GROUP BY order_ID, c.customer_username, o.order_address, 'o.order_total-price', o.order_status";
 
-$sql .=" ORDER BY order_ID DESC";
+// $sql .=" ORDER BY order_ID DESC";
 $listOrders = getRaw($sql);
 
 ?>

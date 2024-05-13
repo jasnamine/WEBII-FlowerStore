@@ -1,5 +1,5 @@
 <?php
-require_once './modules/orders/detail.php';
+require_once './modules/statistical/order-details.php';
 ?>
 <?php
 include 'inc/header.php';
@@ -25,24 +25,31 @@ include 'inc/header.php';
 
             </div>
         </div>
+        <?php
+                                if (!empty($listOrders)):
+                                    $count = 0;
+                                    foreach ($listOrders as $item):
+                                        $count++;
+                        ?>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
+
                         <h2 class="text-center mt-5">Order info</h2>
                         <hr>
                         <div class="position-relative row form-group">
                             <label for="name" class="col-md-3 text-md-right col-form-label">
-                                Customer
+                                Username
                             </label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['oder_new-receiver'])) {
-                                        echo $listOrders[0]['oder_new-receiver'];
+                                    if (!empty($item['oder_new-receiver'])) {
+                                        echo $item['oder_new-receiver'];
                                     } else {
-                                        echo $listOrders[0]['customer_username'];
+                                        echo $item['customer_username'];
                                     }
                                     ?>
                                 </p>
@@ -54,11 +61,11 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_new-email'])) {
-                                        echo $listOrders[0]['order_new-email'];
+                                    if (!empty($item['order_new-email'])) {
+                                        echo $item['order_new-email'];
                                     } else {
                                         // Display customer email if order email is empty
-                                        echo $listOrders[0]['customer_email'];
+                                        echo $item['customer_email'];
                                     }
                                     ?>
 
@@ -71,10 +78,10 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_new-phone'])) {
-                                        echo $listOrders[0]['order_new-phone'];
+                                    if (!empty($item['order_new-phone'])) {
+                                        echo $item['order_new-phone'];
                                     } else {
-                                        echo $listOrders[0]['customer_phone'];
+                                        echo $item['customer_phone'];
                                     }
                                     ?>
                                 </p>
@@ -88,10 +95,10 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_city'])) {
-                                        echo $listOrders[0]['order_city'];
+                                    if (!empty($item['order_city'])) {
+                                        echo $item['order_city'];
                                     } else {
-                                        echo $listOrders[0]['customer_city'];
+                                        echo $item['customer_city'];
                                     }
                                     ?>
                                 </p>
@@ -104,10 +111,10 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_district'])) {
-                                        echo $listOrders[0]['order_district'];
+                                    if (!empty($item['order_district'])) {
+                                        echo $item['order_district'];
                                     } else {
-                                        echo $listOrders[0]['customer_district'];
+                                        echo $item['customer_district'];
                                     }
                                     ?>
                                 </p>
@@ -120,10 +127,10 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_address'])) {
-                                        echo $listOrders[0]['order_address'];
+                                    if (!empty($item['order_address'])) {
+                                        echo $item['order_address'];
                                     } else {
-                                        echo $listOrders[0]['customer_address'];
+                                        echo $item['customer_address'];
                                     }
                                     ?>
                                 </p>
@@ -136,7 +143,7 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    echo $listOrders[0]['order_date'];
+                                    echo $item['order_date'];
                                     ?>
                                 </p>
                             </div>
@@ -148,7 +155,7 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    echo $listOrders[0]['order_payment-method'];
+                                    echo $item['order_payment-method'];
                                     ?>
 
                                 </p>
@@ -160,7 +167,7 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <div class="badge badge-dark mt-2">
                                     <?php
-                                    echo $listOrders[0]['Status'];
+                                    echo $item['Status'];
                                     ?>
                                 </div>
                             </div>
@@ -191,13 +198,6 @@ include 'inc/header.php';
 
 
                             <tbody>
-                                <?php
-                                if (!empty($listOrders)):
-                                    $count = 0;
-                                    foreach ($listOrders as $item):
-                                    $count++;
-                        ?>
-
                                 <tr>
 
                                     <td><?php echo $item['od_ID']; ?></td>
@@ -222,7 +222,7 @@ include 'inc/header.php';
                                     <td class="text-center">
                                         <?php  echo $item['od_quantity']; ?>
                                     </td>
-                                    <td class="text-center"><?php  echo $item['Total_Product']; ?></td>
+                                    <td class="text-center"><?php  echo $item['total_purchase']; ?></td>
 
                                 </tr>
 

@@ -232,12 +232,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                         </a>
                                     </li>
 
-
-
-
                                     <li>
                                         <a href="./category.php">
                                             <i class="metismenu-icon"></i>Category
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'statistical.php') echo 'class="mm-active"'; ?>
+                                            href="./statistical.php">
+                                            <i class="metismenu-icon"></i>Statistical
                                         </a>
                                     </li>
 
