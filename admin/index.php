@@ -1,6 +1,7 @@
 <?php
 require_once './modules/users/list.php';
 require_once './modules/users/edit.php';
+require_once './modules/users/add.php';
 
 ?>
 <?php
@@ -24,11 +25,7 @@ include 'inc/header.php'
                     </div>
                 </div>
 
-                <?php
-        if(!empty($msg)){
-            getMsg($msg, $msgType);
-        }
-        ?>
+
 
                 <div class="page-title-actions">
                     <a href="./user-create.php" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
@@ -40,6 +37,12 @@ include 'inc/header.php'
                 </div>
             </div>
         </div>
+
+        <?php
+        if(!empty($mgs)){
+            getMsg($mgs, $mgsType);
+        }
+        ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -121,14 +124,25 @@ include 'inc/header.php'
 
                                     </td>
                                     <td class="text-center">
-                                        <?php if ($item['customer_status']) : ?>
-                                        <button style="width: 45%;" class="btn btn-danger btn-sm"
-                                            onclick="confirmBan('<?php echo $item['customer_username']; ?>')">Ban</button>
-                                        <?php else : ?>
-                                        <button style="width: 45%;" class="btn btn-success btn-sm"
-                                            onclick="confirmUnban('<?php echo $item['customer_username']; ?>')">Unban</button>
-                                        <?php endif; ?>
+                                        <?php 
+                                        // Hiển thị nút dựa trên trạng thái của đơn hàng
+                                        switch ($item['customer_status']) {
+                                        case '1':
+                                        echo '<a href="./ban.php?username='. $item['customer_username'] .'"
+                                                onclick="return confirm(\'Do you really want to ban this customer?\')">
+                                                <button class="btn btn-hover-shine btn-outline-secondary border-0 btn-sm">Ban</button>
+                                              </a>';
+                                        break;
+                                        case '0':
+                                        echo '<a href="./ban.php?username='. $item['customer_username'] .'"
+                                                onclick="return confirm(\'Do you really want to unban this customer?\')">
+                                                <button class="btn btn-hover-shine btn-outline-secondary border-0 btn-sm">Unban</button>
+                                              </a>';
+                                        break;
+                                        }
+                                        ?>
                                     </td>
+
 
                                 </tr>
                                 <?php
@@ -213,19 +227,7 @@ include 'inc/header.php'
 
 </div>
 <script type="text/javascript" src="./assets/scripts/handle/main.js"></script>
-<script>
-function confirmBan(username) {
-    if (confirm('Are you sure you want to ban this customer?')) {
-        window.location.href = 'index.php?ban=' + username;
-    }
-}
 
-function confirmUnban(username) {
-    if (confirm('Are you sure you want to unban this customer?')) {
-        window.location.href = 'index.php?unban=' + username;
-    }
-}
-</script>
 
 <?php
 include 'inc/footer.php';

@@ -56,7 +56,6 @@ if(!empty($filterAll['id'])){
             setFlashData('msg', 'Update successful');
             redirect("product.php");
 
-        
         }
         else{
         setFlashData('msg', 'Hide error');

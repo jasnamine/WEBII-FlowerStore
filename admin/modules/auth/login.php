@@ -27,19 +27,13 @@ if(isPost()){
             $passwordHash = $userQuery['admin_password'];
 
         if (password_verify($password, $passwordHash)) {
-        if (authenticate_admin($username)) {
+        
             // Nếu admin active, tiếp tục đăng nhập
             setSession('adminlogin', true);
             setSession('username', $userQuery['admin_username']);
             header('Location: index.php');
             exit();
-        } else {
-            // Nếu admin không active, chuyển hướng về trang đăng nhập
-            setFlashData('msg', "Your account is not allowed to access.");
-            setFlashData('msg_type', 'danger');
-            header("Location: login.php");
-            exit();
-        }
+        
     }
     else {
                 // Nếu mật khẩu sai, thông báo lỗi cho người dùng

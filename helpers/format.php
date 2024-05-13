@@ -100,7 +100,7 @@ function isPhone($phone){
     $checkZero = false;
 
     // Điều kiện 1: kiểm tra số đầu tiên có phải số 0 không
-    if($phone[0] == '0'){
+    if($phone[0] === '0'){
         $checkZero = true;
         $phone = substr($phone,1);
     }

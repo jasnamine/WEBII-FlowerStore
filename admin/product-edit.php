@@ -28,8 +28,8 @@ include 'inc/header.php';
         </div>
 
         <?php
-        if(!empty($msg)){
-            getMsg($msg, $msgType);
+        if(!empty($msgProE)){
+            getMsg($msgProE, $msgTypeProE);
         }
         ?>
 
@@ -44,14 +44,17 @@ include 'inc/header.php';
                                     class="col-md-3 text-md-right col-form-label">Category</label>
                                 <div class="col-md-9 col-xl-8">
                                     <select name="product_category" class="form-control">
-                                        <option value="">-- Category --</option>
-                                        <?php
-                                    foreach($listCategories as $item){
-                                        $selected = ($item['cate_ID'] == old('cate_ID', $old)) ? 'selected' : '';
-                                        echo '<option value="' . $item['cate_ID'] . '" ' . $selected . '>' . $item['cate_name'] . '</option>';
-                                    }
 
+
+                                        <?php
+                                    foreach ($listCategories as $item) {
+                                        if ($item['cate_ID'] == old('cate_ID', $old)) {
+                                            // Output the selected option
+                                            echo '<option value="' . $item['cate_ID'] . '" selected>' . $item['cate_name'] . '</option>';
+                                        }
+                                    }
                                     ?>
+
                                     </select>
                                     <?php echo form_error('product_category', '<span class="error">', '</span>', $errors); ?>
                                 </div>
@@ -102,7 +105,7 @@ include 'inc/header.php';
                                     <select name="size" id="size" class="form-control">
                                         <option value="">-- Size --</option>
                                         <?php
-                                        $sizes = ['Bó' => 'Bó', 'Lẳng' => 'Lẳng'];
+                                        $sizes = ['Bundle' => 'Bundle', 'Bouque' => 'Bouque'];
                                         foreach ($sizes as $key => $value) {
                                             echo '<option value="' . $key . '"' . (old('prd_size', $old) == $key ? 'selected' : '') . '>' . $value . '</option>';
                                         }

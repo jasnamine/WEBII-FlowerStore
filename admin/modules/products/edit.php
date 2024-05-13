@@ -14,7 +14,7 @@ $filterAll = filter();
 if(!empty($filterAll['id'])){
     $productID = $filterAll['id'];
 
-    echo 'product id: ' . $productID;
+    //echo 'product id: ' . $productID;
 
     // Kiểm tra xem id có tồn tại trong products không
     $productDetail = oneRaw("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
@@ -89,8 +89,8 @@ if ($uploadOk == 1) {
 
     // có lỗi
     if(!empty($errors)){
-       setFlashData('msg', 'Please check your data again');
-       setFlashData('msg_type', 'danger');
+       setFlashData('msgProE', 'Please check your data again');
+       setFlashData('msg_typeProE', 'danger');
        setFlashData('errors', $errors);
        setFlashData('old', $filterAll);
         
@@ -102,16 +102,16 @@ if ($uploadOk == 1) {
             'prd_size' => $filterAll['size'],
             'prd_price' => $filterAll['price'],
             'prd_desc' => $filterAll['description'],
-            'cate_ID' => $filterAll['product_category']
+            //'cate_ID' => $filterAll['product_category']
         ];
 
         $update = update('products', $data, "prd_ID = '$productID'");
          
         if($update){
-            setFlashData('msg', 'Update successful');
-            header('Location: product-edit.php?id='. $productID);
-            exit();
-
+            setFlashData('msgProE', 'Update successful');
+            setFlashData('msg_typeProE', 'success');
+            redirect('product-edit.php?id='. $productID);
+            
         }
             
     }
@@ -123,23 +123,23 @@ if ($uploadOk == 1) {
             'prd_size' => $filterAll['size'],
             'prd_price' => $filterAll['price'],
             'prd_desc' => $filterAll['description'],
-            'cate_ID' => $filterAll['product_category']
+            //'cate_ID' => $filterAll['product_category']
         ];
 
         $updateProduct = update('products', $dataUpdate, "prd_ID = '$productID'");
          
         if($updateProduct){
-            setFlashData('msg', 'Update successful');
-            header('Location: product-edit.php?id='. $productID);
-            exit();
-        
+            setFlashData('msgProE', 'Update successful');
+            setFlashData('msg_typeProE', 'success');
+            redirect('product-edit.php?id='. $productID);
+            
         }
     }
 
 }
 
-$msg = getFlashData('msg');
-$msgType = getFlashData('msg_type');
+$msgProE = getFlashData('msgProE');
+$msgTypeProE = getFlashData('msg_typeProE');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
 $productDetail = getFlashData('product-detail');

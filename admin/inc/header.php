@@ -1,5 +1,6 @@
 <?php
 require_once './modules/categories/list.php';
+
 ?>
 <?php
 require_once '../lib/session.php';
@@ -128,7 +129,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                                                 </div>
                                                                 <div style="color: #333;" class="widget-content-left">
                                                                     <div class="widget-heading">
-                                                                        Alina Mcloughlin
+                                                                        Admin
+
 
                                                                     </div>
                                                                     <div class="widget-subheading opacity-8">
@@ -230,12 +232,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                         </a>
                                     </li>
 
-
-
-
                                     <li>
                                         <a href="./category.php">
                                             <i class="metismenu-icon"></i>Category
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'statistical.php') echo 'class="mm-active"'; ?>
+                                            href="./statistical.php">
+                                            <i class="metismenu-icon"></i>Statistical
                                         </a>
                                     </li>
 
@@ -247,32 +253,54 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
             </div>
             <script>
             < script >
-                document.addEventListener("DOMContentLoaded", function() {
-                    // Lưu trữ dropdown của product
-                    var productDropdown = document.querySelector('.app-sidebar .mm-dropdown');
+                document.addEventListener("DOMContentLoaded",
+                    function() {
+                        // Lưu trữ dropdown của product
+                        var productDropdown = document.querySelector(
+                            '.app-sidebar .mm-dropdown');
 
-                    // Lắng nghe sự kiện click trên menu
-                    var menuItems = document.querySelectorAll('.app-sidebar .vertical-nav-menu li');
-                    menuItems.forEach(function(item) {
-                        item.addEventListener('click', function() {
-                            // Lấy tiêu đề của menu item được click
-                            var menuItemTitle = this.querySelector('a').innerText.trim();
+                        // Lắng nghe sự kiện click trên menu
+                        var menuItems = document.querySelectorAll(
+                            '.app-sidebar .vertical-nav-menu li');
+                        menuItems.forEach(function(item) {
+                            item.addEventListener('click',
+                                function() {
+                                    // Lấy tiêu đề của menu item được click
+                                    var menuItemTitle = this
+                                        .querySelector('a')
+                                        .innerText.trim();
 
-                            // Kiểm tra nếu menu item được click là "Product"
-                            if (menuItemTitle === 'Product') {
-                                // Loại bỏ lớp mm-active khỏi tất cả các menu items
-                                menuItems.forEach(function(innerItem) {
-                                    innerItem.classList.remove('mm-active');
+                                    // Kiểm tra nếu menu item được click là "Product"
+                                    if (menuItemTitle ===
+                                        'Product') {
+                                        // Loại bỏ lớp mm-active khỏi tất cả các menu items
+                                        menuItems.forEach(
+                                            function(
+                                                innerItem
+                                            ) {
+                                                innerItem
+                                                    .classList
+                                                    .remove(
+                                                        'mm-active'
+                                                    );
+                                            });
+
+                                        // Thêm lớp mm-active cho menu item được chọn
+                                        this.classList.add(
+                                            'mm-active');
+                                    } else {
+                                        // Ẩn dropdown của product khi click vào các menu item khác ngoại trừ Product
+                                        productDropdown
+                                            .classList
+                                            .remove(
+                                                'mm-show');
+                                        productDropdown
+                                            .lastElementChild
+                                            .classList
+                                            .remove(
+                                                'mm-show');
+                                    }
                                 });
-
-                                // Thêm lớp mm-active cho menu item được chọn
-                                this.classList.add('mm-active');
-                            } else {
-                                // Ẩn dropdown của product khi click vào các menu item khác ngoại trừ Product
-                                productDropdown.classList.remove('mm-show');
-                                productDropdown.lastElementChild.classList.remove('mm-show');
-                            }
                         });
                     });
-                });
             </script>

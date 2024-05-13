@@ -22,8 +22,8 @@ require_once './modules/users/add.php';
         </div>
 
         <?php
-        if(!empty($msg)){
-            getMsg($msg, $msgType);
+        if(!empty($mgs)){
+            echo getMsg($mgs, $mgsType);
         }
         ?>
 

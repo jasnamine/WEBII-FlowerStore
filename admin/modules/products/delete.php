@@ -32,7 +32,6 @@ if(!empty($filterAll['id'])){
         redirect("product.php");
         }
         
-        
     }
     else{
         setFlashData('msg', 'Link not exist');
