@@ -88,8 +88,9 @@
 						<div class="reg">
 							<p class="mb-0">
 								<?php if (isset($_SESSION['username'])) { ?>
-									<a href="myaccount.php" class="mr-2">
+									<a href="myaccount.php" class="mr-2" style="text-transform: none !important;">
 										<i class="fa fa-user-circle"></i>
+										<?php echo $username?>
 									</a>
 									<?php } else { ?>
 									<a href="register.php" class="mr-2">Sign Up</a>
@@ -132,6 +133,7 @@
 				<?php
 					// Code HTML cho dropdown menu của giỏ hàng
 					echo '<div class="dropdown-menu dropdown-menu-right">';
+					echo '<div class="cart-items-container">';
 					foreach($cartItems as $item) {
 						echo '<div class="dropdown-item d-flex align-items-start" style= "background: white" onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0; cursor: pointer;\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" onclick="window.location=\'product-detail.php?prd_ID=' . $item['prd_ID'] . '\';">';
 						echo '<div class="img" style="background-image: url(' . $item['od_img'] . ');"></div>';
@@ -141,6 +143,7 @@
 						echo '</div>';
 						echo '</div>';
 					}
+					echo '</div>';
 					echo '<a class="dropdown-item text-center btn-link d-block w-100" style="background: white" onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" href="cart.php">';
 					echo 'View All<span class="ion-ios-arrow-round-forward"></span>';
 					echo '</a>';

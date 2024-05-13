@@ -24,13 +24,18 @@
             echo '<a href="javascript:self.history.back()"> <button class="btn"> Go Back </button>';
         } else {
             // Nếu username chưa tồn tại, thêm dữ liệu vào cơ sở dữ liệu
-            $data = array(
+            $dataCustomer = array(
                 'customer_username' => $username,
                 'customer_password' => $hashed_password,
                 'customer_email' => $email,
                 'customer_status' => 1,
             );
-            insert('customers', $data);
+            $dataOrder = array(
+                'customer_username' => $username,
+                'order_status' => -1,
+            );
+            insert('customers', $dataCustomer);
+            insert('orders', $dataOrder);
 
             echo '<div class="msg">
             <p> Registration Successfully!</p>

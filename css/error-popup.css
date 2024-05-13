@@ -75,3 +75,14 @@
   display: none;
 }
 
+/* Thiết lập cho phần danh sách sản phẩm */
+.cart-items-container {
+  max-height: 300px; /* Đặt chiều cao tối đa cho phần danh sách sản phẩm */
+  overflow-y: auto; /* Tạo thanh cuộn khi cần thiết */
+}
+
+/* Đảm bảo "View All" cố định ở phía dưới */
+.dropdown-item:last-child {
+  position: relative; /* Thiết lập vị trí tương đối */
+  bottom: 0; /* Dịch chuyển lên đúng vị trí cuối cùng */
+}
