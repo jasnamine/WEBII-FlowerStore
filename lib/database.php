@@ -254,13 +254,24 @@ function createNewCart($customerID) {
     ];
 
     // Chuẩn bị câu truy vấn SQL để chèn dữ liệu vào bảng orders
-    $sql = "INSERT INTO orders (customer_ID, order_status) VALUES (:customerID, :orderStatus)";
+    $sql = "INSERT INTO orders (customer_username, order_status) VALUES (:customerID, :orderStatus)";
 
     // Thực hiện truy vấn
     $result = query($sql, $data);
 
     // Trả về kết quả của truy vấn (true hoặc false)
     return $result;
+}
+
+// Kiểm tra xem giỏ hàng đã có sản phẩm đó hay chưa
+function checkProductInCart($orderID, $prd_ID) {
+    $sql = "SELECT * FROM order_details WHERE order_ID = :orderID AND prd_ID = :prd_ID";
+    $params = [
+        ':orderID' => $orderID,
+        ':prd_ID' => $prd_ID
+    ];
+    $result = getRow($sql, $params);
+    return !empty($result); // Trả về true nếu có sản phẩm trong giỏ hàng, ngược lại trả về false
 }
 
 

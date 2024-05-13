@@ -24,6 +24,7 @@ if (isPost()) {
         $city = $_POST['city'];
         $district = $_POST['district'];
         $paymentMethod = $_POST['optradio'];
+        $date = date('Y-m-d');
         $orderStatus = 1;
         
         // Kiểm tra giỏ hàng có tồn tại không
@@ -38,7 +39,8 @@ if (isPost()) {
                 'order_city' => $city,
                 'order_district' => $district,
                 'order_payment_method' => $paymentMethod,
-                'order_status' => $orderStatus
+                'order_status' => $orderStatus,
+                'order_date' => $date
             ];
             $updateOrderCondition = "order_ID = '$orderID'";
             // Thực hiện cập nhật

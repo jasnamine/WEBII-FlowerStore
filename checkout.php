@@ -137,7 +137,7 @@ $cityValue = $user['customer_city'];
                             <hr>
                             <p class="d-flex total-price">
 								<span>Total</span>
-                                <span><?php echo number_format($cart['order_total-price'], 0, ',', '.');?> VND</span>
+                                <span><?php echo number_format($cart['order_total_price'], 0, ',', '.');?> VND</span>
                             </p>
                         </div>
                     </div>
