@@ -130,25 +130,34 @@
 					</a>
 				<?php endif; ?>
 
-				<?php
-					// Code HTML cho dropdown menu của giỏ hàng
-					echo '<div class="dropdown-menu dropdown-menu-right">';
-					echo '<div class="cart-items-container">';
-					foreach($cartItems as $item) {
-						echo '<div class="dropdown-item d-flex align-items-start" style= "background: white" onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0; cursor: pointer;\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" onclick="window.location=\'product-detail.php?prd_ID=' . $item['prd_ID'] . '\';">';
-						echo '<div class="img" style="background-image: url(' . $item['od_img'] . ');"></div>';
-						echo '<div class="text pl-3">';
-						echo '<h4>' . $item['od_name'] . '</h4>';
-						echo '<p class="mb-0"><span class="price">' . number_format($item['od_price'], 0, ',', '.') . ' VND </span><span class="quantity ml-3">Quantity: ' . $item['od_quantity'] . '</span></p>';
-						echo '</div>';
-						echo '</div>';
+					<div class="dropdown-menu dropdown-menu-right">
+					<div class="cart-items-container">
+					<?php if ($cart) {
+						foreach($cartItems as $item) {
+							echo '<div class="dropdown-item d-flex align-items-start" style= "background: white" onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0; cursor: pointer;\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" onclick="window.location=\'product-detail.php?prd_ID=' . $item['prd_ID'] . '\';">';
+							echo '<div class="img" style="background-image: url(' . $item['od_img'] . ');"></div>';
+							echo '<div class="text pl-3">';
+							echo '<h4>' . $item['od_name'] . '</h4>';
+							echo '<p class="mb-0"><span class="price">' . number_format($item['od_price'], 0, ',', '.') . ' VND </span><span class="quantity ml-3">Quantity: ' . $item['od_quantity'] . '</span></p>';
+							echo '</div>';
+							echo '</div>';
+						}
 					}
-					echo '</div>';
-					echo '<a class="dropdown-item text-center btn-link d-block w-100" style="background: white" onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" href="cart.php">';
-					echo 'View All<span class="ion-ios-arrow-round-forward"></span>';
-					echo '</a>';
-					echo '</div>';
-				?>
+					?>
+					</div>
+						<a class="dropdown-item text-center btn-link d-block w-100" style="background: white" 
+						onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" href="cart.php">
+						<?php
+							if ($cart) {
+								echo 'View All';
+							}
+							else {
+								echo 'No items on cart';
+							}
+						?>
+						<span class="ion-ios-arrow-round-forward"></span>
+						</a>
+					</div>
 			</div>
 			
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">

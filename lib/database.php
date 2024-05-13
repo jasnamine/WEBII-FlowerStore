@@ -230,7 +230,7 @@ function updateCartItemQuantity($od_ID, $quantity) {
 // Hàm cập nhật trường order_total-price trong bảng orders
 function updateCartTotalPrice($orderID, $totalPrice) {
     // Chuẩn bị câu truy vấn SQL để cập nhật trường order_total-price
-    $sql = "UPDATE orders SET `order_total-price` = :totalPrice WHERE order_ID = :orderID";
+    $sql = "UPDATE orders SET order_total_price = :totalPrice WHERE order_ID = :orderID";
 
     // Dữ liệu được truyền vào truy vấn
     $data = [
@@ -244,5 +244,24 @@ function updateCartTotalPrice($orderID, $totalPrice) {
     // Trả về kết quả của truy vấn (true hoặc false)
     return $result;
 }
+
+// Hàm tạo giỏ hàng mới
+function createNewCart($customerID) {
+    // Chuẩn bị dữ liệu cho truy vấn
+    $data = [
+        ':customerID' => $customerID,
+        ':orderStatus' => -1
+    ];
+
+    // Chuẩn bị câu truy vấn SQL để chèn dữ liệu vào bảng orders
+    $sql = "INSERT INTO orders (customer_ID, order_status) VALUES (:customerID, :orderStatus)";
+
+    // Thực hiện truy vấn
+    $result = query($sql, $data);
+
+    // Trả về kết quả của truy vấn (true hoặc false)
+    return $result;
+}
+
 
 ?>

@@ -80,7 +80,7 @@ function validationForm() {
         // form_valid = false;
     }
     else if (!(isValidEmail(email))) {
-        errors.push('Email not valid, please try again!');
+        errors.push('Email is not valid, please try again!');
         // form_valid = false;
     }
 

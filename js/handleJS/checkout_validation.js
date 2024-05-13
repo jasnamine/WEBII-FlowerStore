@@ -33,14 +33,18 @@ function isValidFullname(fullname) {
     return fullnameRegex.test(fullname);
 }
 
+function isValidPaymentMethod(paymentMethod) {
+    return (paymentMethod == 'cod' || paymentMethod == 'bank');
+}
+
 // Gán sự kiện click cho nút "Update Account"
-update_submit.addEventListener('click', function(e) {
+checkout_submit.addEventListener('click', function(e) {
     e.preventDefault(); 
 
     var isValid = validationForm();
     // console.log("Is Form valid? " + isValid);
     if (isValid) {
-        update_form.submit();
+        checkout_form.submit();
     }
 })
 
@@ -49,48 +53,70 @@ function validationForm() {
     var errors = [];
 
     // Lấy giá trị từ các trường input
-    var phoneValue = document.forms['update_form']['phone'].value;
-    var emailValue = document.forms['update_form']['email'].value;
-    var addressValue = document.forms['update_form']['address'].value;
-    var fullnameValue = document.forms['update_form']['fullname'].value;
-    var cityValue = document.forms['update_form']['city'].value;
-    var districtValue = document.forms['update_form']['district'].value;
+    var fullnameValue = document.forms['checkout_form']['fullname'].value;
+    var phoneValue = document.forms['checkout_form']['phone'].value;
+    var emailValue = document.forms['checkout_form']['email'].value;
+    var addressValue = document.forms['checkout_form']['address'].value;
+    var cityValue = document.forms['checkout_form']['city'].value;
+    var districtValue = document.forms['checkout_form']['district'].value;
+    var paymentMethodValue = document.forms['checkout_form']['optradio'].value;
 
+    // console.log("fullnameValue: " + fullnameValue);
     // console.log("phoneValue: " + phoneValue);
     // console.log("emailValue: " + emailValue);
     // console.log("addressValue: " + addressValue);
-    // console.log("fullnameValue: " + fullnameValue);
     // console.log("cityValue: " + cityValue);
     // console.log("districtValue: " + districtValue);
+    // console.log("paymentMethodValue: " + paymentMethodValue);
     
     // console.log("Email valid: ", isValidEmail(emailValue));
     // console.log("Phone valid: ", isValidPhoneNumber(phoneValue));
-    // console.log("Address valid: ", isValidAddress(addressValue));
     // console.log("Fullname valid: ", isValidFullname(fullname));
+    // console.log("Address valid: ", isValidAddress(addressValue));
 
     // Tất cả các trường input đều trống
-    if (username === '' && email === '' && password === '' && confirm_password === '') {
+    if (phoneValue == "" && emailValue == "" && fullnameValue == "" 
+    && addressValue == "" && cityValue == "" && districtValue == "" && paymentMethodValue == "") { 
         alert('All fields are required');
         form_valid = false;
         return form_valid;
     }
 
-    if (phoneValue !== "" && !isValidPhoneNumber(phoneValue)) {
-        errors.push('Phone number is not valid, please try again!');
+    if (fullnameValue == '') {
+        errors.push('Please enter a receiver name!');
     }
-
-    if (emailValue !== "" && !isValidEmail(emailValue)) {
-        errors.push('Email is not valid, please try again!');
-    }
-    
-    if (addressValue !== "" && !isValidAddress(addressValue)) {
-        errors.push('Your address contain some invalid character or not valid, please try again!');
-    }
-
-    if (fullnameValue !== "" && !isValidFullname(fullnameValue)) {
+    else if (!isValidFullname(fullnameValue)) {
         errors.push('Your fullname contain some invalid character or not valid, please try again!');
     }
 
+    if (phoneValue == '') {
+        errors.push('Please enter a phone number!');
+    } 
+    else if(!isValidPhoneNumber(phoneValue)) {
+        errors.push('Phone number is not valid, please try again!');
+    }
+
+    if (emailValue == '') {
+        errors.push('Please enter an email address!');
+    } 
+    else if (!isValidEmail(emailValue)) {
+        errors.push('Email is not valid, please try again!');
+    }
+    
+    if (addressValue == '') {
+        errors.push('Please enter a shipping address!');
+    } 
+    else if (!isValidAddress(addressValue)) {
+        errors.push('Your address contain some invalid character or not valid, please try again!');
+    }
+
+    if (cityValue == '' || districtValue == '' ) {
+        errors.push('The city and district address must be provided!');
+    }
+
+    if (paymentMethodValue == '' || (!isValidPaymentMethod(paymentMethodValue))) {
+        errors.push('Please select payment method!');
+    }
 
     if (errors.length > 0) {
         var errors_msg = errors.join('\n');

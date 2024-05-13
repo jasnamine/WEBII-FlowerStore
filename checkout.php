@@ -47,27 +47,27 @@ $cityValue = $user['customer_city'];
     <div class="container">
         <div class="row justify-content-center">
 			<!--Start form-->
-			<form method="get" class="billing-form" id="checkout_form" name="checkout_form">
+			<form method="post" class="billing-form" id="checkout_form" name="checkout_form">
             	<div class="col-xl-10 ftco-animate">
                     <h3 class="mb-4 billing-heading">Billing Details</h3>
                     <div class="row align-items-end">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="fullname">Full Name</label>
-                                <input id="fullname" name="fullname" type="text" class="form-control" placeholder="" value="">
+                                <input id="fullname" name="fullname" type="text" class="form-control" placeholder="example: Andrew Lee" value="">
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input id="phone" name="phone" type="text" class="form-control" placeholder="" value="">
+                                <input id="phone" name="phone" type="text" class="form-control" placeholder="example: 0123-456-789 (10 digits)" value="">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input id="email" name="email" type="text" class="form-control" placeholder="" value="">
+                                <input id="email" name="email" type="text" class="form-control" placeholder="example: andrew@mail.com" value="">
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -103,10 +103,6 @@ $cityValue = $user['customer_city'];
                                     <!-- <div class="icon"><span class="ion-ios-arrow-down"></span></div> -->
                                     <select id="district" name="district" class="form-control">
                                         <!-- <option value="">Choose District</option> -->
-                                        <?php if (!empty($districtValue)): ?>
-                                        <option value="<?= $districtValue; ?>">
-                                            <?= $districtValue; ?></option>
-                                        <?php endif; ?>
                                     </select>
                                 </div>
                             </div>
@@ -160,16 +156,7 @@ $cityValue = $user['customer_city'];
                             <div class="form-group">
 								<div class="col-md-12">
 									<div class="radio">
-										<label><input type="radio" name="optradio" class="mr-2" value="bank"> Direct
-										Bank Tranfer</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-								<div class="col-md-12">
-									<div class="radio">
-										<label><input type="radio" name="optradio" class="mr-2" value="paypal">
-										Paypal</label>
+										<label><input type="radio" name="optradio" class="mr-2" value="bank"> Bank Tranfer</label>
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +172,7 @@ $cityValue = $user['customer_city'];
     </div>
 </section>
 <script src="js/jquery.min.js"></script>
-<script src="js/"></script>
+<script src="js/handleJS/checkout_validation.js"></script>
 
 <?php
 include 'include/footer.php'
@@ -264,8 +251,7 @@ include 'include/footer.php'
 			} else if (city === "Hà Nội") {
 				// Populate districts for Hanoi
 				var districts = ['Ba Đình', 'Cầu Giấy', 'Đống Đa', 'Hai Bà Trưng', 'Hoàn Kiếm', 'Thanh Xuân',
-					'Hoàng Mai',
-					'Long Biên', 'Hà Đông', 'Tây Hồ', 'Nam Từ Liêm', 'Bắc Từ Liêm'
+					'Hoàng Mai', 'Long Biên', 'Hà Đông', 'Tây Hồ', 'Nam Từ Liêm', 'Bắc Từ Liêm'
 				]; // Districts for Hanoi
 				$.each(districts, function(index, district) {
 					districtSelect.append($('<option>', {

@@ -106,11 +106,11 @@ function displayCartItems($username) {
 			}
 		} else {
 			// Nếu giỏ hàng trống
-			echo "<tr><td colspan='7' style='text-align: center;'>Giỏ hàng của bạn đang trống.</td></tr>";
+			echo "<tr><td colspan='7' style='text-align: center;'>Your cart is empty</td></tr>";
 		}
 	} else {
 		// Nếu không có giỏ hàng
-		echo "<tr><td colspan='7' style='text-align: center;'>Bạn chưa có giỏ hàng.</td></tr>";
+		echo "<tr><td colspan='7' style='text-align: center;'>You do not have cart</td></tr>";
 	}
 }
 ?>
