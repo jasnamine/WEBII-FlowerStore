@@ -14,7 +14,7 @@ if (!empty($filterAll['id'])) {
     $orderStatus = getRows("SELECT * FROM orders WHERE order_ID = '$orderID'");
     if ($orderStatus > 0) {
         // Lấy trạng thái đơn hàng từ cơ sở dữ liệu
-        $order = oneRaw("SELECT order_status FROM orders WHERE order_ID = '$orderID'");
+        $order = oneRow("SELECT order_status FROM orders WHERE order_ID = '$orderID'");
 
         // Kiểm tra nếu đơn hàng tồn tại và đang ở trạng thái "Pending"
         if($order){

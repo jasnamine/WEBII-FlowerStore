@@ -16,10 +16,10 @@ if(!empty($filterAll['id'])){
     $productID = $filterAll['id'];
 
     // Kiểm tra xem id có tồn tại trong products không
-    $productDetail = getRows("SELECT * FROM products WHERE prd_ID = '$productID'");
+    $productDetail = countRows("SELECT * FROM products WHERE prd_ID = '$productID'");
     if($productDetail > 0){
         $sql = "SELECT prd_status FROM products WHERE prd_ID = '$productID'";
-        $product = oneRaw($sql);
+        $product = oneRow($sql);
         // 0 : ẩn và chưa bán
         // 2 : ẩn và đã bán
 

@@ -165,7 +165,7 @@ include 'inc/header.php';
                                     <td class="text-center text-muted"><?php  echo $item['Customer']; ?></td>
                                     <td class="text-center text-muted"><?php  echo $item['order_district']; ?></td>
                                     <td class="text-center text-muted"><?php  echo $item['Amount']; ?></td>
-                                    <td class="text-center text-muted"><?php  echo $item['order_total-price']; ?></td>
+                                    <td class="text-center text-muted"><?php  echo $item['order_total_price']; ?></td>
 
 
                                     <td class="text-center">

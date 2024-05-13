@@ -7,7 +7,7 @@ require_once '../helpers/format.php';
                           c.customer_username AS Customer,
                           o.order_address AS Address,
                           SUM(od.od_quantity) AS Amount,
-                          SUM(o.`order_total-price`) AS Total,
+                          SUM(o.`order_total_price`) AS Total,
                           o.order_status AS Status,
                           o.*,
                     CASE 
@@ -21,7 +21,7 @@ require_once '../helpers/format.php';
                     INNER JOIN 
                         customers c ON o.customer_username = c.customer_username
                     LEFT JOIN 
-                        oder_details od ON o.order_ID = od.order_ID
+                        order_details od ON o.order_ID = od.order_ID
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
                     WHERE 1 = 1 AND o.order_status = 3
@@ -46,7 +46,7 @@ if(isPost()){
 
     echo $sql;
 // $sql .=" ORDER BY order_ID DESC";
-$listOrders = getRaw($sql);
+$listOrders = getRow($sql);
 
 // public function getTop5Users($limit) {
 //         $query = "SELECT us.userId, us.name, us.sdt, us.ngaySinh, us.gioiTinh, 

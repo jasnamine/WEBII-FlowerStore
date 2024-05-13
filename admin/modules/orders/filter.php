@@ -21,13 +21,13 @@ $sql = "SELECT o.order_ID AS ID,
                     INNER JOIN 
                         customers c ON o.customer_username = c.customer_username
                     LEFT JOIN 
-                        oder_details od ON o.order_ID = od.order_ID
+                        order_details od ON o.order_ID = od.order_ID
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
                     WHERE 1=1";
 // echo '<pre>';b
 // print_r($listUssers);
-// echo '</pre>';
+// echo '</pre>'; 
 if(isPost()){
   $filterAll = filter();
   $startDate = $filterAll['startDate'];
@@ -49,9 +49,9 @@ if(isPost()){
 }
 
 // echo $sql;
-$sql .= " GROUP BY order_ID, c.customer_username, o.order_address, 'o.order_total-price', o.order_status";
+$sql .= " GROUP BY order_ID, c.customer_username, o.order_address, 'o.order_total_price', o.order_status";
 
 // $sql .=" ORDER BY order_ID DESC";
-$listOrders = getRaw($sql);
+$listOrders = getRow($sql);
 
 ?>

@@ -12,7 +12,7 @@ if(!empty($filterAll['id'])){
     //echo "Username ID: $usernameID";
 
     // kiểm tra xem username có tồn tại trong customers không
-    $productDetail = oneRaw("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
+    $productDetail = oneRow("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
     if(!empty($productDetail)){
         setFlashData('product-detail', $productDetail);
         

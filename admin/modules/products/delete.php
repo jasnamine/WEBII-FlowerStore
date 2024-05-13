@@ -16,7 +16,7 @@ if(!empty($filterAll['id'])){
     $productID = $filterAll['id'];
 
     // Kiểm tra xem id có tồn tại trong products không
-    $productDetail = getRows("SELECT * FROM products WHERE prd_ID = '$productID'");
+    $productDetail = countRows("SELECT * FROM products WHERE prd_ID = '$productID'");
     if($productDetail > 0){
         // 5 : đã bán
         $deleteUser = delete('products', "prd_ID = '$productID'");

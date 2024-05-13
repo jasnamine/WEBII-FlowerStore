@@ -15,7 +15,7 @@ if(isPost()){
     }else{
         $username = $filterAll['username'];
         $sql = "SELECT customer_username FROM customers WHERE customer_username = '$username'";
-        if(getRows($sql) > 0){
+        if(countRows($sql) > 0){
             $errors['username']['required'] = 'Username already exists';
     }
     }

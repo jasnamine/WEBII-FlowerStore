@@ -17,7 +17,7 @@ if(!empty($filterAll['id'])){
     //echo 'product id: ' . $productID;
 
     // Kiểm tra xem id có tồn tại trong products không
-    $productDetail = oneRaw("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
+    $productDetail = oneRow("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
     if(!empty($productDetail)){
         setFlashData('product-detail', $productDetail);
     }

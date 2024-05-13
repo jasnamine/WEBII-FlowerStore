@@ -17,7 +17,7 @@ if(!empty($filterAll['username'])){
     if($username > 0){
         
         $sql = "SELECT customer_status FROM customers WHERE customer_username = '$userID'";
-        $user = oneRaw($sql);
+        $user = oneRow($sql);
 
         if($user){
             if ($user['customer_status'] == '1') {

@@ -3,9 +3,9 @@ require_once '../lib/database.php';
 require_once '../lib/session.php';
 
 // truy vấn vào bảng users
-$listOrders = getRaw("SELECT 
+$listOrders = getRow("SELECT 
                              c.customer_username AS Customer,
-                             SUM('o.oder_total-price') AS Total,
+                             SUM('o.oder_total_price') AS Total,
                              o.order_status AS Status,
                              o.order_date,
                              o.order_ID,
@@ -21,11 +21,11 @@ $listOrders = getRaw("SELECT
                     INNER JOIN 
                         customers c ON o.customer_username = c.customer_username
                     LEFT JOIN 
-                        oder_details od ON o.order_ID = od.order_ID
+                        order_details od ON o.order_ID = od.order_ID
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
                     GROUP BY 
-                         c.customer_username, o.order_address, 'o.order_total-price', o.order_status;
+                         c.customer_username, o.order_address, 'o.order_total_price', o.order_status;
 
 
 ");

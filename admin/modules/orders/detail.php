@@ -9,7 +9,7 @@ if(!empty($filterAll['id'])){
     $orderID = $filterAll['id'];
 
 // truy vấn vào bảng users
-$listOrders = getRaw("SELECT SUM(od.od_quantity) AS Amount,
+$listOrders = getRow("SELECT SUM(od.od_quantity) AS Amount,
                              SUM(od.od_quantity * p.prd_price) AS Total,
                              (od.od_quantity * p.prd_price) AS Total_Product,
                              o.*,
@@ -28,7 +28,7 @@ $listOrders = getRaw("SELECT SUM(od.od_quantity) AS Amount,
                     INNER JOIN 
                         customers c ON o.customer_username = c.customer_username
                     LEFT JOIN 
-                        oder_details od ON o.order_ID = od.order_ID
+                        order_details od ON o.order_ID = od.order_ID
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
                     WHERE

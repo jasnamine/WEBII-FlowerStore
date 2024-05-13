@@ -11,7 +11,7 @@ $usernameID = $filterAll['username'];
 //echo "Username ID: $usernameID";
 
 // kiểm tra xem username có tồn tại trong customers không
-$userID = oneRaw("SELECT customer_username, customer_fullname, customer_email, customer_phone,
+$userID = oneRow("SELECT customer_username, customer_fullname, customer_email, customer_phone,
 customer_city, customer_district, customer_address, customer_password
 FROM customers WHERE customer_username = '$usernameID'");
 
@@ -34,7 +34,7 @@ FROM
 INNER JOIN 
 customers c ON o.customer_username = c.customer_username
 JOIN 
-    oder_details od ON o.order_ID = od.order_ID
+    order_details od ON o.order_ID = od.order_ID
 JOIN 
     products p ON od.prd_ID = p.prd_ID
 WHERE 
@@ -44,7 +44,7 @@ WHERE
 
 echo $sql;
 
-$listOrders = getRaw($sql);
+$listOrders = getRow($sql);
 
 }
 

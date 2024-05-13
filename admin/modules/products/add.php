@@ -32,7 +32,7 @@ $filterAll = filter();
     }else{
         $name = $filterAll['name'];
         $sql = "SELECT prd_name FROM products WHERE prd_name = '$name'";
-        if(getRows($sql) > 0){
+        if(countRows($sql) > 0){
             $errors['username']['required'] = 'Product';
     }
     }

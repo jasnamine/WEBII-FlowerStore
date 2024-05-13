@@ -5,7 +5,7 @@ require_once '../lib/session.php';
 
 
 // truy vấn vào bảng admins
-$listUsers = getRaw("SELECT * FROM admins ORDER BY admin_username");
+$listUsers = getRow("SELECT * FROM admins ORDER BY admin_username");
 
 ?>
 <?php
