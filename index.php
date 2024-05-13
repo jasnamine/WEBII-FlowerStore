@@ -60,26 +60,34 @@ include 'include/introduce.php';
 				<div class="row">
 				<div class="col-lg-2 col-md-4 ">
 						<div class="sort w-100 text-center ftco-animate">
+						<a href="products.php?type%5B%5D=4">
 							<div class="img" style="background-image: url(images/GraduationFlowers/SunnyDays.jpg);"></div>
 							<h3>Graduation Flower</h3>
+						</a>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-4 ">
 						<div class="sort w-100 text-center ftco-animate">
+						<a href="products.php?type%5B%5D=1">
 							<div class="img" style="background-image: url(images/GrandOpeningFlower/LuckyCharm.jpg);"></div>
 							<h3>Grand Opening Flower</h3>
+						</a>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-4 ">
 						<div class="sort w-100 text-center ftco-animate">
+						<a href="products.php?type%5B%5D=3">
 							<div class="img" style="background-image: url(images/ValentineFlower/BrightDay.jpg);"></div>
 							<h3>Valentine Flower</h3>
+						</a>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-4 ">
 						<div class="sort w-100 text-center ftco-animate">
+						<a href="products.php?type%5B%5D=2">
 							<div class="img" style="background-image: url(images/WeddingFlower/FirstLove.jpg);"></div>
 							<h3>Wedding Flower</h3>
+						</a>	
 						</div>
 					</div>
 
@@ -101,9 +109,7 @@ include 'include/introduce.php';
 							<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/Cozy.jpg);">
 								<div class="desc">
 									<p class="meta-prod d-flex">
-										<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-										<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-										<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+										<a href="product-detail.php?prd_ID=TN009" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 									</p>
 								</div>
 							</div>
@@ -120,7 +126,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GrandOpeningFlower/GoldenTime.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=TN004" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -137,7 +143,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/EnternalLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=DC004" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -154,7 +160,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/Gracias.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=TN010" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -171,7 +177,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/FirstLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=DC005" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -187,7 +193,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GraduationFlowers/MothersDream.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=TN001" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -203,7 +209,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/ValentineFlower/TrueLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=VL004" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -219,7 +225,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/WeddingFlower/OnlyLove.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=DC008" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>
@@ -235,7 +241,7 @@ include 'include/introduce.php';
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/GrandOpeningFlower/NewBegining.jpg);">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-											<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+											<a href="product-detail.php?prd_ID=KT007" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
 									</div>

@@ -23,6 +23,12 @@ include 'include/header.php';
                     <div class="col-md-12 d-flex justify-content-between align-items-center">
                         <h4 class="product-select">Select Types of Products</h4>
                         <form action="" method="get">
+                            <?php
+                            $selectedTypes = isset($_GET['type']) ? $_GET['type'] : [];
+                            foreach ($selectedTypes as $type) {
+                                echo '<input type="hidden" name="type[]" value="' . htmlspecialchars($type) . '">';
+                            }
+                            ?>
                             <select name="type[]" class="selectpicker" multiple onchange="this.form.submit()">
                                 <option value="1" <?php if(isset($_GET['type']) && in_array('1', $_GET['type'])) echo 'selected'; ?>>Grand Opening Flowers</option>
                                 <option value="2" <?php if(isset($_GET['type']) && in_array('2', $_GET['type'])) echo 'selected'; ?>>Wedding Flowers</option>
@@ -172,13 +178,13 @@ include 'include/header.php';
                     <div class="categories">
                         <h3  class="mt-4 mb-2">Filter by Price</h3>
                         <form class="row" method="get">
-                            <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" id="minPrice"   placeholder="From" min="0" max="100000000">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" id="maxPrice" placeholder="To" min="0" max="100000000">
-                            </div>
-                            <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
+                        <input type="number" class="form-control-price" name="minPrice" id="minPrice" placeholder="From" min="0" max="100000000">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="number" class="form-control-price" name="maxPrice" id="maxPrice" placeholder="To" min="0" max="100000000">
+                    </div>
+                    <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-primary btn-block">Apply</button>
                             </div>
                         </form>
