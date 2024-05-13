@@ -1,13 +1,14 @@
 <?php
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
-checkSession('username');
-
-// Lấy username của người dùng từ session
-$username = $_SESSION['username'];
 
 // Kiểm tra xem người dùng đã nhấn nút "Add to Cart" chưa
 if (isset($_POST['add_to_cart'])) {
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    checkSession('username');
+    
+    // Lấy username của người dùng từ session
+    $username = $_SESSION['username'];
+    
     // Lấy prd_ID từ form
     $prd_ID = $_POST['prd_ID'];
 
@@ -55,6 +56,12 @@ if (isset($_POST['add_to_cart'])) {
 if (isset($_POST['buy_now'])) {
     // Thực hiện các bước tương tự như khi nhấn nút "Add to Cart"
 
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    checkSession('username');
+
+    // Lấy username của người dùng từ session
+    $username = $_SESSION['username'];
+    
     // Lấy prd_ID từ form
     $prd_ID = $_POST['prd_ID'];
 
