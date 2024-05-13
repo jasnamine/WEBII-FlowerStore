@@ -24,8 +24,8 @@ require_once '../helpers/format.php';
         </div>
 
         <?php
-        if(!empty($msg)){
-            getMsg($msg, $msgType);
+        if(!empty($msgE)){
+            getMsg($msgE, $msgEType);
         }
         ?>
 
@@ -39,7 +39,7 @@ require_once '../helpers/format.php';
                                 <label for="username" class="col-md-3 text-md-right col-form-label">User name</label>
                                 <div class="col-md-9 col-xl-8">
 
-                                    <input name="username" id="username" placeholder="User name" type="text"
+                                    <input disabled name="username" id="username" placeholder="User name" type="text"
                                         class="form-control" value="<?php echo old('customer_username', $old); ?>">
 
                                     <?php echo form_error('username', '<span class="error">', '</span>', $errors); ?>
@@ -116,26 +116,7 @@ require_once '../helpers/format.php';
                                 </div>
                             </div>
 
-                            <div class="position-relative row form-group">
-                                <label for="password" class="col-md-3 text-md-right col-form-label">Password</label>
-                                <div class="col-md-9 col-xl-8">
-                                    <input name="password" id="password" placeholder="Password" type="password"
-                                        class="form-control" value="">
 
-                                    <?php echo form_error('password', '<span class="error">', '</span>', $errors); ?>
-                                </div>
-                            </div>
-
-                            <div class="position-relative row form-group">
-                                <label for="password_confirm" class="col-md-3 text-md-right col-form-label">Confirm
-                                    Password</label>
-                                <div class="col-md-9 col-xl-8">
-                                    <input name="password_confirm" id="password_confirm" placeholder="Confirm Password"
-                                        type="password" class="form-control" value="">
-
-                                    <?php echo form_error('password_confirm', '<span class="error">', '</span>', $errors); ?>
-                                </div>
-                            </div>
 
                             <input type="hidden" name="username" value="<?php echo $usernameID ?>">
 

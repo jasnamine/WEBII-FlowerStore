@@ -20,12 +20,21 @@ if(isPost()){
     }
     }
 
-    // validate fullname, email để trống
+    // validate fullname
+    
+    // validate email
+    if(empty($filterAll['email'])){
+            $errors['email']['required'] = 'Invalid email';
+    }
 
     // validate phone
-    if(!isPhone($filterAll['phone'])){
+    if(!empty($filterAll['phone'])){
+            if(!isPhone($filterAll['phone'])){
             $errors['phone']['isPhone'] = 'Invalid phone number format';
     }
+        
+    }
+
     
     // để trống validate city, district, address
 
@@ -60,21 +69,21 @@ if(isPost()){
        $insertCustomers = insert('customers', $dataInsert);
 
        if($insertCustomers){
-            setFlashData('msg', 'Insert successful');
-            setFlashData('msg_type', 'success');
+            setFlashData('mgs', 'Insert successful');
+            setFlashData('mgs_type', 'success');
             header('Location: index.php'); 
             exit();
             
         }
         else{
-            setFlashData('msg', 'System error');
-            setFlashData('msg_type', 'danger');
+            setFlashData('mgs', 'System error');
+            setFlashData('mgs_type', 'danger');
         }
         
     }
     else{
-       setFlashData('msg', 'Please check your data again');
-       setFlashData('msg_type', 'danger');
+       setFlashData('mgs', 'Please check your data again');
+       setFlashData('mgs_type', 'danger');
        setFlashData('errors', $errors);
        setFlashData('old', $filterAll);
     }
@@ -82,8 +91,8 @@ if(isPost()){
 
 }
 
-$msg = getFlashData('msg');
-$msgType = getFlashData('msg_type');
+$mgs = getFlashData('mgs');
+$mgsType = getFlashData('mgs_type');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
 

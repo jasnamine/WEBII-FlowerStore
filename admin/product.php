@@ -1,7 +1,6 @@
 <?php
 require_once './modules/products/list.php';
-
-
+require_once './modules/products/add.php';
 
 ?>
 <?php
@@ -41,9 +40,8 @@ include 'inc/header.php';
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <?php
-        if(!empty($msg) ){
-            echo 'ok';
-            getMsg($msg, $msgType);
+        if(!empty($msgA) ){
+            getMsg($msgA, $msgAType);
         }
         ?>
 
@@ -146,37 +144,12 @@ include 'inc/header.php';
                                             </span>
                                         </a>
 
-
-
-
-
-
-
-                                        <!-- 
-                                        <a href="product-delete.php?id=<?php echo $item['prd_ID']; ?>">
-
-                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                type="submit" data-toggle="tooltip" title="Delete"
-                                                data-placement="bottom"
-                                                onclick="return confirm('Do you really want to delete this item?')">
-                                                <span class="btn-icon-wrapper opacity-8">
-                                                    <i class="fa fa-trash fa-w-20"></i>
-                                                </span>
-                                            </button>
-
-                                        </a> -->
-
                                         <a href="product-hide.php?id=<?php echo $item['prd_ID']; ?>">
                                             <button class="btn btn-outline-danger" type="button"
                                                 onclick="toggleVisibility(this.querySelector('.eyeIcon'))">
                                                 <i class="eyeIcon fa fa-eye fa-w-20"></i>
                                             </button>
                                         </a>
-
-
-
-
-
 
                                         <script>
                                         function toggleVisibility(eyeIcon) {
@@ -198,21 +171,9 @@ include 'inc/header.php';
                                         }
                                         </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
                                     </td>
                                     <td>
-                                        <?php if ($item['prd_status'] == 5): ?>
+                                        <?php if ($item['prd_status'] == 0 || $item['prd_status'] == 1 ): ?>
                                         <a href="product-delete.php?id=<?php echo $item['prd_ID']; ?>">
                                             <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
                                                 type="submit" data-toggle="tooltip" title="Delete"

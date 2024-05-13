@@ -113,24 +113,24 @@ $filterAll = filter();
 
        $insertProducts = insert('products', $dataInsert);
         
-       setFlashData('msg', 'Insert successfully!');
-       setFlashData('msg_type', 'success');
+       setFlashData('msgA', 'Insert successfully!');
+       setFlashData('msgA_type', 'success');
     //    redirect('product.php'); 
        header("Location: product.php");
        exit();
         
     }
     else{
-       setFlashData('msg', 'Please check your data again');
-       setFlashData('msg_type', 'danger');
+       setFlashData('msgA', 'Please check your data again');
+       setFlashData('msgA_type', 'danger');
        setFlashData('errors', $errors);
        setFlashData('old', $filterAll);
     }
 
     }
 
-$msg = getFlashData('msg');
-$msgType = getFlashData('msg_type');
+$msgA = getFlashData('msgA');
+$msgAType = getFlashData('msgA_type');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
 

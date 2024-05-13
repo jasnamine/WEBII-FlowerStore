@@ -3,7 +3,6 @@ require_once '../lib/database.php';
 require_once '../lib/session.php';
 require_once '../helpers/format.php';
 
-
 $filterAll = filter();
 
 if(!empty($filterAll['username'])){
@@ -30,18 +29,22 @@ if (isPost()){
     // mảng chứa các lỗi
     $errors = [];
 
-        if(!isPhone($filterAll['phone'])){
-            $errors['phone']['isPhone'] = 'Invalid phone number format';
-        }
-    
-        if($filterAll['password'] != $filterAll['password_confirm']){
-        $errors['password_confirm']['match'] = 'Password does not match';
+    // validate email
+    if(empty($filterAll['email'])){
+            $errors['email']['required'] = 'Invalid email';
     }
 
+    // validate phone
+    if(!empty($filterAll['phone'])){
+            if(!isPhone($filterAll['phone'])){
+            $errors['phone']['isPhone'] = 'Invalid phone number format';
+    }  
+    }
+    
     if(empty($errors)){
         
         $dataUpdate = [
-            'customer_username' => $filterAll['username'],
+            //'customer_username' => $filterAll['username'],
             'customer_fullname' => $filterAll['fullname'],
             'customer_email' => $filterAll['email'],
             'customer_phone' => $filterAll['phone'],
@@ -50,39 +53,34 @@ if (isPost()){
             'customer_address' => $filterAll['street_address']
             
         ];
-
-        if(!empty($filterAll['password'])){
-            $dataUpdate['customer_password'] = password_hash($filterAll['password'], PASSWORD_DEFAULT);
-        }
          
         $updateCustomers = update('customers', $dataUpdate, "customer_username = '$usernameID'" );
 
         if($updateCustomers){
-            setFlashData('msg', 'Update successful');
-            setFlashData('msg_type', 'success');
+            setFlashData('msgE', 'Update successful');
+            setFlashData('msgE_type', 'success');
             header('Location: user-edit.php?username='. $usernameID); 
             exit();
             
         }
         else{
-            setFlashData('msg', 'System error');
-            setFlashData('msg_type', 'danger');
+            setFlashData('msgE', 'System error');
+            setFlashData('msgE_type', 'danger');
         }
            
     }
     else{
-       setFlashData('msg', 'Please check your data again');
-       setFlashData('msg_type', 'danger');
+       setFlashData('msgE', 'Please check your data again');
+       setFlashData('msgE_type', 'danger');
        setFlashData('errors', $errors);
        setFlashData('old', $filterAll);
 
     }
  
-
 }
 
-$msg = getFlashData('msg');
-$msgType = getFlashData('msg_type');
+$msgE = getFlashData('msgE');
+$msgEType = getFlashData('msgE_type');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
 $userDetail = getFlashData('user-detail');
@@ -90,11 +88,6 @@ $userDetail = getFlashData('user-detail');
 if(!empty($userDetail)){
     $old = $userDetail;
 }
-
-
-
-
-
 
 
 
