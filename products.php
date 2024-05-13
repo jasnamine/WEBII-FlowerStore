@@ -42,94 +42,80 @@ include 'include/header.php';
 				
                 <div class="row">
                 <?php
-
-                // Kiểm tra xem đã có dữ liệu tìm kiếm từ ô search chưa
-                if (isset($_GET['search']) && !empty($_GET['search'])) {
-                    $search_query = $_GET['search'];
-
-                    // Câu truy vấn SQL để tìm kiếm dữ liệu theo tên sản phẩm
-                    $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_name LIKE ?";
-                    $search_query = "%$search_query%";
-                    $result = getRow($sql, [$search_query]);
-
-                    // Hiển thị kết quả tìm kiếm
-                    if ($result) {
-                        foreach ($result as $row) {
-                            displayProduct($row);
-                        }
-                    } else {
-                        echo "Không tìm thấy sản phẩm nào phù hợp.";
-                    }
-                }
-
-                // Kiểm tra xem đã chọn loại hoa nào từ form chưa
-                if (isset($_GET['type']) && !empty($_GET['type'])) {
-                    $selectedTypes = $_GET['type'];
-                    $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
-
-                    // Tạo chuỗi dấu hỏi cho số lượng giá trị trong mảng $selectedTypes
-                    $placeholders = implode(',', array_fill(0, count($selectedTypes), '?'));
-
-                    // Tạo câu truy vấn dựa trên chuỗi dấu hỏi đã tạo
-                    $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE cate_ID IN ($placeholders)";
-
-                    // Thực hiện truy vấn SQL
-                    $result = getRow($sql, $selectedTypes);
-
-                    // Hiển thị kết quả truy vấn
-                    if ($result) {
-                        foreach ($result as $row) {
-                            displayProduct($row);
-                        }
-                    } else {
-                        echo "Không có sản phẩm nào trong loại này.";
+                    // Định nghĩa hàm hiển thị sản phẩm
+                    function displayProduct($row) {
+                        echo '<div class="col-md-4 d-flex">';
+                        echo '<div class="product ftco-animate">';
+                        echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
+                        echo '<div class="prd_desc">';
+                        echo '<p class="meta-prod d-flex">';
+                        echo '<a href="product-detail.php?prd_ID=' . $row["prd_ID"] . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
+                        echo '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="text text-center">';
+                        echo '<h2>' . $row["prd_name"] . '</h2>';
+                        echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
                     }
 
-                    // Truy vấn theo giá cả
-                    if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                        $minPrice = intval($_GET['minPrice']);
-                        $maxPrice = intval($_GET['maxPrice']);
+                    // Tìm kiếm sản phẩm
+                    if (isset($_GET['search']) && !empty($_GET['search'])) {
+                        $search_query = $_GET['search'];
 
-                        // Câu truy vấn SQL để lấy sản phẩm theo giá cả
-                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE CAST(prd_price AS UNSIGNED) >= ? AND CAST(prd_price AS UNSIGNED) <= ?";
-                        $result = getRow($sql, [$minPrice, $maxPrice]);
+                        // Câu truy vấn SQL để tìm kiếm dữ liệu theo tên sản phẩm
+                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_name LIKE ?";
+                        
+                        // Sử dụng % để tìm kiếm từ khóa có trong tên sản phẩm
+                        $search_query = "%$search_query%";
+                        $products = getRow($sql, [$search_query]);
 
-                        // Hiển thị kết quả truy vấn
-                        if ($result) {
-                            foreach ($result as $row) {
-                                displayProduct($row);
+                        // Hiển thị kết quả tìm kiếm
+                        if (!empty($products)) {
+                            foreach ($products as $product) {
+                                // Hiển thị sản phẩm tìm được
+                                displayProduct($product);
                             }
                         } else {
-                            echo "Không có sản phẩm nào trong khoảng giá này.";
+                            echo "Không tìm thấy sản phẩm nào phù hợp.";
+                        }
+                    } else { // Hiển thị sản phẩm theo loại hoa
+                        if (isset($_GET['type']) && !empty($_GET['type'])) {
+                            $selectedTypes = $_GET['type'];
+                            $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
+
+                            // Tạo câu truy vấn dựa trên các loại hoa được chọn
+                            $placeholders = implode(',', array_fill(0, count($selectedTypes), '?'));
+                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE cate_ID IN ($placeholders)";
+
+                            // Truy vấn cơ sở dữ liệu để lấy các sản phẩm theo loại hoa
+                            $products = getRow($sql, $selectedTypes);
+
+                            // Hiển thị kết quả truy vấn
+                            if (!empty($products)) {
+                                foreach ($products as $product) {
+                                    displayProduct($product);
+                                }
+                            } else {
+                                echo "Không có sản phẩm nào trong loại này.";
+                            }
+                        } else { // Hiển thị tất cả sản phẩm
+                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products";
+                            $products = getRow($sql);
+
+                            if (!empty($products)) {
+                                foreach ($products as $product) {
+                                    displayProduct($product);
+                                }
+                            } else {
+                                echo "Không có sản phẩm nào.";
+                            }
                         }
                     }
-                }
-
+                ?>
                 
-                // Hàm hiển thị sản phẩm
-                function displayProduct($row) {
-                    $prd_price = $row["prd_price"];
-    
-                    // Định dạng số với dấu phân cách là dấu "."
-                    $formatted_price = number_format($prd_price, 0, ',', '.');
-                    echo '<div class="col-md-4 d-flex">';
-                    echo '<div class="product ftco-animate">';
-                    echo '<div class="img d-flex align-items-center justify-content-center" style="background-image: url(' . $row["prd_img"] . ');">';
-                    echo '<div class="prd_desc">';
-                    echo '<p class="meta-prod d-flex">';
-                    echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>';
-                    echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>';
-                    echo '<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>';
-                    echo '</p>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="text text-center">';
-                    echo '<h2>' . $row["prd_name"] . '</h2>';
-                    echo '<span class="name">' . $formatted_price . ' VND' .'</span>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
                 ?>
 
                 </div>
