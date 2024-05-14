@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2024 at 10:34 AM
+-- Generation Time: May 14, 2024 at 06:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,10 +61,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`cate_ID`, `cate_name`, `cate_img_link`, `cate_desc`) VALUES
-(1, 'Grand Opening Flower', NULL, NULL),
-(2, 'Wedding Flower', NULL, NULL),
-(3, 'Valetine Flower', NULL, NULL),
-(4, 'Graduation Flower', NULL, NULL);
+(1, 'Grand Opening Flower', 'images/GrandOpeningFlower/LuckyCharm.jpg', 'Grand opening flowers are used to celebrate the opening of a new business or establishment.'),
+(2, 'Wedding Flower', 'images/WeddingFlower/FirstLove.jpg', 'Wedding flowers are an essential part of any wedding celebration. They symbolize love, purity, and new beginnings. From bridal bouquets to venue decorations.'),
+(3, 'Valetine Flower', 'images/ValentineFlower/BrightDay.jpg', 'Valentine flowers are the perfect expression of love and romance on Valentine\'s Day. They convey affection, passion, and admiration for that special someone.'),
+(4, 'Graduation Flower', 'images/GraduationFlowers/SunnyDays.jpg', 'Graduation flowers celebrate the academic achievements and milestones of graduates. They symbolize accomplishment, growth, and the beginning of a new chapter in life.');
 
 -- --------------------------------------------------------
 
@@ -89,10 +89,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_username`, `customer_password`, `customer_email`, `customer_phone`, `customer_fullname`, `customer_address`, `customer_district`, `customer_city`, `customer_status`) VALUES
+('conbaosondo', '54938093d4a5c72aeae15bd403c1efb8', 'son@gmail.com', '0101010101', 'Đỗ Báo Sơn', '69 Hoa Hung', 'Quận 5', 'TPHCM', 1),
 ('customer123', '681ae46305e29b966801a96331ae607d', 'customer123@mail.com', '0123123123', 'Customer One', '123 Hai Ba Trung', 'Ba Đình', 'Hà Nội', 1),
 ('customer9999', '8b3dc728078c3961745d6b52b428d771', 'customer9999@mail.com', '0123000001', 'Customer Two', '321 Hai Ba Trung', 'Cầu Giấy', 'Hà Nội', 1),
 ('hongphucledoan', 'd198271e650a2776a9654fec644cd60c', 'hongphucledoan@gmail.com', '0348009880', 'Lê Đoàn Hồng Phúc', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 1),
-('quynhhuong', 'e3e1f591407fe0e980ede6f1e441a8bc', 'huongnguyen@gmail.com', NULL, NULL, NULL, NULL, NULL, 1),
+('quynhhuong', 'e3e1f591407fe0e980ede6f1e441a8bc', 'huongnguyen@gmail.com', NULL, NULL, NULL, NULL, NULL, 0),
 ('testing123', '8db530de196531de90a6b2320e55af20', 'testing@g.com', '0321001001', 'Testing One', '01 Le Loi', 'Quận 12', 'TPHCM', 1),
 ('testing9999', '68f24219b0f58b0276e39c154b16c4da', 'testing9999@g.com', '0321002002', 'Testing Two', '123 Le Loi', 'Quận Tân Phú', 'TPHCM', 1),
 ('tinle', '98f4cad1d51c50cadc066414c236b6b8', 'tinle@gmail.com', '0909080706', 'Lê Duy Tín', '182 Nguyen Van Linh Street', 'Quận 6', 'TPHCM', 1);
@@ -123,9 +124,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_ID`, `customer_username`, `order_date`, `order_status`, `order_total_price`, `order_payment_method`, `order_address`, `order_district`, `order_city`, `order_receiver`, `order_phone`, `order_email`) VALUES
-(1, 'hongphucledoan', '2024-05-12', 2, 15065000, 'cod', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 'Lê Đoàn Hồng Phúc', '0348009880', 'hongphucledoan@gmail.com'),
+(1, 'hongphucledoan', '2024-05-12', 3, 15065000, 'cod', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 'Lê Đoàn Hồng Phúc', '0348009880', 'hongphucledoan@gmail.com'),
 (2, 'quynhhuong', '2024-05-01', -1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'hongphucledoan', '0000-00-00', -1, 3200000, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'hongphucledoan', '2024-05-14', 2, 4110000, 'cod', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 'Lê Đoàn Hồng Phúc', '0348009880', 'hongphucledoan@gmail.com'),
 (4, 'tinle', '2024-05-14', 3, 2510000, 'bank', '182 Nguyen Van Linh Street, HCM City', 'Quận 6', 'TPHCM', 'Lê Duy Tín', '0909080706', 'tinle@gmail.com'),
 (5, 'tinle', '2024-05-10', 3, 4580000, 'cod', '182 Nguyen Van Linh Street', 'Quận 6', 'TPHCM', 'Lê Duy Tín', '0909080706', 'tinle@gmail.com'),
 (6, 'tinle', '2024-05-09', 3, 1795000, 'bank', '182 Nguyen Van Linh Street', 'Quận 6', 'TPHCM', 'Lê Duy Tín', '0909080706', 'tinle@gmail.com'),
@@ -136,8 +137,12 @@ INSERT INTO `orders` (`order_ID`, `customer_username`, `order_date`, `order_stat
 (11, 'customer9999', '2024-05-05', 3, 5775000, 'cod', '321 Hai Ba Trung', 'Cầu Giấy', 'Hà Nội', 'Customer Two', '0123000001', 'customer9999@mail.com'),
 (12, 'testing123', '2024-05-14', 3, 4380000, 'cod', '01 Le Loi', 'Quận 12', 'TPHCM', 'Testing One', '0321001001', 'testing@g.com'),
 (13, 'testing123', '2024-05-14', 3, 1250000, 'bank', '01 Le Loi', 'Quận 12', 'TPHCM', 'Testing One', '0321001001', 'testing@g.com'),
-(14, 'testing9999', '2024-05-14', 1, 1850000, 'cod', '123 Le Loi', 'Quận Tân Phú', 'TPHCM', 'Testing Two', '0321002002', 'testing9999@g.com'),
-(15, 'testing9999', '2024-05-14', 1, 3020000, 'bank', '123 Le Loi', 'Quận Tân Phú', 'TPHCM', 'Testing Two', '0321002002', 'testing9999@g.com');
+(14, 'testing9999', '2024-05-14', 3, 1850000, 'cod', '123 Le Loi', 'Quận Tân Phú', 'TPHCM', 'Testing Two', '0321002002', 'testing9999@g.com'),
+(15, 'testing9999', '2024-05-14', 3, 3020000, 'bank', '123 Le Loi', 'Quận Tân Phú', 'TPHCM', 'Testing Two', '0321002002', 'testing9999@g.com'),
+(16, 'hongphucledoan', '2024-05-14', 4, 2255000, 'bank', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 'Lê Đoàn Hồng Phúc', '0348009880', 'hongphucledoan@gmail.com'),
+(17, 'hongphucledoan', '2024-05-14', 2, 670000, 'bank', '818/75 Xô Viết Nghệ Tĩnh, Phường 25', 'Quận Bình Thạnh', 'TPHCM', 'Lê Đoàn Hồng Phúc', '0348009880', 'hongphucledoan@gmail.com'),
+(18, 'hongphucledoan', '2024-05-14', 1, 2990000, 'bank', '6 An Duong Vuong', 'Quận 5', 'TPHCM', 'Duy Khang', '0909010203', 'khang@mail.com'),
+(19, 'conbaosondo', '2024-05-14', 2, 10500000, 'cod', '69 Hoa Hung', 'Quận 5', 'TPHCM', 'Đỗ Báo Sơn', '0101010101', 'son@gmail.com');
 
 --
 -- Triggers `orders`
@@ -191,6 +196,7 @@ INSERT INTO `order_details` (`od_ID`, `prd_ID`, `od_name`, `od_img`, `order_ID`,
 (108, 'TN006', 'New Journey', 'images/GraduationFlowers/TheNewJourney.jpg', 1, 1, 760000),
 (109, 'TN007', 'Warm Affection', 'images/GraduationFlowers/WarmAffection.jpg', 1, 4, 670000),
 (301, 'DC004', 'Enternal Love', 'images/WeddingFlower/EnternalLove.jpg', 3, 5, 640000),
+(302, 'DC005', 'First Love', 'images/WeddingFlower/FirstLove.jpg', 3, 1, 910000),
 (401, 'KT009', 'Prosperity', 'images/GrandOpeningFlower/Prosperity.jpg', 4, 1, 940000),
 (402, 'KT010', 'Prosperous', 'images/GrandOpeningFlower/Prosperous.jpg', 4, 1, 870000),
 (403, 'TN001', 'Mother\'s Dream', 'images/GraduationFlowers/MothersDream.jpg', 4, 1, 700000),
@@ -215,7 +221,14 @@ INSERT INTO `order_details` (`od_ID`, `prd_ID`, `od_name`, `od_img`, `order_ID`,
 (1401, 'VL009', 'Passionate Heart', 'images/ValentineFlower/PassionateHeart.jpg', 14, 1, 1100000),
 (1402, 'VL008', 'Dress Love', 'images/ValentineFlower/LovelyDress.jpg', 14, 1, 750000),
 (1501, 'VL010', 'Season Love', 'images/ValentineFlower/SeasonOfLove.jpg', 15, 2, 640000),
-(1502, 'VL007', 'Forever Love', 'images/ValentineFlower/Forever.jpg', 15, 3, 580000);
+(1502, 'VL007', 'Forever Love', 'images/ValentineFlower/Forever.jpg', 15, 3, 580000),
+(1601, 'VL001', 'Sweet Pink', 'images/ValentineFlower/SweetPink.jpg', 16, 1, 875000),
+(1602, 'VL006', 'Cuteness', 'images/ValentineFlower/Cuteness.jpg', 16, 2, 690000),
+(1701, 'DC002', 'Together', 'images/WeddingFlower/TogetherForever.jpg', 17, 1, 670000),
+(1801, 'VL002', 'Sunshine Beam', 'images/ValentineFlower/SunshineBeam.jpg', 18, 1, 920000),
+(1802, 'VL006', 'Cuteness', 'images/ValentineFlower/Cuteness.jpg', 18, 3, 690000),
+(1901, 'KT001', 'Radiant Day', 'images/GrandOpeningFlower/RadiantDayFlower.jpg', 19, 5, 1000000),
+(1902, 'VL009', 'Passionate Heart', 'images/ValentineFlower/PassionateHeart.jpg', 19, 5, 1100000);
 
 --
 -- Triggers `order_details`
