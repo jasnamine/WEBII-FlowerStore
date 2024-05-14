@@ -146,7 +146,8 @@ $filterAll = filter();
                     'prd_img' => $imgPath, // Đường dẫn ảnh đã được cắt chuỗi
                     'prd_price' => $filterAll['price'],
                     'prd_description' => $filterAll['description'],
-                    'cate_ID' => $filterAll['product_category']
+                    'cate_ID' => $filterAll['product_category'],
+                    'prd_status' => 1
                 ];
 
                 // Thực hiện việc chèn dữ liệu vào cơ sở dữ liệu

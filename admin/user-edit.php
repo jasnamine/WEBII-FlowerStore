@@ -1,6 +1,8 @@
 <?php 
 require_once './modules/users/edit.php';
 require_once '../helpers/format.php';
+$pageTitle = "Edit user";
+
 ?>
 
 <?php include 'inc/header.php' ?>
@@ -121,12 +123,12 @@ require_once '../helpers/format.php';
 
                             <div class=" position-relative row form-group mb-1">
                                 <div class="col-md-9 col-xl-8 offset-md-2">
-                                    <a href="#" class="border-0 btn btn-outline-danger mr-1">
+                                    <!-- <a href="#" class="border-0 btn btn-outline-danger mr-1">
                                         <span class="btn-icon-wrapper pr-1 opacity-8">
                                             <i class="fa fa-times fa-w-20"></i>
                                         </span>
                                         <span>Cancel</span>
-                                    </a>
+                                    </a> -->
 
                                     <button type="submit" class="btn-shadow btn-hover-shine btn btn-primary">
                                         <span class="btn-icon-wrapper pr-2 opacity-8">

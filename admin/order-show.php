@@ -1,5 +1,6 @@
 <?php
 require_once './modules/orders/detail.php';
+$pageTitle = "View order";
 ?>
 <?php
 include 'inc/header.php';

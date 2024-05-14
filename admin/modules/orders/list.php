@@ -33,7 +33,7 @@ $listOrders = getRow("SELECT o.order_ID AS ID,
 
 
 ");
-echo $listOrders;
+//echo $listOrders;
 
 
 $msg = getFlashData('msg');

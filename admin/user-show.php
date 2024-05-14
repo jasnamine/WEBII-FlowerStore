@@ -1,6 +1,8 @@
 <?php 
 include 'inc/header.php';
 require_once './modules/users/detail.php';
+$pageTitle = "View user";
+
 ?>
 
 <div class="app-main__outer">

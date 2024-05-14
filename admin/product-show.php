@@ -1,6 +1,7 @@
 <?php 
 include 'inc/header.php';
 require_once './modules/products/detail.php';
+$pageTitle = "View product";
 
 ?>
 

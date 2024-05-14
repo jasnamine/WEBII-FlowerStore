@@ -1,5 +1,6 @@
 <?php
 require_once './modules/statistical/order-details.php';
+$pageTitle = "View order";
 include 'inc/header.php';
 ?>
 
@@ -23,7 +24,7 @@ include 'inc/header.php';
 
         <?php if (!empty($groupedOrderDetails)): ?>
         <?php foreach ($groupedOrderDetails as $username => $orders): ?>
-        < <?php foreach ($orders as $orderID => $orderDetails): ?> <div class="row">
+        <?php foreach ($orders as $orderID => $orderDetails): ?> <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
@@ -160,11 +161,11 @@ include 'inc/header.php';
 
                 </div>
             </div>
+        </div>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+        <?php endif; ?>
     </div>
-    <?php endforeach; ?>
-    <?php endforeach; ?>
-    <?php endif; ?>
-</div>
 </div>
 
 <?php include 'inc/footer.php'; ?>
