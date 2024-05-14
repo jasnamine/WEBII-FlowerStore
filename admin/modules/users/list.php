@@ -5,7 +5,7 @@ require_once '../helpers/format.php';
 require_once 'lib/connect.php';
 
 // truy vấn vào bảng users
-$listUsers = getRow("SELECT customer_username, customer_email FROM customers ORDER BY customer_username");
+$listUsers = getRow("SELECT customer_username, customer_email, customer_status FROM customers ORDER BY customer_username");
         // echo '<pre>';
         // print_r($listUsers);
         // echo '</pre>';

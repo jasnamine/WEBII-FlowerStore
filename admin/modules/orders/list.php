@@ -26,11 +26,14 @@ $listOrders = getRow("SELECT o.order_ID AS ID,
                         order_details od ON o.order_ID = od.order_ID
                     LEFT JOIN
                         products p ON od.prd_ID = p.prd_ID
+                    WHERE o.order_status IN (1, 2, 3, 4)
                     GROUP BY 
-                        o.order_ID, c.customer_username, o.order_address, 'o.order_total_price', o.order_status;
+                        o.order_ID, c.customer_username, o.order_address, o.order_status;
+                    
 
 
 ");
+echo $listOrders;
 
 
 $msg = getFlashData('msg');

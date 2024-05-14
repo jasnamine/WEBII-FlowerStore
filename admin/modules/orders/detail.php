@@ -9,10 +9,7 @@ if(!empty($filterAll['id'])){
     $orderID = $filterAll['id'];
 
 // truy vấn vào bảng users
-$listOrders = getRow("SELECT SUM(od.od_quantity) AS Amount,
-                             SUM(od.od_quantity * p.prd_price) AS Total,
-                             (od.od_quantity * p.prd_price) AS Total_Product,
-                             o.*,
+$listOrders = getRow("SELECT o.*,
                              p.*,
                              c.*,
                              od.*,
@@ -20,7 +17,7 @@ $listOrders = getRow("SELECT SUM(od.od_quantity) AS Amount,
                             WHEN o.order_status = 1 THEN 'Pending'
                             WHEN o.order_status = 2 THEN 'Accepted/Delivering'
                             WHEN o.order_status = 3 THEN 'Delivered'
-                            WHEN o.order_status = 0 THEN 'Canceled'
+                            WHEN o.order_status = 4 THEN 'Canceled'
                         END AS Status
 
                     FROM 

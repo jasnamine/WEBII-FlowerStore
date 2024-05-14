@@ -49,6 +49,7 @@ if(isPost()){
 }
 
 // echo $sql;
+  $sql .= " AND o.order_status IN (1, 2, 3, 4)";
 $sql .= " GROUP BY order_ID, c.customer_username, o.order_address, 'o.order_total_price', o.order_status";
 
 // $sql .=" ORDER BY order_ID DESC";

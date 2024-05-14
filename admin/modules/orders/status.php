@@ -7,34 +7,30 @@ require_once '../helpers/format.php';
 $filterAll = filter();
 
 // Kiểm tra xem có ID đơn hàng được truyền không
-if (!empty($filterAll['id'])) {
+if (!empty($filterAll['id']) && !empty($filterAll['status'])) {
     $orderID = $filterAll['id'];
+    $newStatus = $filterAll['status'];
 
     // Kiểm tra xem ID đơn hàng có tồn tại trong bảng orders không
-    $orderStatus = getRows("SELECT * FROM orders WHERE order_ID = '$orderID'");
-    if ($orderStatus > 0) {
-        // Lấy trạng thái đơn hàng từ cơ sở dữ liệu
+    $orderExists = countRows("SELECT * FROM orders WHERE order_ID = '$orderID'");
+    if ($orderExists > 0) {
+        // Lấy trạng thái đơn hàng hiện tại từ cơ sở dữ liệu
         $order = oneRow("SELECT order_status FROM orders WHERE order_ID = '$orderID'");
 
-        // Kiểm tra nếu đơn hàng tồn tại và đang ở trạng thái "Pending"
-        if($order){
-                if ($order && $order['order_status'] == '1') {
-            // Cập nhật trạng thái đơn hàng thành "Delivering"
-            $dataUpdate = ['order_status' => '2'];
-                 }
+        // Cập nhật trạng thái đơn hàng theo giá trị mới
+        if($order) {
+            // Chuẩn bị dữ liệu cập nhật
+            $dataUpdate = ['order_status' => $newStatus];
             $updateStatus = update('orders', $dataUpdate, "order_ID = '$orderID'");
 
             if ($updateStatus) {
                 setFlashData('msg', 'Update successful');
-                redirect("order.php");
             } else {
                 setFlashData('msg', 'Update error');
                 setFlashData('msg_type', 'danger');
-                redirect("order.php");
             }
-            
+            redirect("order.php");
         }
-        
     } else {
         // ID đơn hàng không tồn tại trong cơ sở dữ liệu
         setFlashData('msg', 'Order not found');
@@ -42,8 +38,8 @@ if (!empty($filterAll['id'])) {
         redirect("order.php");
     }
 } else {
-    // ID đơn hàng không được truyền
-    setFlashData('msg', 'Order ID not provided');
+    // ID đơn hàng hoặc trạng thái mới không được truyền
+    setFlashData('msg', 'Order ID or new status not provided');
     setFlashData('msg_type', 'danger');
     redirect("order.php");
 }

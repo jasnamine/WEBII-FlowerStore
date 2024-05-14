@@ -73,6 +73,7 @@ include 'inc/header.php';
                                                 <i class="fas fa-times"></i>
                                             </button>
                                             <div style="width: 100%; max-height: 220px; overflow: hidden;">
+                                                <?php $imgSrc = old('prd_img', $old, 'assets/images/add-image-icon.jpg'); ?>
                                                 <img style="width: 100%; cursor: pointer;" class="thumbnail"
                                                     data-toggle="tooltip" title="Click to add image"
                                                     data-placement="bottom" src="assets/images/add-image-icon.jpg"
@@ -102,22 +103,7 @@ include 'inc/header.php';
                                 </div>
                             </div>
 
-                            <div class="position-relative row form-group">
-                                <label for="size" class="col-md-3 text-md-right col-form-label">Size</label>
-                                <div class="col-md-9 col-xl-8">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="">-- Size --</option>
-                                        <?php
-                                        $sizes = ['Bó' => 'Bó', 'Lẳng' => 'Lẳng'];
-                                        foreach ($sizes as $key => $value) {
-                                            echo '<option value="' . $key . '"' . (old('size', $old)== $key ? ' selected' : '') . '>' . $value . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    <?php echo form_error('size', '<span class="error">', '</span>', $errors); ?>
-                                </div>
 
-                            </div>
 
                             <div class="position-relative row form-group">
                                 <label for="price" class="col-md-3 text-md-right col-form-label">Price</label>

@@ -47,10 +47,6 @@ if(isPost()){
         $errors['name']['required'] = 'Product name is required';
     }
 
-    // validate size
-    if(empty($filterAll['size'])){
-        $errors['size']['required'] = 'Size is required';
-    }
 
     // validate desc
     if(empty($filterAll['description'])){
@@ -99,9 +95,9 @@ if ($uploadOk == 1) {
     else if((!isset($_FILES['image']) || empty($_FILES['image']['name']))){
                $data = [
             'prd_name' => $filterAll['name'],
-            'prd_size' => $filterAll['size'],
+            
             'prd_price' => $filterAll['price'],
-            'prd_desc' => $filterAll['description'],
+            'prd_description' => $filterAll['description'],
             //'cate_ID' => $filterAll['product_category']
         ];
 
@@ -120,9 +116,8 @@ if ($uploadOk == 1) {
             $dataUpdate = [
             'prd_name' => $filterAll['name'],
             'prd_img' => $target_file,
-            'prd_size' => $filterAll['size'],
             'prd_price' => $filterAll['price'],
-            'prd_desc' => $filterAll['description'],
+            'prd_description' => $filterAll['description'],
             //'cate_ID' => $filterAll['product_category']
         ];
 

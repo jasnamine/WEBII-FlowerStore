@@ -172,27 +172,22 @@ include 'inc/header.php';
                                         <?php 
                                         // Hiển thị nút dựa trên trạng thái của đơn hàng
                                         switch ($item['Status']) {
-                                        case 'Pending':
-                                        echo '<a href="./order-status.php?id=' . $item['ID'] . '"
-                                                onclick="return confirm(\'Do you really want to change the status to Pending?\')">
-                                                <button class="btn btn-hover-shine btn-outline-secondary border-0 btn-sm">Pending</button>
-                                              </a>';
-                                        break;
-                                        case 'Accepted/Delivering':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">Accepted/Delivering</button>';
-                                        break;
-                                        case 'Delivered':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-success border-0 btn-sm">Delivered</button>';
-                                        break;
-                                        case 'Canceled':
-                                        echo '<button
-                                            class="btn btn-hover-shine btn-outline-danger border-0 btn-sm">Canceled</button>';
-                                        break;
+                                            case 'Pending':
+                                                echo '<span style="color: gray;">Pending</span>';
+                                                break;
+                                            case 'Accepted/Delivering':
+                                                echo '<span style="color: green;">Accepted/Delivering</span>';
+                                                break;
+                                            case 'Delivered':
+                                                echo '<span style="color: blue;">Delivered</span>';
+                                                break;
+                                            case 'Canceled':
+                                                echo '<span style="color: red;">Canceled</span>';
+                                                break;
                                         }
                                         ?>
                                     </td>
+
                                     <td class="text-center text-muted"><?php  echo $item['order_date']; ?></td>
 
 
@@ -233,15 +228,6 @@ include 'inc/header.php';
                         formatDateInput('endDate');
                     });
                     </script>
-
-
-
-
-
-
-
-
-
                     <?php
 include 'inc/footer.php';
 ?>

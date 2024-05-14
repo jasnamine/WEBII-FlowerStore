@@ -76,8 +76,8 @@ include 'inc/header.php';
                                             <div style="width: 100%; max-height: 220px; overflow: hidden;">
                                                 <img style="width: 100%; cursor: pointer;" class="thumbnail"
                                                     data-toggle="tooltip" title="Click to add image"
-                                                    data-placement="bottom" src="<?php echo old('prd_img', $old); ?>"
-                                                    alt="Add Image">
+                                                    data-placement="bottom"
+                                                    src="<?php echo '../' . old('prd_img', $old); ?>" alt="Add Image">
 
                                                 <input name="image" type="file" onchange="changeImg(this);"
                                                     style="display: none;" accept="image/x-png,image/gif,image/jpeg"
@@ -99,22 +99,7 @@ include 'inc/header.php';
                                 </div>
                             </div>
 
-                            <div class="position-relative row form-group">
-                                <label for="size" class="col-md-3 text-md-right col-form-label">Size</label>
-                                <div class="col-md-9 col-xl-8">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="">-- Size --</option>
-                                        <?php
-                                        $sizes = ['Bundle' => 'Bundle', 'Bouque' => 'Bouque'];
-                                        foreach ($sizes as $key => $value) {
-                                            echo '<option value="' . $key . '"' . (old('prd_size', $old) == $key ? 'selected' : '') . '>' . $value . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    <?php echo form_error('size', '<span class="error">', '</span>', $errors); ?>
-                                </div>
 
-                            </div>
 
                             <div class="position-relative row form-group">
                                 <label for="price" class="col-md-3 text-md-right col-form-label">Price</label>
@@ -133,7 +118,7 @@ include 'inc/header.php';
                                     class="col-md-3 text-md-right col-form-label">Description</label>
                                 <div class="col-md-9 col-xl-8">
                                     <textarea class="form-control" name="description" id="description" value=""
-                                        placeholder="Description"><?php echo old('prd_desc', $old); ?> 
+                                        placeholder="Description"><?php echo old('prd_description', $old); ?> 
 
                                     </textarea>
                                     <?php echo form_error('desc', '<span class="error">', '</span>', $errors); ?>

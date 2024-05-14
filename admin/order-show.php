@@ -33,14 +33,14 @@ include 'inc/header.php';
                         <h2 class="text-center mt-5">Order info</h2>
                         <hr>
                         <div class="position-relative row form-group">
-                            <label for="name" class="col-md-3 text-md-right col-form-label">
+                            <label for="name" class="col-md-4 text-md-right col-form-label">
                                 Customer
                             </label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['oder_new-receiver'])) {
-                                        echo $listOrders[0]['oder_new-receiver'];
+                                    if (!empty($listOrders[0]['order_receiver'])) {
+                                        echo $listOrders[0]['order_receiver'];
                                     } else {
                                         echo $listOrders[0]['customer_username'];
                                     }
@@ -50,12 +50,12 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="email" class="col-md-3 text-md-right col-form-label">Email</label>
+                            <label for="email" class="col-md-4 text-md-right col-form-label">Email</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_new-email'])) {
-                                        echo $listOrders[0]['order_new-email'];
+                                    if (!empty($listOrders[0]['order_email'])) {
+                                        echo $listOrders[0]['order_email'];
                                     } else {
                                         // Display customer email if order email is empty
                                         echo $listOrders[0]['customer_email'];
@@ -67,12 +67,12 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="phone" class="col-md-3 text-md-right col-form-label">Phone</label>
+                            <label for="phone" class="col-md-4 text-md-right col-form-label">Phone</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_new-phone'])) {
-                                        echo $listOrders[0]['order_new-phone'];
+                                    if (!empty($listOrders[0]['order_phone'])) {
+                                        echo $listOrders[0]['order_phone'];
                                     } else {
                                         echo $listOrders[0]['customer_phone'];
                                     }
@@ -82,7 +82,7 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="company_name" class="col-md-3 text-md-right col-form-label">
+                            <label for="company_name" class="col-md-4 text-md-right col-form-label">
                                 City
                             </label>
                             <div class="col-md-9 col-xl-8">
@@ -99,7 +99,7 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="street_address" class="col-md-3 text-md-right col-form-label">
+                            <label for="street_address" class="col-md-4 text-md-right col-form-label">
                                 District</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
@@ -115,7 +115,7 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="town_city" class="col-md-3 text-md-right col-form-label">
+                            <label for="town_city" class="col-md-4 text-md-right col-form-label">
                                 Address</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
@@ -131,7 +131,7 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">
+                            <label for="postcode_zip" class="col-md-4 text-md-right col-form-label">
                                 Date</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
@@ -143,12 +143,12 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="payment_type" class="col-md-3 text-md-right col-form-label">Payment
+                            <label for="payment_type" class="col-md-4 text-md-right col-form-label">Payment
                                 method</label>
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    echo $listOrders[0]['order_payment-method'];
+                                    echo $listOrders[0]['order_payment_method'];
                                     ?>
 
                                 </p>
@@ -156,27 +156,45 @@ include 'inc/header.php';
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="status" class="col-md-3 text-md-right col-form-label">Status</label>
+                            <label for="status" class="col-md-4 text-md-right col-form-label">Status</label>
                             <div class="col-md-9 col-xl-8">
-                                <div class="badge badge-dark mt-2">
+                                <div class="mt-2">
                                     <?php
                                     echo $listOrders[0]['Status'];
                                     ?>
                                 </div>
                             </div>
                         </div>
+                        <a href="./order-status.php?id=' . $item['ID'] . '"></a>
 
-                        <div class="position-relative row form-group">
-                            <label for="description" class="col-md-3 text-md-right col-form-label">Description</label>
+                        <?php if($listOrders[0]['Status'] == "Pending" || $listOrders[0]['Status'] == "Accepted/Delivering"):?>
+                        <div class=" position-relative row form-group">
+                            <label for="status" class="col-md-4 text-md-right col-form-label">Action</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>description</p>
+                                <?php
+                                if ($listOrders[0]['Status'] == "Pending") {
+                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=2"><button style="background-color: green;" class="btn btn-primary btn-sm mr-2">Accept/Delivering</button></a>';
+                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=4"><button style="backround-gcolor: red;"  class="btn btn-primary btn-sm mr-2">Canceled</button></a>';
+                                }
+
+                                if ($listOrders[0]['Status'] == "Accepted/Delivering") {
+                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=3"><button style="background-color: blue;" class="btn btn-primary btn-sm mr-2">Delivered</button></a>';
+                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=4"><button style="background-color: red;" class="btn btn-primary btn-sm mr-2">Canceled</button></a>';
+                                } else {
+                                    echo '';
+                                }
+                                ?>
+
+
+
                             </div>
                         </div>
+                        <?php endif;?>
                     </div>
 
                     <div class="table-responsive">
 
-                        <h2 class="text-center">Products list</h2>
+                        <!-- <h2 class="text-center">Products list</h2> -->
                         <hr>
 
                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
@@ -196,10 +214,10 @@ include 'inc/header.php';
                                     $count = 0;
                                     foreach ($listOrders as $item):
                                     $count++;
-                        ?>
+                                ?>
+
 
                                 <tr>
-
                                     <td><?php echo $item['od_ID']; ?></td>
 
                                     <td>
@@ -209,11 +227,11 @@ include 'inc/header.php';
                                                     <div class="widget-content-left">
                                                         <img style="height: 60px;" data-toggle="tooltip" title="Image"
                                                             data-placement="bottom"
-                                                            src="<?php  echo $item['prd_img']; ?>" alt="">
+                                                            src="<?php  echo '../' . $item['od_img']; ?>" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="widget-content-left flex2">
-                                                    <div class="widget-heading"><?php  echo $item['prd_name']; ?>
+                                                    <div class="widget-heading"><?php  echo $item['od_name']; ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,16 +240,35 @@ include 'inc/header.php';
                                     <td class="text-center">
                                         <?php  echo $item['od_quantity']; ?>
                                     </td>
-                                    <td class="text-center"><?php  echo $item['Total_Product']; ?></td>
+                                    <td class="text-center"><?php  echo $item['od_price']; ?></td>
 
                                 </tr>
-
                                 <?php endforeach; endif; ?>
                             </tbody>
+
+
+                        </table>
+                    </div>
+
+                    <div class="table-responsive">
+                        <hr>
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th style="float: right; font-size: 20px; margin-right: 5%;">
+                                        <?php  echo 'Order total: ' . ' ' . $listOrders[0]['order_total_price']; ?>
+                                    </th>
+                                </tr>
+                            </thead>
+
                         </table>
                     </div>
                 </div>
+
             </div>
+            <!-- <p style=" display: flex; justify-content: end;"><?php  echo $item['order_total_price']; ?></p> -->
+
         </div>
     </div>
     <!-- End Main -->

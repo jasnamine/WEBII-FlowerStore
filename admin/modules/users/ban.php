@@ -13,7 +13,7 @@ $filterAll = filter();
 if(!empty($filterAll['username'])){
     $userID = $filterAll['username'];
     // Kiểm tra xem username có tồn tại trong products không
-    $username = getRows("SELECT * FROM customers WHERE customer_username = '$userID'");
+    $username = countRows("SELECT * FROM customers WHERE customer_username = '$userID'");
     if($username > 0){
         
         $sql = "SELECT customer_status FROM customers WHERE customer_username = '$userID'";

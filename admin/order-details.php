@@ -1,13 +1,9 @@
 <?php
 require_once './modules/statistical/order-details.php';
-?>
-<?php
 include 'inc/header.php';
 ?>
 
 <div class="app-main__outer">
-
-    <!-- Main -->
     <div class="app-main__inner">
         <div class="app-page-title">
             <div class="page-title-wrapper">
@@ -16,136 +12,69 @@ include 'inc/header.php';
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Order
+                        Orders
                         <div class="page-title-subheading">
                             View, create, update, delete and manage.
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <?php
-                                if (!empty($listOrders)):
-                                    $count = 0;
-                                    foreach ($listOrders as $item):
-                                        $count++;
-                        ?>
 
-        <div class="row">
+        <?php if (!empty($groupedOrderDetails)): ?>
+        <?php foreach ($groupedOrderDetails as $username => $orders): ?>
+        < <?php foreach ($orders as $orderID => $orderDetails): ?> <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
-
                         <h2 class="text-center mt-5">Order info</h2>
                         <hr>
                         <div class="position-relative row form-group">
-                            <label for="name" class="col-md-3 text-md-right col-form-label">
-                                Username
-                            </label>
+                            <label for="name" class="col-md-3 text-md-right col-form-label">Full name</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['oder_new-receiver'])) {
-                                        echo $item['oder_new-receiver'];
-                                    } else {
-                                        echo $item['customer_username'];
-                                    }
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_receiver']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
                             <label for="email" class="col-md-3 text-md-right col-form-label">Email</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['order_new-email'])) {
-                                        echo $item['order_new-email'];
-                                    } else {
-                                        // Display customer email if order email is empty
-                                        echo $item['customer_email'];
-                                    }
-                                    ?>
-
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_email']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
                             <label for="phone" class="col-md-3 text-md-right col-form-label">Phone</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['order_new-phone'])) {
-                                        echo $item['order_new-phone'];
-                                    } else {
-                                        echo $item['customer_phone'];
-                                    }
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_phone']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="company_name" class="col-md-3 text-md-right col-form-label">
-                                City
-                            </label>
+                            <label for="company_name" class="col-md-3 text-md-right col-form-label">City</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['order_city'])) {
-                                        echo $item['order_city'];
-                                    } else {
-                                        echo $item['customer_city'];
-                                    }
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_city']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="street_address" class="col-md-3 text-md-right col-form-label">
-                                District</label>
+                            <label for="street_address" class="col-md-3 text-md-right col-form-label">District</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['order_district'])) {
-                                        echo $item['order_district'];
-                                    } else {
-                                        echo $item['customer_district'];
-                                    }
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_district']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="town_city" class="col-md-3 text-md-right col-form-label">
-                                Address</label>
+                            <label for="town_city" class="col-md-3 text-md-right col-form-label">Address</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    if (!empty($item['order_address'])) {
-                                        echo $item['order_address'];
-                                    } else {
-                                        echo $item['customer_address'];
-                                    }
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_address']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
-                            <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">
-                                Date</label>
+                            <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">Date</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    echo $item['order_date'];
-                                    ?>
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_date']; ?></p>
                             </div>
                         </div>
 
@@ -153,39 +82,25 @@ include 'inc/header.php';
                             <label for="payment_type" class="col-md-3 text-md-right col-form-label">Payment
                                 method</label>
                             <div class="col-md-9 col-xl-8">
-                                <p>
-                                    <?php
-                                    echo $item['order_payment-method'];
-                                    ?>
-
-                                </p>
+                                <p><?php echo $orderDetails[0]['order_payment_method']; ?></p>
                             </div>
                         </div>
 
                         <div class="position-relative row form-group">
                             <label for="status" class="col-md-3 text-md-right col-form-label">Status</label>
                             <div class="col-md-9 col-xl-8">
-                                <div class="badge badge-dark mt-2">
-                                    <?php
-                                    echo $item['Status'];
-                                    ?>
-                                </div>
+                                <div class="badge badge-dark mt-2"><?php echo $orderDetails[0]['Status']; ?></div>
                             </div>
                         </div>
 
-                        <div class="position-relative row form-group">
-                            <label for="description" class="col-md-3 text-md-right col-form-label">Description</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p>description</p>
-                            </div>
-                        </div>
+
+
+
                     </div>
 
                     <div class="table-responsive">
-
                         <h2 class="text-center">Products list</h2>
                         <hr>
-
                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
@@ -195,13 +110,10 @@ include 'inc/header.php';
                                     <th class="text-center">Total</th>
                                 </tr>
                             </thead>
-
-
                             <tbody>
+                                <?php foreach ($orderDetails as $detail): ?>
                                 <tr>
-
-                                    <td><?php echo $item['od_ID']; ?></td>
-
+                                    <td><?php echo $detail['od_ID']; ?></td>
                                     <td>
                                         <div class="widget-content p-0">
                                             <div class="widget-content-wrapper">
@@ -209,33 +121,47 @@ include 'inc/header.php';
                                                     <div class="widget-content-left">
                                                         <img style="height: 60px;" data-toggle="tooltip" title="Image"
                                                             data-placement="bottom"
-                                                            src="<?php  echo $item['prd_img']; ?>" alt="">
+                                                            src="<?php echo '../' . $detail['od_img']; ?>" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="widget-content-left flex2">
-                                                    <div class="widget-heading"><?php  echo $item['prd_name']; ?>
-                                                    </div>
+                                                    <div class="widget-heading"><?php echo $detail['od_name']; ?></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center">
-                                        <?php  echo $item['od_quantity']; ?>
-                                    </td>
-                                    <td class="text-center"><?php  echo $item['total_purchase']; ?></td>
-
+                                    <td class="text-center"><?php echo $detail['od_quantity']; ?></td>
+                                    <td class="text-center"><?php echo $detail['od_price']; ?></td>
                                 </tr>
-
-                                <?php endforeach; endif; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="table-responsive">
+                        <hr>
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th style="float: right; font-size: 20px; margin-right: 5%;">
+                                        <?php  echo 'Order total: ' . ' ' . $orderDetails[0]['order_total_price'];?>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+
+
+
                 </div>
             </div>
-        </div>
     </div>
-    <!-- End Main -->
+    <?php endforeach; ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+</div>
 
-    <?php
-include 'inc/footer.php';
-?>
+<?php include 'inc/footer.php'; ?>
