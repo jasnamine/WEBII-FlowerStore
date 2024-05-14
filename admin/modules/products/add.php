@@ -6,6 +6,7 @@ require_once '../helpers/format.php';
 $target_dir = "../images/";
 $uploadOk = 1;
 
+
 $filterAll = filter();
 
 
@@ -37,10 +38,6 @@ $filterAll = filter();
     }
     }
 
-    // validate size
-    if(empty($filterAll['size'])){
-        $errors['size']['required'] = 'Size is required';
-    }
 
     // validate desc
     if(empty($filterAll['description'])){
@@ -84,48 +81,98 @@ $filterAll = filter();
         $uploadOk = 0;
     }
 
-    // Proceed with upload if all checks pass
-    if ($uploadOk == 1) {
-        $imgPath = $_FILES['image']['name'];
-        echo $imgPath;
+    // // Proceed with upload if all checks pass
+    // if ($uploadOk == 1) {
+    //     $imgPath = $_FILES['image']['name'];
+    //     echo $imgPath;
         
 
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            echo "the file has been uploaded.";
-        } else {
-            // Thêm thông báo lỗi vào mảng $errors nếu có lỗi khi upload
-            $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+    //     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+    //         echo "the file has been uploaded.";
+    //     } else {
+    //         // Thêm thông báo lỗi vào mảng $errors nếu có lỗi khi upload
+    //         $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+    //     }
+    // }
+
+    // if (empty($errors)) {
+    //     // Proceed with upload if all checks pass
+    //     if ($uploadOk == 1) {
+    //         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+    //             $imgPath = $_FILES['image']['name'];
+    //         } else {
+    //             $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+    //         }
+            
+    //     }
+
+    //     if (empty($errors)) {
+    //         $dataInsert = [
+    //             'prd_name' => $filterAll['name'],
+    //             'prd_img' => $target_file,
+    //             'prd_size' => $filterAll['size'],
+    //             'prd_price' => $filterAll['price'],
+    //             'prd_desc' => $filterAll['description'],
+    //             'cate_ID' => $filterAll['product_category']
+    //         ];
+
+    //         $insertProducts = insert('products', $dataInsert);
+
+    //         setFlashData('msgA', 'Insert successfully!');
+    //         setFlashData('msgA_type', 'success');
+    //         header("Location: product.php");
+    //         exit();
+    //     }
+    // }
+
+    if (empty($errors)) {
+        // Kiểm tra và xử lý ảnh
+        if (!empty($_FILES['image']['name'])) {
+            // Đường dẫn tệp ảnh trên máy chủ
+            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            
+            // Kiểm tra và cắt chuỗi "../" khỏi đường dẫn ảnh
+            $target_file = str_replace('../', '', $target_file);
+            
+            // Di chuyển và lưu tệp ảnh vào thư mục images
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                // Lưu đường dẫn tệp ảnh vào cơ sở dữ liệu
+                $imgPath = $target_file;
+
+                // Tiếp tục với các xử lý khác như lưu dữ liệu vào cơ sở dữ liệu
+                // Ví dụ:
+                $dataInsert = [
+                    'prd_name' => $filterAll['name'],
+                    'prd_img' => $imgPath, // Đường dẫn ảnh đã được cắt chuỗi
+                    'prd_price' => $filterAll['price'],
+                    'prd_description' => $filterAll['description'],
+                    'cate_ID' => $filterAll['product_category']
+                ];
+
+                // Thực hiện việc chèn dữ liệu vào cơ sở dữ liệu
+                $insertProducts = insert('products', $dataInsert);
+
+                // Đặt thông báo flash và chuyển hướng
+                setFlashData('msgA', 'Insert successfully!');
+                setFlashData('msgA_type', 'success');
+                header("Location: product.php");
+                exit();
+            } else {
+                // Nếu di chuyển tệp không thành công, thêm lỗi vào mảng $errors
+                $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+            }
         }
     }
 
 
-    if(empty($errors)){
-
-        $dataInsert = [
-            'prd_name' => $filterAll['name'],
-            'prd_img' => $target_file,
-            'prd_size' => $filterAll['size'],
-            'prd_price' => $filterAll['price'],
-            'prd_desc' => $filterAll['description'],
-            'cate_ID' => $filterAll['product_category']
-
-        ];
-
-       $insertProducts = insert('products', $dataInsert);
-        
-       setFlashData('msgA', 'Insert successfully!');
-       setFlashData('msgA_type', 'success');
-    //    redirect('product.php'); 
-       header("Location: product.php");
-       exit();
-        
-    }
     else{
+
        setFlashData('msgA', 'Please check your data again');
        setFlashData('msgA_type', 'danger');
        setFlashData('errors', $errors);
        setFlashData('old', $filterAll);
     }
+
 
     }
 
@@ -133,6 +180,7 @@ $msgA = getFlashData('msgA');
 $msgAType = getFlashData('msgA_type');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
+
 
 
 ?>

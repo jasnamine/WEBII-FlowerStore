@@ -38,7 +38,7 @@ require_once './modules/products/detail.php';
                                 <ul class="text-nowrap overflow-auto" id="images">
                                     <li class="d-inline-block " style="position: relative;">
                                         <img style="height: 200px; width: 200px;"
-                                            src="<?php echo htmlspecialchars($productDetail['prd_img']); ?>"
+                                            src="<?php echo '../' . htmlspecialchars($productDetail['prd_img']); ?>"
                                             alt="Image">
                                     </li>
                                 </ul>
@@ -55,7 +55,7 @@ require_once './modules/products/detail.php';
                         <div class="position-relative row form-group">
                             <label for="product_category_id" class="col-md-3 text-md-right col-form-label">Name</label>
                             <div class="col-md-9 col-xl-8">
-                                <p><?php echo $productDetail['prd_name'];?></p>
+                                <p><?php echo  $productDetail['prd_name'];?></p>
                             </div>
                         </div>
 
@@ -66,17 +66,12 @@ require_once './modules/products/detail.php';
                             </div>
                         </div>
 
-                        <div class="position-relative row form-group">
-                            <label for="content" class="col-md-3 text-md-right col-form-label">Size</label>
-                            <div class="col-md-9 col-xl-8">
-                                <p><?php echo $productDetail['prd_size'];?></p>
-                            </div>
-                        </div>
+
 
                         <div class="position-relative row form-group">
                             <label for="description" class="col-md-3 text-md-right col-form-label">Description</label>
                             <div class="col-md-9 col-xl-8">
-                                <p><?php echo $productDetail['prd_desc'];?></p>
+                                <p><?php echo $productDetail['prd_description'];?></p>
                             </div>
                         </div>
                     </div>

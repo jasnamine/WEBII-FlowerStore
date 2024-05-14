@@ -1,5 +1,6 @@
 <?php
 require_once './modules/categories/list.php';
+$pageTitle = "Category";
 include 'inc/header.php';
 ?>
 
@@ -21,14 +22,7 @@ include 'inc/header.php';
                     </div>
                 </div>
 
-                <div class="page-title-actions">
-                    <a href="./category-create.php" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
-                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                            <i class="fa fa-plus fa-w-20"></i>
-                        </span>
-                        Create
-                    </a>
-                </div>
+
             </div>
         </div>
 

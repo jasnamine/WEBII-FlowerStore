@@ -1,8 +1,6 @@
 <?php
 require_once '../lib/database.php';
 require_once '../lib/session.php';
-
-
 require_once '../helpers/format.php';
 
 ?>
@@ -55,21 +53,22 @@ if(!empty($filterAll['id'])){
         if($updateProduct){
             setFlashData('msg', 'Update successful');
             redirect("product.php");
+            exit();
 
         }
         else{
         setFlashData('msg', 'Hide error');
         setFlashData('msg_type', 'danger');
         redirect("product.php");
+        exit();
         }
 
-
-    
         }
         else{
         setFlashData('msg', 'Hide error');
         setFlashData('msg_type', 'danger');
         redirect("product.php");
+        exit();
         }
         
     }
@@ -77,6 +76,7 @@ if(!empty($filterAll['id'])){
         setFlashData('msg', 'Link not exist');
         setFlashData('msg_type', 'danger');
         redirect("product.php");
+        exit();
 
     }
 }

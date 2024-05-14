@@ -22,26 +22,26 @@ if(!empty($filterAll['id'])){
         $deleteUser = delete('products', "prd_ID = '$productID'");
 
         if($deleteUser){
-        setFlashData('msg', 'Delete successfully');
-        setFlashData('msg_type', 'success');
+        setFlashData('msgK', 'Delete successfully');
+        setFlashData('msge_type', 'success');
         redirect("product.php");
         }
         else{
-        setFlashData('msg', 'Link not exist');
-        setFlashData('msg_type', 'danger');
+        setFlashData('msgK', 'Link not exist');
+        setFlashData('msge_type', 'danger');
         redirect("product.php");
         }
         
     }
     else{
-        setFlashData('msg', 'Link not exist');
-        setFlashData('msg_type', 'danger');
+        setFlashData('msgK', 'Link not exist');
+        setFlashData('msge_type', 'danger');
         redirect("product.php");
 
     }
 }
-$msg = getFlashData('msg');
-$msgType = getFlashData('msg_type');
+$msgK = getFlashData('msgK');
+$msgeType = getFlashData('msge_type');
 
 
 

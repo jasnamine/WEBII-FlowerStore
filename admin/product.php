@@ -1,6 +1,11 @@
 <?php
 require_once './modules/products/list.php';
 require_once './modules/products/add.php';
+require_once './modules/products/delete.php';
+require_once './modules/products/hide.php';
+$pageTitle = "Product";
+
+
 
 ?>
 <?php
@@ -44,6 +49,11 @@ include 'inc/header.php';
             getMsg($msgA, $msgAType);
         }
         ?>
+                    <?php
+        if(!empty($msgK) ){
+            getMsg($msgK, $msgeType);
+        }
+        ?>
 
                     <div class="card-header">
 
@@ -72,12 +82,12 @@ include 'inc/header.php';
                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center">IDs</th>
+                                    <th class="text-center">No</th>
                                     <th class="text-center">ID</th>
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th class="text-center">Size</th>
+
                                     <th class="text-center">Price</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Actions</th>
@@ -102,7 +112,8 @@ include 'inc/header.php';
                                             <div class="widget-content-left">
                                                 <img style="height: 50px; width: 50px;" data-toggle="tooltip"
                                                     title="Image" data-placement="bottom"
-                                                    src="<?php echo htmlspecialchars($item['prd_img']); ?>" alt="">
+                                                    src="<?php echo htmlspecialchars('../' . $item['prd_img']); ?>"
+                                                    alt="">
                                             </div>
                                         </div>
                                     </td>
@@ -128,8 +139,9 @@ include 'inc/header.php';
                                         </div>
                                     </td>
 
-                                    <td class="text-center"><?php echo $item['prd_size']; ?></td>
-                                    <td class="text-center"><?php echo $item['prd_price']; ?></td>
+
+                                    <td class="text-center">
+                                        <?php echo number_format($item['prd_price'], 0, ',', '.'); ?></td>
                                     <td class="text-center"><?php echo $item['prd_status']; ?></td>
                                     <td class="text-center">
                                         <a href="./product-show.php?id=<?php echo $item['prd_ID']?>"
@@ -144,32 +156,27 @@ include 'inc/header.php';
                                             </span>
                                         </a>
 
-                                        <a href="product-hide.php?id=<?php echo $item['prd_ID']; ?>">
+                                        <!-- <a href="product-hide.php?id=<?php echo $item['prd_ID']; ?>">
                                             <button class="btn btn-outline-danger" type="button"
                                                 onclick="toggleVisibility(this.querySelector('.eyeIcon'))">
                                                 <i class="eyeIcon fa fa-eye fa-w-20"></i>
                                             </button>
+                                        </a> -->
+
+                                        <a href="product-hide.php?id=<?php echo $item['prd_ID']; ?>"
+                                            class="toggleVisibility" data-id="<?php echo $item['prd_ID']; ?>"
+                                            data-status="<?php echo $item['prd_status']; ?>">
+                                            <button class="btn btn-outline-danger" type="button">
+                                                <i id="eyeIcon<?php echo $item['prd_ID']; ?>"
+                                                    class="eyeIcon fa <?php echo $item['prd_status'] == '0' || $item['prd_status'] == '2' ? 'fa-eye-slash' : 'fa-eye'; ?> fa-w-20"></i>
+                                            </button>
                                         </a>
 
-                                        <script>
-                                        function toggleVisibility(eyeIcon) {
-                                            if (eyeIcon.classList.contains('fa-eye')) {
-                                                if (confirm('Do you really want to hide this item?')) {
-                                                    eyeIcon.classList.remove('fa-eye');
-                                                    eyeIcon.classList.add('fa-eye-slash');
-                                                    // Thực hiện hành động ẩn ở đây
-                                                    console.log('Item hidden');
-                                                }
-                                            } else {
-                                                if (confirm('Do you really want to show this item?')) {
-                                                    eyeIcon.classList.remove('fa-eye-slash');
-                                                    eyeIcon.classList.add('fa-eye');
-                                                    // Thực hiện hành động hiện ở đây
-                                                    console.log('Item shown');
-                                                }
-                                            }
-                                        }
-                                        </script>
+
+
+
+
+
 
                                     </td>
                                     <td>
@@ -193,6 +200,60 @@ include 'inc/header.php';
                             </tbody>
                         </table>
                     </div>
+                    <!-- <script>
+                    function toggleVisibility(eyeIcon) {
+                        if (eyeIcon.classList.contains('fa-eye')) {
+                            if (confirm('Do you really want to hide this item?')) {
+                                eyeIcon.classList.remove('fa-eye');
+                                eyeIcon.classList.add('fa-eye-slash');
+                                // Thực hiện hành động ẩn ở đây
+                                console.log('Item hidden');
+                            }
+                        } else {
+                            if (confirm('Do you really want to show this item?')) {
+                                eyeIcon.classList.remove('fa-eye-slash');
+                                eyeIcon.classList.add('fa-eye');
+                                // Thực hiện hành động hiện ở đây
+                                console.log('Item shown');
+                            }
+                        }
+                    }
+                    </script> -->
+
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Lưu trạng thái của sản phẩm trong biến JavaScript
+                        var productStatus = {};
+                        document.querySelectorAll('.toggleVisibility').forEach(function(link) {
+                            var id = link.dataset.id;
+                            var status = link.dataset.status;
+                            productStatus[id] = status;
+                            link.addEventListener('click', function(event) {
+                                event
+                                    .preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+                                var confirmationMessage = productStatus[id] == '0' ||
+                                    productStatus[id] == '2' ?
+                                    'Do you really want to show this item?' :
+                                    'Do you really want to hide this item?';
+
+                                if (confirm(confirmationMessage)) {
+                                    // Cập nhật trạng thái của sản phẩm sau mỗi lần click
+                                    productStatus[id] = productStatus[id] == '0' ||
+                                        productStatus[id] == '2' ? '1' : '0';
+                                    // Thay đổi class của con mắt
+                                    var eyeIcon = document.getElementById('eyeIcon' + id);
+                                    eyeIcon.classList.toggle('fa-eye');
+                                    eyeIcon.classList.toggle('fa-eye-slash');
+                                    // Thực hiện redirect
+                                    window.location.href = link.href;
+                                }
+                            });
+                        });
+                    });
+                    </script>
+
+
+
 
                     <?php
 include 'inc/footer.php';

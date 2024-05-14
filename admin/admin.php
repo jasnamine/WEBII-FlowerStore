@@ -1,6 +1,7 @@
 <?php
 require_once '../lib/database.php';
 require_once '../lib/session.php';
+$pageTitle = "Admin";
 
 
 
@@ -69,7 +70,7 @@ include 'inc/header.php'
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Full Name</th>
+                                    <th>Username</th>
                                     <th class="text-center">Email</th>
 
                                     <th class="text-center">Phone</th>

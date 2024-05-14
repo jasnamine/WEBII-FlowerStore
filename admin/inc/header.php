@@ -24,7 +24,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Language" content="en" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Admin - CodeLean eShop</title>
+    <title><?php echo $pageTitle; ?></title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description"
@@ -32,6 +32,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -208,27 +210,15 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                 </a>
                                 <ul>
                                     <li>
-                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'class="mm-active"'; ?>
-                                            href="./index.php">
-                                            <i class="metismenu-icon"></i>Customer
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a <?php if(basename($_SERVER['PHP_SELF']) == 'admin.php') echo 'class="mm-active"'; ?>
                                             href="./admin.php">
                                             <i class="metismenu-icon"></i>Admin
                                         </a>
                                     </li>
                                     <li>
-                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'order.php') echo 'class="mm-active"'; ?>
-                                            href="./order.php">
-                                            <i class="metismenu-icon"></i>Order
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'product.php') echo 'class="mm-active"'; ?>
-                                            href="./product.php">
-                                            <i class="metismenu-icon"></i>Product
+                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'class="mm-active"'; ?>
+                                            href="./index.php">
+                                            <i class="metismenu-icon"></i>Customer
                                         </a>
                                     </li>
 
@@ -237,6 +227,24 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                                             <i class="metismenu-icon"></i>Category
                                         </a>
                                     </li>
+
+                                    <li>
+                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'product.php') echo 'class="mm-active"'; ?>
+                                            href="./product.php">
+                                            <i class="metismenu-icon"></i>Product
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a <?php if(basename($_SERVER['PHP_SELF']) == 'order.php') echo 'class="mm-active"'; ?>
+                                            href="./order.php">
+                                            <i class="metismenu-icon"></i>Order
+                                        </a>
+                                    </li>
+
+
+
+
 
                                     <li>
                                         <a <?php if(basename($_SERVER['PHP_SELF']) == 'statistical.php') echo 'class="mm-active"'; ?>
