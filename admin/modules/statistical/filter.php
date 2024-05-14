@@ -2,7 +2,6 @@
 require_once '../lib/database.php';
 require_once '../lib/session.php';
 require_once '../helpers/format.php';
-$pageTitle = "Statistical";
 
 $sql = "SELECT 
             c.customer_username,

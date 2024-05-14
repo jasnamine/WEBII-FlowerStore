@@ -2,6 +2,7 @@
 require_once './modules/users/list.php';
 require_once './modules/users/edit.php';
 require_once './modules/users/add.php';
+$pageTitle = "Flowershop";
 
 ?>
 <?php

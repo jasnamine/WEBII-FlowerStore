@@ -1,6 +1,8 @@
 <?php
 require_once './modules/statistical/filter.php';
 //require_once './modules/statistical/list.php';
+$pageTitle = "Statistical";
+
 ?><?php
 include 'inc/header.php';
 ?>

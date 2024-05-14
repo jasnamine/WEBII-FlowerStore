@@ -63,7 +63,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         <div class="app-header header-shadow">
-            <div class="app-header__logo">
+            <!-- <div class="app-header__logo">
                 <div class="logo-src"></div>
                 <div class="header__pane ml-auto">
                     <div>
@@ -75,7 +75,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="app-header__mobile-menu">
                 <div>
                     <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
@@ -166,7 +166,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
-                <div class="app-header__logo">
+                <!-- <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
                         <div>
@@ -178,7 +178,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="app-header__mobile-menu">
                     <div>
                         <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">

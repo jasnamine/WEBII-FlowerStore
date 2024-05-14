@@ -1,5 +1,6 @@
 <?php
 require_once './modules/orders/filter.php';
+$pageTitle = "Order";
 ?>
 <?php
 include 'inc/header.php';

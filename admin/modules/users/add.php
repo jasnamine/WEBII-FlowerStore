@@ -53,6 +53,7 @@ if(isPost()){
         
     }
 
+    $hashedPassword = md5($filterAll['password']);
     if(empty($errors)){
         $dataInsert = [
             'customer_username' => $filterAll['username'],
@@ -62,7 +63,8 @@ if(isPost()){
             'customer_city' => $filterAll['city'],
             'customer_district' => $filterAll['district'],
             'customer_address' => $filterAll['street_address'],
-            'customer_password' => password_hash($filterAll['password'], PASSWORD_DEFAULT )
+            'customer_password' => $hashedPassword, 
+            'customer_status' => 1
             
         ];
 

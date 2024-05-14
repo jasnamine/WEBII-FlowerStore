@@ -2,7 +2,7 @@
 require_once '../lib/database.php';
 require_once '../lib/session.php';
 require_once '../helpers/format.php';
-$pageTitle = "Order";
+
 $sql = "SELECT o.order_ID AS ID,
                           c.customer_username AS Customer,
                           o.order_address AS Address,
