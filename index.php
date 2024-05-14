@@ -3,37 +3,6 @@ $pageTitle = 'Flower Store';
 require_once('helpers/format.php');
 require_once('lib/session.php');
 
-// $session_test = setSession('hi', 'qhuong');
-// var_dump($session_test);
-
-// removeSession('hi');
-//echo getSession('hi');
-
-// setFlashData('msg', 'cain dat thanh cong');
-// echo getFlashData('msg');
-
-// $module = _MODULE;
-// $action = _ACTION;
-// if(!empty($_GET['module'])){
-// 	if(is_string($_GET['module'])){
-// 		$module = trim($_GET['module']);
-// 	}
-// }
-
-// if(!empty($_GET['action'])){
-// 	if(is_string($_GET['action'])){
-// 		$action = trim($_GET['action']);
-// 	}
-// }
-
-// $path = 'modules/'. $module .'/'. $action. '.php';
-
-// if(file_exists($path)){
-// 	require_once($path);
-// }
-// else{
-// 	require_once('modules/error/404notfound.php');
-// }
 ?>
 
 <?php
@@ -43,22 +12,11 @@ include 'include/introduce.php';
 ?>
 
       <!--Start categories-->
-	<!-- <div id="sessionExpiredModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<div class="modal-body">
-				<p>Your Session has been expired.</p>
-			</div>
-			<div class="modal-footer">
-				<button id="modalCloseBtn" class="btn btn-secondary">OK</button>
-			</div>
-		</div>
-	</div> -->
-
 		<section class="ftco-section ftco-no-pb">
 			<div class="container">
 				<div class="row">
-				<div class="col-lg-3 col-md-3 ">
+
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=4">
 							<div class="img" style="background-image: url(images/GraduationFlowers/SunnyDays.jpg);"></div>
@@ -94,6 +52,7 @@ include 'include/introduce.php';
 				</div>
 			</div>
 		</section>
+		<!-- End categories -->
 
 		<section class="ftco-section">
 			<div class="container">
