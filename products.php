@@ -137,7 +137,7 @@ function changeCateName($cate_ID) {
                                 echo '<div class="text text-center">';
                                 echo '<span class="category">' . changeCateName($row["cate_ID"]). '</span>';
                                 echo '<h2>' . $row["prd_name"] . '</h2>';
-                                echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
+                                echo '<span class="name">' . number_format($row["prd_price"],0,",",".") . ' VND</span>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
@@ -170,7 +170,7 @@ function changeCateName($cate_ID) {
                                     echo '<div class="text text-center">';
                                     echo '<span class="category">' . changeCateName($row["cate_ID"]). '</span>';
                                     echo '<h2>' . $row["prd_name"] . '</h2>';
-                                    echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
+                                    echo '<span class="name">' . number_format($row["prd_price"],0,",",".") . ' VND</span>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
@@ -196,7 +196,7 @@ function changeCateName($cate_ID) {
                                     echo '<div class="text text-center">';
                                     echo '<span class="category">' . changeCateName($row["cate_ID"]). '</span>';
                                     echo '<h2>' . $row["prd_name"] . '</h2>';
-                                    echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>';
+                                    echo '<span class="name">' . number_format($row["prd_price"],0,",",".") . ' VND</span>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';

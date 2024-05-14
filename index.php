@@ -214,7 +214,7 @@ include 'include/introduce.php';
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-4">
-						<a href="products.php" class="btn btn-primary d-block">View Products <span class="fa fa-long-arrow-right"></span></a>
+						<a href="products.php" class="btn btn-primary d-block">View All Products <span class="fa fa-long-arrow-right"></span></a>
 					</div>
 				</div>
 			</div>
