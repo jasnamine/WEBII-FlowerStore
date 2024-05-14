@@ -86,3 +86,11 @@
   position: relative; /* Thiết lập vị trí tương đối */
   bottom: 0; /* Dịch chuyển lên đúng vị trí cuối cùng */
 }
+
+@media (min-width: 1200px) {
+
+#OrderTable {
+  width: 800px;
+  overflow: hidden;
+}
+}

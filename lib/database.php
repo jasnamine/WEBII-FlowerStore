@@ -27,15 +27,15 @@ function query($sql, $data = [], $check = false) {
     return $result;
 }
 
-// // Hàm thoát các giá trị truy vấn
-// function escape_values($data) {
-//     global $conn;
-//     $escaped_data = [];
-//     foreach ($data as $key => $value) {
-//         $escaped_data[$key] = $conn->real_escape_string($value);
-//     }
-//     return $escaped_data;
-// }
+// Hàm thoát các giá trị truy vấn
+function escape_values($data) {
+    global $conn;
+    $escaped_data = [];
+    foreach ($data as $key => $value) {
+        $escaped_data[$key] = $conn->real_escape_string($value);
+    }
+    return $escaped_data;
+}
 
 // Hàm thực hiện thêm dữ liệu vào bảng
 function insert($table, $data){
@@ -99,7 +99,7 @@ function delete($table, $condition=''){
 }
 
 // Hàm lấy nhiều dòng dữ liệu từ cơ sở dữ liệu sử dụng hàm query()
-function getRow($sql, $params = null) {
+function getRow($sql, $params = []) {
     // Sử dụng hàm query() để thực hiện truy vấn
     $result = query($sql, $params, true);
 
@@ -113,6 +113,8 @@ function getRow($sql, $params = null) {
     return [];
 }
 
+
+
 // Hàm lấy một dòng dữ liệu từ cơ sở dữ liệu
 function oneRow($sql){
     $kq = query($sql, '', true);
@@ -124,16 +126,12 @@ function oneRow($sql){
 }
 
 // Hàm đếm số dòng dữ liệu từ cơ sở dữ liệu
-function countRows($sql, $params = null) {
-    if ($params === null) {
-        $params = [];
-    }
+function countRows($sql, $params = []) {
     $kq = query($sql, $params, true);
     if(!empty($kq)){
         return $kq -> rowCount();
     }
 }
-
 
 // hàm kiểm tra status cho customers (banned or not)
 function authenticate_customer($username) {
@@ -155,9 +153,25 @@ function getCart($username) {
 	return oneRow($sql);
 }
 
+// Hàm truy vấn hóa đơn của một khách hàng
+function getOrder($orderID,$username) {
+    $sql = "SELECT * FROM orders WHERE order_ID = '$orderID' AND customer_username = '$username'";
+    return oneRow($sql);
+}
+
+function getAllOrders($username) {
+    $sql = "SELECT * FROM orders WHERE customer_username = '$username' AND order_status != -1";
+    return getRow($sql);
+}
+
 // Hàm truy vấn chi tiết sản phẩm trong giỏ hàng
 function getCartItems($orderID) {
 	$sql = "SELECT * FROM order_details WHERE order_ID = $orderID";
+	return getRow($sql);
+}
+
+function getOrderDetails($orderID) {
+    $sql = "SELECT * FROM order_details WHERE order_ID = $orderID";
 	return getRow($sql);
 }
 
@@ -224,6 +238,34 @@ function checkProductInCart($orderID, $prd_ID) {
     ];
     $result = getRow($sql, $params);
     return !empty($result); // Trả về true nếu có sản phẩm trong giỏ hàng, ngược lại trả về false
+}
+
+// Hàm tìm kiếm sản phẩm
+function searchProducts($search_query, $start, $productsPerPage) {
+    $result = getRow("SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_name LIKE ? LIMIT $start, $productsPerPage", ["%$search_query%"]);
+    return $result;
+}
+
+// Hàm phân loại sản phẩm theo loại
+function filterProductsByType($selectedTypes, $start, $productsPerPage) {
+    $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
+    $result = getRow("SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE cate_ID IN (" . implode(',', array_fill(0, count($selectedTypes), '?')) . ") LIMIT $start, $productsPerPage", $selectedTypes);
+    return $result;
+}
+
+// Hàm lấy số lượng sản phẩm
+function getTotalProducts($search_query = '', $selectedTypes = []) {
+    if (!empty($search_query)) {
+        $totalProducts = countRows("SELECT COUNT(*) AS total FROM products WHERE prd_name LIKE ?", ["%$search_query%"]);
+    } else {
+        if (!empty($selectedTypes)) {
+            $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
+            $totalProducts = countRows("SELECT COUNT(*) AS total FROM products WHERE cate_ID IN (" . implode(',', array_fill(0, count($selectedTypes), '?')) . ")", $selectedTypes);
+        } else {
+            $totalProducts = countRows("SELECT COUNT(*) AS total FROM products");
+        }
+    }
+    return $totalProducts;
 }
 
 

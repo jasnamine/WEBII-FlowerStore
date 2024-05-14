@@ -19,7 +19,7 @@
                     <div class="d-flex align-items-center">
                     	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
                     	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
+		                    <p class="name">Võ Hoàng Hà</p>
 		                    <span class="position">Marketing Manager</span>
 		                  </div>
 	                  </div>

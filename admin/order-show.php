@@ -39,8 +39,8 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['oder_new-receiver'])) {
-                                        echo $listOrders[0]['oder_new-receiver'];
+                                    if (!empty($listOrders[0]['order_receiver'])) {
+                                        echo $listOrders[0]['order_receiver'];
                                     } else {
                                         echo $listOrders[0]['customer_username'];
                                     }
@@ -54,8 +54,8 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    if (!empty($listOrders[0]['order_new-email'])) {
-                                        echo $listOrders[0]['order_new-email'];
+                                    if (!empty($listOrders[0]['order_email'])) {
+                                        echo $listOrders[0]['order_email'];
                                     } else {
                                         // Display customer email if order email is empty
                                         echo $listOrders[0]['customer_email'];
@@ -148,7 +148,7 @@ include 'inc/header.php';
                             <div class="col-md-9 col-xl-8">
                                 <p>
                                     <?php
-                                    echo $listOrders[0]['order_payment-method'];
+                                    echo $listOrders[0]['order_payment_method'];
                                     ?>
 
                                 </p>

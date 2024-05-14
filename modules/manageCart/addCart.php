@@ -89,9 +89,9 @@ if (isset($_POST['buy_now'])) {
         // Nếu sản phẩm chưa có trong giỏ hàng, thực hiện thêm sản phẩm vào giỏ hàng
         // Thêm sản phẩm vào giỏ hàng (bảng order_details)
         $data = [
-            ':prd_ID' => $prd_ID,
-            ':order_ID' => $orderID,
-            ':od_quantity' => $quantity
+            'prd_ID' => $prd_ID,
+            'order_ID' => $orderID,
+            'od_quantity' => $quantity
         ];
 
         // Thực hiện truy vấn INSERT

@@ -11,7 +11,7 @@ if (!empty($filterAll['id'])) {
     $orderID = $filterAll['id'];
 
     // Kiểm tra xem ID đơn hàng có tồn tại trong bảng orders không
-    $orderStatus = getRows("SELECT * FROM orders WHERE order_ID = '$orderID'");
+    $orderStatus = countRows("SELECT * FROM orders WHERE order_ID = '$orderID'");
     if ($orderStatus > 0) {
         // Lấy trạng thái đơn hàng từ cơ sở dữ liệu
         $order = oneRow("SELECT order_status FROM orders WHERE order_ID = '$orderID'");

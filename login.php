@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Login';
+
 // session_start();
 ob_start();
 
@@ -62,7 +64,7 @@ $msg_banned = 'You have been BANNED. Please contact administrator to solve the p
 <!--Start Banner-->
 <section
       class="hero-wrap hero-wrap-2"
-      style="background-image: url('images/fl_1.jpg')"
+      style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>

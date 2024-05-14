@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'View Product';
+
 ob_start();
 include 'include/header.php';
 ?>
@@ -44,7 +46,8 @@ if (isset($_GET['prd_ID'])) {
 
 		<!-- Mã HTML để hiển thị thông tin chi tiết sản phẩm -->
 		<!--Start banner-->
-		<section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');"
+		<section class="hero-wrap hero-wrap-2" 
+			style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
 			data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
@@ -84,7 +87,7 @@ if (isset($_GET['prd_ID'])) {
                         ?>
 						<p class="price" style="font-size: 18px;">
 							<span class="price-value">
-								<?php echo '<span class="name">' . number_format($product["prd_price"]) . ' VND</span>'; ?>
+								<?php echo '<span class="name">' . number_format($product["prd_price"],0,",",".") . ' VND</span>'; ?>
 							</span>
 						</p>
 

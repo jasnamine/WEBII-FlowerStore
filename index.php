@@ -1,5 +1,5 @@
 <?php
-
+$pageTitle = 'Flower Store';
 require_once('helpers/format.php');
 require_once('lib/session.php');
 
@@ -58,7 +58,7 @@ include 'include/introduce.php';
 		<section class="ftco-section ftco-no-pb">
 			<div class="container">
 				<div class="row">
-				<div class="col-lg-2 col-md-4 ">
+				<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=4">
 							<div class="img" style="background-image: url(images/GraduationFlowers/SunnyDays.jpg);"></div>
@@ -66,7 +66,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=1">
 							<div class="img" style="background-image: url(images/GrandOpeningFlower/LuckyCharm.jpg);"></div>
@@ -74,7 +74,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=3">
 							<div class="img" style="background-image: url(images/ValentineFlower/BrightDay.jpg);"></div>
@@ -82,7 +82,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=2">
 							<div class="img" style="background-image: url(images/WeddingFlower/FirstLove.jpg);"></div>
@@ -117,7 +117,7 @@ include 'include/introduce.php';
 							<span class="sale">Sale</span>
 										<span class="category">Graduation Flowers</span>
 										<h2>Cozy</h2>
-										<p class="mb-0"><span class="price price-sale">750,000VND</span> <span class="price">580,000VND</span></p>
+										<p class="mb-0"><span class="price price-sale">750.000VND</span> <span class="price">580.000VND</span></p>
 									</div>
 								</div>
 							</div>
@@ -134,7 +134,7 @@ include 'include/introduce.php';
 										<span class="seller">Best Seller</span>
 										<span class="category">Grand Opening Flowers</span>
 										<h2>Golden Time</h2>
-										<span class="price">920,000VND</span>
+										<span class="price">920.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -151,7 +151,7 @@ include 'include/introduce.php';
 										<span class="new">New Arrival</span>
 										<span class="category">The Wedding Flowers</span>
 										<h2>Enternal Love</h2>
-										<span class="price">640,000VND</span>
+										<span class="price">640.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -167,7 +167,7 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">Graduation Flowers</span>
 										<h2>Gracias</h2>
-										<span class="price">790,000VND</span>
+										<span class="price">790.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -184,7 +184,7 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">The Wedding Flowers</span>
 										<h2>First Love</h2>
-										<span class="price">910,000VND</span>
+										<span class="price">910.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -200,7 +200,7 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">Graduation Flowers</span>
 										<h2>Mother's Dream</h2>
-										<span class="price">700,000VND</span>
+										<span class="price">700.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -216,7 +216,7 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">Valentine Flowers</span>
 										<h2>True Love</h2>
-										<span class="price">790,000VND</span>
+										<span class="price">790.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -232,7 +232,7 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">The Wedding Flowers</span>
 										<h2>Only Love</h2>
-										<span class="price">730,000VND</span>
+										<span class="price">730.000VND</span>
 									</div>
 								</div>
 							</div>
@@ -248,14 +248,14 @@ include 'include/introduce.php';
 									<div class="text text-center">
 										<span class="category">Grand Opening Flowers</span>
 										<h2>New Beginning</h2>
-										<span class="price">800,000VND</span>
+										<span class="price">800.000VND</span>
 									</div>
 						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-4">
-						<a href="products.php" class="btn btn-primary d-block">View All Products <span class="fa fa-long-arrow-right"></span></a>
+						<a href="products.php" class="btn btn-primary d-block">View Products <span class="fa fa-long-arrow-right"></span></a>
 					</div>
 				</div>
 			</div>
