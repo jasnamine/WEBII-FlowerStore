@@ -3,6 +3,7 @@ require_once './modules/products/list.php';
 require_once './modules/products/add.php';
 require_once './modules/products/delete.php';
 require_once './modules/products/hide.php';
+$pageTitle = "Product";
 
 
 
@@ -139,7 +140,8 @@ include 'inc/header.php';
                                     </td>
 
 
-                                    <td class="text-center"><?php echo $item['prd_price']; ?></td>
+                                    <td class="text-center">
+                                        <?php echo number_format($item['prd_price'], 0, ',', '.'); ?></td>
                                     <td class="text-center"><?php echo $item['prd_status']; ?></td>
                                     <td class="text-center">
                                         <a href="./product-show.php?id=<?php echo $item['prd_ID']?>"

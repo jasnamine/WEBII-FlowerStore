@@ -44,22 +44,30 @@ include 'inc/header.php';
                     <div class="form-group col-md-2 ">
                         <label for="startDate">From:</label>
                         <input type="date" id="startDate" name="startDate" data-date="" data-date-format="YYYY MM DD"
-                            class="form-control">
+                            value="<?php echo old('startDate', $old); ?>" class="form-control">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="endDate">To:</label>
                         <input type="date" id="endDate" name="endDate" class="form-control" data-date=""
-                            data-date-format="YYYY MM DD">
+                            value="<?php echo old('endDate', $old); ?>" data-date-format="YYYY MM DD">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="status">Status:</label>
                         <select id="status" name="status" class="form-control">
                             <option value="">Select status</option>
-                            <option value="1">Pending</option>
+                            <!-- <option value="1">Pending</option>
                             <option value="2">Accepted/Delivering</option>
                             <option value="3">Delivered</option>
-                            <option value="4">Canceled</option>
+                            <option value="4">Canceled</option> -->
+                            <?php
+                                $statuses = ["1" => "Pending", "2" => "Accepted/Delivering", "3" => "Delivered", "4" => "Canceled"];
+                                foreach ($statuses as $key => $value) {
+                                    echo '<option value="' . $key . '"' . ($key == old('status', $old) ? ' selected' : '') . '>' . $value . '</option>';
+                                }
+                            ?>
+
+
                         </select>
                     </div>
 
@@ -75,9 +83,14 @@ include 'inc/header.php';
                         <label for="district">District:</label>
                         <select id="district" name="district" class="form-control">
                             <option value="">Select district</option>
+
                             <?php foreach ($districts as $district): ?>
-                            <option value="<?php echo $district; ?>"><?php echo $district; ?></option>
+                            <option value="<?php echo $district; ?>"
+                                <?php echo ($district == old('district', $old) ? ' selected' : ''); ?>>
+                                <?php echo $district; ?></option>
                             <?php endforeach; ?>
+
+
                         </select>
 
                     </div>
@@ -165,7 +178,8 @@ include 'inc/header.php';
                                     <td class="text-center text-muted"><?php  echo $item['Customer']; ?></td>
                                     <td class="text-center text-muted"><?php  echo $item['order_district']; ?></td>
                                     <td class="text-center text-muted"><?php  echo $item['Amount']; ?></td>
-                                    <td class="text-center text-muted"><?php  echo $item['order_total_price']; ?></td>
+                                    <td class="text-center text-muted">
+                                        <?php  echo number_format($item['order_total_price'], 0, ',', '.'); ?></td>
 
 
                                     <td class="text-center">

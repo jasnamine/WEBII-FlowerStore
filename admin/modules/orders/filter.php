@@ -2,6 +2,7 @@
 require_once '../lib/database.php';
 require_once '../lib/session.php';
 require_once '../helpers/format.php';
+$pageTitle = "Order";
 $sql = "SELECT o.order_ID AS ID,
                           c.customer_username AS Customer,
                           o.order_address AS Address,
@@ -46,6 +47,7 @@ if(isPost()){
   if(!empty($filterAll['status'])){
     $sql .= " AND order_status ='$status'";
   }
+  setFlashData('old', $filterAll);
 }
 
 // echo $sql;
@@ -54,5 +56,6 @@ $sql .= " GROUP BY order_ID, c.customer_username, o.order_address, 'o.order_tota
 
 // $sql .=" ORDER BY order_ID DESC";
 $listOrders = getRow($sql);
+$old = getFlashData('old');
 
 ?>

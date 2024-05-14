@@ -38,13 +38,13 @@ include 'inc/header.php';
                     <div class="form-group col-md-2">
                         <label for="startDate">From:</label>
                         <input type="date" id="startDate" name="startDate" data-date="" data-date-format="YYYY MM DD"
-                            class="form-control">
+                            value="<?php echo old('startDate', $old); ?>" class="form-control">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="endDate">To:</label>
                         <input type="date" id="endDate" name="endDate" class="form-control" data-date=""
-                            data-date-format="YYYY MM DD">
+                            value="<?php echo old('endDate', $old); ?>" data-date-format="YYYY MM DD">
                     </div>
 
                     <div class="form-group col-md-2 align-self-end">
@@ -99,7 +99,8 @@ include 'inc/header.php';
                                     <td class="text-center text-muted"><?php echo $item['customer_username']; ?></td>
                                     <td class="text-center text-muted"><?php echo $item['customer_email']; ?></td>
                                     <td class="text-center text-muted"><?php echo $item['customer_phone']; ?></td>
-                                    <td class="text-center"><?php echo $item['Total']; ?></td>
+                                    <td class="text-center"><?php echo number_format($item['Total'], 0, ',', '.'); ?>
+                                    </td>
                                     <td class="text-center">
                                         <a href="./order-details.php?username=<?php echo $item['customer_username']; ?>"
                                             class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">

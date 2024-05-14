@@ -131,7 +131,8 @@ include 'inc/header.php';
                                         </div>
                                     </td>
                                     <td class="text-center"><?php echo $detail['od_quantity']; ?></td>
-                                    <td class="text-center"><?php echo $detail['od_price']; ?></td>
+                                    <td class="text-center">
+                                        <?php echo number_format($detail['od_price'], 0, ',', '.'); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -145,7 +146,9 @@ include 'inc/header.php';
                                 <tr>
 
                                     <th style="float: right; font-size: 20px; margin-right: 5%;">
-                                        <?php  echo 'Order total: ' . ' ' . $orderDetails[0]['order_total_price'];?>
+                                        <?php echo 'Order total: ' . number_format($orderDetails[0]['order_total_price'], 0, ',', '.'); ?>
+
+
                                     </th>
                                 </tr>
                             </thead>

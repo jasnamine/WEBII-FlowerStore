@@ -240,7 +240,8 @@ include 'inc/header.php';
                                     <td class="text-center">
                                         <?php  echo $item['od_quantity']; ?>
                                     </td>
-                                    <td class="text-center"><?php  echo $item['od_price']; ?></td>
+                                    <td class="text-center">
+                                        <?php  echo number_format($item['od_price'], 0, ',', '.'); ?></td>
 
                                 </tr>
                                 <?php endforeach; endif; ?>
@@ -257,7 +258,7 @@ include 'inc/header.php';
                                 <tr>
 
                                     <th style="float: right; font-size: 20px; margin-right: 5%;">
-                                        <?php  echo 'Order total: ' . ' ' . $listOrders[0]['order_total_price']; ?>
+                                        <?php  echo 'Order total: ' . ' ' . number_format($listOrders[0]['order_total_price'], 0, ',', '.'); ?>
                                     </th>
                                 </tr>
                             </thead>
