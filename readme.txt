@@ -16,10 +16,11 @@ user: root
 pass: ''
 
 ------------------------------------ Customers accounts --------------------------------
+
 username: hongphucledoan 
 password: Phuc@2004
 
-
+(banned accounts: customer_status=0)
 username: quynhhuong
 password: Qhuong@2004
 
@@ -38,6 +39,10 @@ password: Testing@123
 username: testing9999
 password: Testing@9999
 
+username: conbaosondo
+password: Conbaoson@2004
+
 ------------------------------------ Admin accounts --------------------------------
+
 username: admin
 password: admin
