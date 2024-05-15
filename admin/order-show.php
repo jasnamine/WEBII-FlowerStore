@@ -179,14 +179,13 @@ include 'inc/header.php';
                                 }
 
                                 if ($listOrders[0]['Status'] == "Accepted/Delivering") {
-                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=3"><button style="background-color: blue;" class="btn btn-primary btn-sm mr-2">Delivered</button></a>';
+                                    echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=3&prd_status=3"><button style="background-color: blue;" class="btn btn-primary btn-sm mr-2">Delivered</button></a>';
+
                                     echo '<a href="./order-status.php?id=' . $listOrders[0]['order_ID'] . '&status=4"><button style="background-color: red;" class="btn btn-primary btn-sm mr-2">Canceled</button></a>';
                                 } else {
                                     echo '';
                                 }
                                 ?>
-
-
 
                             </div>
                         </div>

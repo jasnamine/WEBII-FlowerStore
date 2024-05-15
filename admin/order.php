@@ -19,7 +19,7 @@ include 'inc/header.php';
                     <div>
                         Order
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            View and manage.
                         </div>
                     </div>
                 </div>
@@ -33,10 +33,7 @@ include 'inc/header.php';
         <div class="page-title-wrapper">
             <!-- Thêm nút "Filter" -->
 
-            <button id="filterButton" class="btn btn-primary " style="margin-bottom: 2%;">
 
-                <i class="pe-7s-filter icon-gradient bg-white" style="color: #ffffff"></i>
-            </button>
 
             <!-- Form lọc -->
             <div class="" id="filterForm">
@@ -101,55 +98,13 @@ include 'inc/header.php';
                 </form>
             </div>
 
-            <!-- <script>
-            // Lấy thẻ div chứa form filter
-            var filterForm = document.getElementById("filterForm");
-
-            // Lấy nút "Filter"
-            var filterButton = document.getElementById("filterButton");
-
-            // Gắn sự kiện click cho nút "Filter"
-            filterButton.addEventListener("click", function() {
-                // Kiểm tra trạng thái hiện tại của form filter
-                if (filterForm.style.display === "none") {
-                    // Nếu form đang bị ẩn, hiển thị nó lên
-                    filterForm.style.display = "block";
-                } else {
-                    // Nếu form đang hiển thị, ẩn nó đi
-                    filterForm.style.display = "none";
-                }
-            });
-            </script> -->
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
 
-                    <div class="card-header">
 
-                        <form>
-                            <div class="input-group">
-                                <input type="search" name="search" id="search" placeholder="Search everything"
-                                    class="form-control">
-                                <span class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-search"></i>&nbsp;
-                                        Search
-                                    </button>
-
-                                </span>
-                            </div>
-                        </form>
-
-                        <div class="btn-actions-pane-right">
-                            <div role="group" class="btn-group-sm btn-group">
-                                <button class="btn btn-focus">This week</button>
-                                <button class="active btn btn-focus">Anytime</button>
-                            </div>
-                        </div>
-
-                    </div>
 
                     <div class="table-responsive">
                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">

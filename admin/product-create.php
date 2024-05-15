@@ -4,6 +4,7 @@ require_once './modules/products/add.php';
 require_once './modules/categories/list.php';
 $pageTitle = "Create product";
 ?>
+
 <?php
 include 'inc/header.php';
 ?>
@@ -71,7 +72,7 @@ include 'inc/header.php';
                                             <button type="submit"
                                                 onclick="return confirm('Do you really want to delete this item?')"
                                                 class="btn btn-sm btn-outline-danger border-0 position-absolute">
-                                                <i class="fas fa-times"></i>
+                                                <!-- <i class="fas fa-times"></i> -->
                                             </button>
                                             <div style="width: 100%; max-height: 220px; overflow: hidden;">
                                                 <?php $imgSrc = old('prd_img', $old, 'assets/images/add-image-icon.jpg'); ?>
@@ -127,7 +128,7 @@ include 'inc/header.php';
                             </div>
 
                             <div class="position-relative row form-group mb-1">
-                                <div class="col-md-9 col-xl-8 offset-md-2">
+                                <div class="col-md-9 col-xl-8 offset-md-3">
                                     <!-- <a href="#" class="border-0 btn btn-outline-danger mr-1">
                                         <span class="btn-icon-wrapper pr-1 opacity-8">
                                             <i class="fa fa-times fa-w-20"></i>

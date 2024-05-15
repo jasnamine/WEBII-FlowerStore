@@ -19,7 +19,6 @@ $listOrders = getRow("SELECT o.*,
                             WHEN o.order_status = 3 THEN 'Delivered'
                             WHEN o.order_status = 4 THEN 'Canceled'
                         END AS Status
-
                     FROM 
                         orders o
                     INNER JOIN 

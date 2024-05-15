@@ -1,6 +1,7 @@
 <?php
 require_once './modules/categories/list.php';
 
+
 ?>
 <?php
 require_once '../lib/session.php';
@@ -24,7 +25,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Language" content="en" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo $pageTitle; ?></title>
+    <title>
+        <?php echo $pageTitle ?> </title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description"
@@ -63,8 +65,14 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         <div class="app-header header-shadow">
-            <!-- <div class="app-header__logo">
-                <div class="logo-src"></div>
+            <div class="app-header__logo">
+                <div class="logo-admin">
+                    <a class="navbar-brand" href="index.php"
+                        style="color: #000000; font-weight: 700; font-size: 24px; position: relative; text-transform: uppercase;">
+                        Flower <span style="font-weight: 700;color: #b7472a;">store</span>
+                    </a>
+                </div>
+
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -75,7 +83,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                         </button>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <div class="app-header__mobile-menu">
                 <div>
                     <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
@@ -100,7 +108,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                     <div class="search-wrapper">
                         <div class="input-holder">
                             <input type="text" class="search-input" placeholder="Type to search" />
-                            <button class="search-icon"><span></span></button>
+
                         </div>
                         <button class="close"></button>
                     </div>
@@ -166,7 +174,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
-                <!-- <div class="app-header__logo">
+                <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
                         <div>
@@ -178,7 +186,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                             </button>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="app-header__mobile-menu">
                     <div>
                         <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
@@ -260,54 +268,54 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                 </div>
             </div>
             <script>
-                document.addEventListener("DOMContentLoaded",
-                    function() {
-                        // Lưu trữ dropdown của product
-                        var productDropdown = document.querySelector(
-                            '.app-sidebar .mm-dropdown');
+            document.addEventListener("DOMContentLoaded",
+                function() {
+                    // Lưu trữ dropdown của product
+                    var productDropdown = document.querySelector(
+                        '.app-sidebar .mm-dropdown');
 
-                        // Lắng nghe sự kiện click trên menu
-                        var menuItems = document.querySelectorAll(
-                            '.app-sidebar .vertical-nav-menu li');
-                        menuItems.forEach(function(item) {
-                            item.addEventListener('click',
-                                function() {
-                                    // Lấy tiêu đề của menu item được click
-                                    var menuItemTitle = this
-                                        .querySelector('a')
-                                        .innerText.trim();
+                    // Lắng nghe sự kiện click trên menu
+                    var menuItems = document.querySelectorAll(
+                        '.app-sidebar .vertical-nav-menu li');
+                    menuItems.forEach(function(item) {
+                        item.addEventListener('click',
+                            function() {
+                                // Lấy tiêu đề của menu item được click
+                                var menuItemTitle = this
+                                    .querySelector('a')
+                                    .innerText.trim();
 
-                                    // Kiểm tra nếu menu item được click là "Product"
-                                    if (menuItemTitle ===
-                                        'Product') {
-                                        // Loại bỏ lớp mm-active khỏi tất cả các menu items
-                                        menuItems.forEach(
-                                            function(
-                                                innerItem
-                                            ) {
-                                                innerItem
-                                                    .classList
-                                                    .remove(
-                                                        'mm-active'
-                                                    );
-                                            });
+                                // Kiểm tra nếu menu item được click là "Product"
+                                if (menuItemTitle ===
+                                    'Product') {
+                                    // Loại bỏ lớp mm-active khỏi tất cả các menu items
+                                    menuItems.forEach(
+                                        function(
+                                            innerItem
+                                        ) {
+                                            innerItem
+                                                .classList
+                                                .remove(
+                                                    'mm-active'
+                                                );
+                                        });
 
-                                        // Thêm lớp mm-active cho menu item được chọn
-                                        this.classList.add(
-                                            'mm-active');
-                                    } else {
-                                        // Ẩn dropdown của product khi click vào các menu item khác ngoại trừ Product
-                                        productDropdown
-                                            .classList
-                                            .remove(
-                                                'mm-show');
-                                        productDropdown
-                                            .lastElementChild
-                                            .classList
-                                            .remove(
-                                                'mm-show');
-                                    }
-                                });
-                        });
+                                    // Thêm lớp mm-active cho menu item được chọn
+                                    this.classList.add(
+                                        'mm-active');
+                                } else {
+                                    // Ẩn dropdown của product khi click vào các menu item khác ngoại trừ Product
+                                    productDropdown
+                                        .classList
+                                        .remove(
+                                            'mm-show');
+                                    productDropdown
+                                        .lastElementChild
+                                        .classList
+                                        .remove(
+                                            'mm-show');
+                                }
+                            });
                     });
+                });
             </script>

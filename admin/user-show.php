@@ -26,28 +26,7 @@ $pageTitle = "View user";
             </div>
         </div>
 
-        <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
-            <li class="nav-item">
-                <a href="./user-edit.php" class="nav-link">
-                    <span class="btn-icon-wrapper pr-2 opacity-8">
-                        <i class="fa fa-edit fa-w-20"></i>
-                    </span>
-                    <span>Edit</span>
-                </a>
-            </li>
 
-            <li class="nav-item delete">
-                <form action="" method="post">
-                    <button class="nav-link btn" type="submit"
-                        onclick="return confirm('Do you really want to delete this item?')">
-                        <span class="btn-icon-wrapper pr-2 opacity-8">
-                            <i class="fa fa-trash fa-w-20"></i>
-                        </span>
-                        <span>Delete</span>
-                    </button>
-                </form>
-            </li>
-        </ul>
 
         <div class="row">
             <div class="col-md-12">

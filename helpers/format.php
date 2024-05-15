@@ -118,7 +118,8 @@ function isPhone($phone){
     return false;
 
 }  
-//Thông báo lỗi
+
+// Hàm thông báo lỗi
 function getMsg($msg, $type = 'danger') {
     echo '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">';
     echo $msg;
@@ -128,11 +129,7 @@ function getMsg($msg, $type = 'danger') {
     echo '</div>';
 }
 
-// // Hàm chuyển hướng
-// function redirect($path='') {
-//     header("Location: $path");
-//     exit();
-// }
+ // Hàm chuyển hướng
 function redirect($url){
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -140,7 +137,6 @@ function redirect($url){
     header('Location: ' . $url);
     exit();
 }
-
 
 // Hàm thông báo error cho form
 function form_error($fileName, $beforeHtml='', $afterHtml='', $errors){
@@ -153,9 +149,24 @@ function old($fileName, $oldData, $default = null){
     return (!empty($oldData[$fileName])) ? $oldData[$fileName] : $default;
 }
 
-// function old($field, $oldData, $default = '') {
-//   return isset($oldData[$field]) ? $oldData[$field] : $default;
-// }
+// Hamf validate username
+function isValidUsername($username) {
+    $usernameRegex = "/^[a-zA-Z0-9_]{1,32}$/";
+    return preg_match($usernameRegex, $username);
+}
+
+// Hàm validate email
+function isValidEmail($email) {
+    $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    return preg_match($emailRegex, $email);
+}
+
+// Hàm validate pw
+function isValidPassword($password) {
+    $passwordRegex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$^&*+=])[A-Za-z\d@#$^&*+=]{8,20}$/";
+    return preg_match($passwordRegex, $password);
+}
+
 
 
 

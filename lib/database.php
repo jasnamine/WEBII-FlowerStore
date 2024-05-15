@@ -113,8 +113,6 @@ function getRow($sql, $params = []) {
     return [];
 }
 
-
-
 // Hàm lấy một dòng dữ liệu từ cơ sở dữ liệu
 function oneRow($sql){
     $kq = query($sql, '', true);

@@ -27,7 +27,6 @@ $listOrders = getRow("SELECT
                     GROUP BY 
                          c.customer_username, o.order_address, 'o.order_total_price', o.order_status;
 
-
 ");
 
 

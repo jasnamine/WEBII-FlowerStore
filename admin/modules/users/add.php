@@ -9,23 +9,28 @@ if(isPost()){
     // mảng chứa các lỗi
     $errors = [];
 
-    // validate  username
-    if(empty($filterAll['username'])){
+        // validate username
+    if (empty($filterAll['username'])) {
         $errors['username']['required'] = 'Username is required';
-    }else{
+    } else if (!isValidUsername($filterAll['username'])) {
+        $errors['username']['invalid'] = 'Invalid username format';
+    } else {
         $username = $filterAll['username'];
         $sql = "SELECT customer_username FROM customers WHERE customer_username = '$username'";
-        if(countRows($sql) > 0){
-            $errors['username']['required'] = 'Username already exists';
-    }
+        if (countRows($sql) > 0) {
+            $errors['username']['exists'] = 'Username already exists';
+        }
     }
 
-    // validate fullname
+    // validate fullname empty
     
     // validate email
-    if(empty($filterAll['email'])){
-            $errors['email']['required'] = 'Invalid email';
+    if (empty($filterAll['email'])) {
+        $errors['email']['required'] = 'Email is required';
+    } else if (!isValidEmail($filterAll['email'])) {
+        $errors['email']['invalid'] = 'Invalid email format';
     }
+
 
     // validate phone
     if(!empty($filterAll['phone'])){
@@ -35,12 +40,13 @@ if(isPost()){
         
     }
 
-    
     // để trống validate city, district, address
 
     // validate password
-    if(empty($filterAll['password'])){
+    if (empty($filterAll['password'])) {
         $errors['password']['required'] = 'Password is required';
+    } else if (!isValidPassword($filterAll['password'])) {
+        $errors['password']['invalid'] = 'Invalid password format';
     }
 
     // validate confirm password

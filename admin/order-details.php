@@ -15,7 +15,7 @@ include 'inc/header.php';
                     <div>
                         Orders
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            View and manage.
                         </div>
                     </div>
                 </div>
@@ -93,9 +93,6 @@ include 'inc/header.php';
                                 <div class="badge badge-dark mt-2"><?php echo $orderDetails[0]['Status']; ?></div>
                             </div>
                         </div>
-
-
-
 
                     </div>
 

@@ -30,9 +30,11 @@ if (isPost()){
     // mảng chứa các lỗi
     $errors = [];
 
-    // validate email
-    if(empty($filterAll['email'])){
-            $errors['email']['required'] = 'Invalid email';
+        // validate email
+    if (empty($filterAll['email'])) {
+        $errors['email']['required'] = 'Email is required';
+    } else if (!isValidEmail($filterAll['email'])) {
+        $errors['email']['invalid'] = 'Invalid email format';
     }
 
     // validate phone
