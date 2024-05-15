@@ -54,7 +54,7 @@ $sql = "SELECT
             o.customer_username = '$usernameID' AND o.order_status = 3
         ";
 
-if(isPost()){
+if(isGet()){
   $filterAll = filter();
   $startDate = $filterAll['startDate'];
   $endDate = $filterAll['endDate'];

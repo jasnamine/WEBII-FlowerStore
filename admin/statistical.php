@@ -104,7 +104,7 @@ include 'inc/header.php';
                                     <td class="text-center"><?php echo number_format($item['Total'], 0, ',', '.'); ?>
                                     </td>
                                     <td class="text-center">
-                                        <a href="./order-details.php?username=<?php echo $item['customer_username']; ?>"
+                                        <a href="./order-details.php?username=<?php echo $item['customer_username']; ?>&startDate=<?php echo urlencode(old('startDate', $old)); ?>&endDate=<?php echo urlencode(old('endDate', $old)); ?>"
                                             class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                             Details
                                         </a>
