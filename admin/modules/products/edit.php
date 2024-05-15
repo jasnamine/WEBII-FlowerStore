@@ -14,14 +14,11 @@ $filterAll = filter();
 if(!empty($filterAll['id'])){
     $productID = $filterAll['id'];
 
-    //echo 'product id: ' . $productID;
-
     // Kiểm tra xem id có tồn tại trong products không
     $productDetail = oneRow("SELECT products.*,categories.cate_name AS name_cate FROM products JOIN categories ON products.cate_ID = categories.cate_ID WHERE prd_ID = '$productID'");
     if(!empty($productDetail)){
         setFlashData('product-detail', $productDetail);
-    }
-    else{
+    } else {
         redirect('product.php');
     }
 }
@@ -35,9 +32,8 @@ if(isPost()){
     // validate price
     if(empty($filterAll['price'])){
         $errors['price']['required'] = 'Price is required';
-    }
-    else{
-        if(empty($filterAll['price']) || !is_numeric($filterAll['price']) || $filterAll['price'] < 0 || $filterAll['price'] > 10000000) {
+    } else {
+        if(!is_numeric($filterAll['price']) || $filterAll['price'] < 0 || $filterAll['price'] > 10000000) {
             $errors['price']['invalid'] = 'Price must be between 0 and 10,000,000';
         }   
     }
@@ -46,7 +42,6 @@ if(isPost()){
     if(empty($filterAll['name'])){
         $errors['name']['required'] = 'Product name is required';
     }
-
 
     // validate desc
     if(empty($filterAll['description'])){
@@ -58,47 +53,46 @@ if(isPost()){
         $errors['product_category']['required'] = 'Category is required';
     }
 
-     // Kiểm tra kích thước tệp
+    // Kiểm tra kích thước tệp
     if ($_FILES["image"]["size"] > 2097152) { // 2MB
-        // Thêm thông báo lỗi vào mảng $errors nếu kích thước của tệp lớn hơn 4KB
         $errors['image']['size'] = "Image file size is too large. Please choose an image file smaller than 2MB.";
         $uploadOk = 0;
     }
 
-// Tiến hành tải lên nếu tất cả các điều kiện đều hợp lệ
-if ($uploadOk == 1) {
-    // Kiểm tra xem có file ảnh mới được chọn không
-    if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
-        // Đảm bảo rằng biến $target_file chứa đường dẫn đến tệp ảnh cần di chuyển
-        $target_file = $target_dir . basename($_FILES["image"]["name"]);
-        $imgPath = $_FILES['image']['name'];
+    // Tiến hành tải lên nếu tất cả các điều kiện đều hợp lệ
+    if ($uploadOk == 1) {
+        // Kiểm tra xem có file ảnh mới được chọn không
+        if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
+            // Đảm bảo rằng biến $target_file chứa đường dẫn đến tệp ảnh cần di chuyển
+            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            $imgPath = $_FILES['image']['name'];
 
-        // Thực hiện di chuyển file
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            echo "the file has been uploaded.";
-        } else {
-            // Thêm thông báo lỗi vào mảng $errors nếu có lỗi khi upload
-            $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+            // Thực hiện di chuyển file
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                // Cắt chuỗi "../" khỏi đường dẫn ảnh            
+                $target_file = str_replace('../', '', $target_file);
+                // Lưu đường dẫn tệp ảnh vào cơ sở dữ liệu
+                $imgPath = $target_file;
+            } else {
+                $errors['image']['upload'] = "Sorry, there was an error uploading your file.";
+            }
         }
     }
-}
 
     // có lỗi
     if(!empty($errors)){
-       setFlashData('msgProE', 'Please check your data again');
-       setFlashData('msg_typeProE', 'danger');
-       setFlashData('errors', $errors);
-       setFlashData('old', $filterAll);
+        setFlashData('msgProE', 'Please check your data again');
+        setFlashData('msg_typeProE', 'danger');
+        setFlashData('errors', $errors);
+        setFlashData('old', $filterAll);
         
-    }
-    // không up ảnh
-    else if((!isset($_FILES['image']) || empty($_FILES['image']['name']))){
-               $data = [
+    } else if((!isset($_FILES['image']) || empty($_FILES['image']['name']))){
+        $data = [
             'prd_name' => $filterAll['name'],
-            
             'prd_price' => $filterAll['price'],
             'prd_description' => $filterAll['description'],
-            //'cate_ID' => $filterAll['product_category']
+            'prd_img' => isset($productDetail['prd_img']) ? $productDetail['prd_img'] : '', // giữ nguyên ảnh cũ nếu không có ảnh mới
+            'cate_ID' => $filterAll['product_category']
         ];
 
         $update = update('products', $data, "prd_ID = '$productID'");
@@ -107,18 +101,15 @@ if ($uploadOk == 1) {
             setFlashData('msgProE', 'Update successful');
             setFlashData('msg_typeProE', 'success');
             redirect('product-edit.php?id='. $productID);
-            
         }
             
-    }
-    // úp ảnh
-    else if(empty($error)){
-            $dataUpdate = [
+    } else if(empty($errors)){
+        $dataUpdate = [
             'prd_name' => $filterAll['name'],
-            'prd_img' => $target_file,
+            'prd_img' => $imgPath,
             'prd_price' => $filterAll['price'],
             'prd_description' => $filterAll['description'],
-            //'cate_ID' => $filterAll['product_category']
+            'cate_ID' => $filterAll['product_category']
         ];
 
         $updateProduct = update('products', $dataUpdate, "prd_ID = '$productID'");
@@ -127,10 +118,8 @@ if ($uploadOk == 1) {
             setFlashData('msgProE', 'Update successful');
             setFlashData('msg_typeProE', 'success');
             redirect('product-edit.php?id='. $productID);
-            
         }
     }
-
 }
 
 $msgProE = getFlashData('msgProE');
@@ -142,5 +131,6 @@ $productDetail = getFlashData('product-detail');
 if(!empty($productDetail)){
     $old = $productDetail;
 }
+
 
 ?>

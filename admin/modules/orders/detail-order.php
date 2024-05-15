@@ -38,8 +38,6 @@ $listOrders = getRow("SELECT SUM(od.od_quantity) AS Amount,
                     GROUP BY
                         o.order_ID, od.od_ID
 
-                       
-
 
 ");
 

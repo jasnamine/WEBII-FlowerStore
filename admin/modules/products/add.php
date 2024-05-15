@@ -131,13 +131,14 @@ $filterAll = filter();
             // Đường dẫn tệp ảnh trên máy chủ
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             
-            // Kiểm tra và cắt chuỗi "../" khỏi đường dẫn ảnh
-            $target_file = str_replace('../', '', $target_file);
-            
+            echo $target_file;
             // Di chuyển và lưu tệp ảnh vào thư mục images
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                // Cắt chuỗi "../" khỏi đường dẫn ảnh            
+                $target_file = str_replace('../', '', $target_file);
                 // Lưu đường dẫn tệp ảnh vào cơ sở dữ liệu
                 $imgPath = $target_file;
+
 
                 // Tiếp tục với các xử lý khác như lưu dữ liệu vào cơ sở dữ liệu
                 // Ví dụ:

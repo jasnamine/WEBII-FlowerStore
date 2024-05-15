@@ -19,7 +19,7 @@ $pageTitle = "View product";
                     <div>
                         Product
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            View and manage.
                         </div>
                     </div>
                 </div>
@@ -30,9 +30,6 @@ $pageTitle = "View product";
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
-
-
-
                         <div class="position-relative row form-group">
                             <label for="" class="col-md-3 text-md-right col-form-label">Images</label>
                             <div class="col-md-9 col-xl-8">

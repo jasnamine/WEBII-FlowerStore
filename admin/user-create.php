@@ -109,7 +109,7 @@ $pageTitle = "Create user";
                             <div class="position-relative row form-group">
                                 <label for="password" class="col-md-3 text-md-right col-form-label">Password</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input name="password" id="password" placeholder="Password" type="password"
+                                    <input name="password" id="password" placeholder="ex: Username@123" type="password"
                                         class="form-control" value="">
 
                                     <?php echo form_error('password', '<span class="error">', '</span>', $errors); ?>

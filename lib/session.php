@@ -17,20 +17,6 @@ function getSession($key=''){
     }
 }
 
-//Hàm removeSession: Xóa session hoặc key từ session
-// function removeSession(){
-//     if(empty($key)){
-//         session_destroy();
-//         return true;
-//     }
-//     else{
-//         if(isset($_SESSION[$key])){
-//             unset($_SESSION[$key]);
-//             return true;
-//         }
-//     }
-// }
-
 // hàm hủy session
 function removeSession($key = '') {
     if (session_status() === PHP_SESSION_NONE) {
@@ -54,59 +40,6 @@ function destroySession() {
     session_destroy();
     header('Location: login.php');
 }
-
-// Hàm setFlashData: Thiết lập dữ liệu flash vào session
-// function setFlashData($key, $value){
-//         if (session_status() == PHP_SESSION_NONE) {
-//     session_start();}
-//     $key = 'flash_' .$key;
-//     return setSession($key, $value);
-// }
-
-// Hàm getFlashData: Lấy dữ liệu flash từ session và xóa nó sau khi lấy
-// function getFlashData($key){
-//         if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-//         }
-//     $key = 'flash_' .$key;
-//     $data = getSession($key);
-//     removeSession($key);
-//     return $data;
-
-// }
-
-// function getFlashData($key){
-//     if (session_status() === PHP_SESSION_NONE) {
-//         session_start();
-//     }
-//     $key = 'flash_' . $key;
-//     if (isset($_SESSION[$key])) {
-//         $value = $_SESSION[$key];
-//         unset($_SESSION[$key]);
-//         return $value;
-//     }
-//     return null;
-// }
-
-
-// function setFlashData($key, $value) {
-//     if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-// }
-//     $_SESSION[$key] = $value;
-// }
-
-// function getFlashData($key) {
-//     if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-// }
-//     if(isset($_SESSION[$key])) {
-//         $value = $_SESSION[$key];
-//         unset($_SESSION[$key]); // Make sure to unset if it's only meant to be used once
-//         return $value;
-//     }
-//     return null;
-// }
 
 function setFlashData($key, $value) {
     if (session_status() === PHP_SESSION_NONE) {
@@ -143,7 +76,6 @@ function checkSession($key) {
         exit(); 
     }
 }
-
 
 // Hàm kiểm tra đăng nhập
 function checkLogin() {

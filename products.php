@@ -76,12 +76,15 @@ function changeCateName($cate_ID) {
 
 // Hiển thị tiêu đề banner
 ?>
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg');"
+    data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate mb-5 text-center">
-                <p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Products <i class="fa fa-chevron-right"></i></span></p>
+                <p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i
+                                class="fa fa-chevron-right"></i></a></span> <span>Products <i
+                            class="fa fa-chevron-right"></i></span></p>
                 <h2 class="mb-0 bread">Products</h2>
             </div>
         </div>
@@ -102,10 +105,14 @@ function changeCateName($cate_ID) {
                             ?>
                             <!-- Dropdown để chọn loại sản phẩm -->
                             <select name="type[]" class="selectpicker" multiple onchange="this.form.submit()">
-                                <option value="1" <?php if (in_array('1', $selectedTypes)) echo 'selected'; ?>>Grand Opening Flowers</option>
-                                <option value="2" <?php if (in_array('2', $selectedTypes)) echo 'selected'; ?>>Wedding Flowers</option>
-                                <option value="3" <?php if (in_array('3', $selectedTypes)) echo 'selected'; ?>>Valentine Flowers</option>
-                                <option value="4" <?php if (in_array('4', $selectedTypes)) echo 'selected'; ?>>Graduation Flowers</option>
+                                <option value="1" <?php if (in_array('1', $selectedTypes)) echo 'selected'; ?>>Grand
+                                    Opening Flowers</option>
+                                <option value="2" <?php if (in_array('2', $selectedTypes)) echo 'selected'; ?>>Wedding
+                                    Flowers</option>
+                                <option value="3" <?php if (in_array('3', $selectedTypes)) echo 'selected'; ?>>Valentine
+                                    Flowers</option>
+                                <option value="4" <?php if (in_array('4', $selectedTypes)) echo 'selected'; ?>>
+                                    Graduation Flowers</option>
                             </select>
                         </form>
                     </div>
@@ -118,6 +125,7 @@ function changeCateName($cate_ID) {
                         $search_query = $_GET['search'];
                         $search_query = "%$search_query%";
                         $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE prd_name LIKE ? LIMIT $products_per_page OFFSET $offset";
+                        
                         $stmt = $conn->prepare($sql);
                         $stmt->bind_param("s", $search_query);
                         $stmt->execute();
@@ -278,10 +286,12 @@ function changeCateName($cate_ID) {
                         <h3 class="mt-4 mb-2">Filter by Price</h3>
                         <form class="row" method="get">
                             <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" name="minPrice" id="minPrice" placeholder="From" min="0" max="100000000">
+                                <input type="number" class="form-control-price" name="minPrice" id="minPrice"
+                                    placeholder="From" min="0" max="100000000">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="number" class="form-control-price" name="maxPrice" id="maxPrice" placeholder="To" min="0" max="100000000">
+                                <input type="number" class="form-control-price" name="maxPrice" id="maxPrice"
+                                    placeholder="To" min="0" max="100000000">
                             </div>
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-primary btn-block">Apply</button>
