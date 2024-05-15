@@ -53,8 +53,8 @@ if (isset($_GET['prd_ID'])) {
 			<div class="container">
 				<div class="row no-gutters slider-text align-items-end justify-content-center">
 					<div class="col-md-9 ftco-animate mb-5 text-center">
-						<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i
-										class="fa fa-chevron-right"></i></a></span> <span><a href="product.html">Products <i
+						<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.php">Home <i
+										class="fa fa-chevron-right"></i></a></span> <span><a href="product.php">Products <i
 										class="fa fa-chevron-right"></i></a></span> <span>Products Single <i
 									class="fa fa-chevron-right"></i></span></p>
 						<h2 class="mb-0 bread">Product's detail</h2>
@@ -137,37 +137,6 @@ if (isset($_GET['prd_ID'])) {
 			</div>
 		</form>	
 		</section>
-		<script type="text/javascript"> 
-		// JavaScript
-		document.addEventListener("DOMContentLoaded", function() {
-			// Lấy modal
-			var e_modal = document.getElementById('ErrorModal');
-
-			// Lấy nút đóng modal
-			var closeButton = document.getElementsByClassName('error-close')[0];
-
-			// Khi người dùng nhấn nút đóng hoặc nút OK
-			function closeModal() {
-				e_modal.style.display = "none";
-				// console.log('OK btn submit');
-			}
-
-			// Khi người dùng nhấn nút đóng
-			closeButton.onclick = function() {
-				closeModal();
-			};
-
-			// Khi người dùng nhấn nút OK
-			document.getElementById('modalOkBtn').onclick = function() {
-				closeModal();
-			};
-
-			// Hiển thị model
-			<?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
-				e_modal.style.display = "block";
-			<?php endif; ?>
-		});
-    	</script>
 	<?php
     } else {
         // Hiển thị thông báo nếu không tìm thấy sản phẩm
@@ -180,6 +149,38 @@ if (isset($_GET['prd_ID'])) {
 	header("Location: index.php");
 }
 ?>
+
+<script type="text/javascript"> 
+// JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+	// Lấy modal
+	var e_modal = document.getElementById('ErrorModal');
+
+	// Lấy nút đóng modal
+	var closeButton = document.getElementsByClassName('error-close')[0];
+
+	// Khi người dùng nhấn nút đóng hoặc nút OK
+	function closeModal() {
+		e_modal.style.display = "none";
+		// console.log('OK btn submit');
+	}
+
+	// Khi người dùng nhấn nút đóng
+	closeButton.onclick = function() {
+		closeModal();
+	};
+
+	// Khi người dùng nhấn nút OK
+	document.getElementById('modalOkBtn').onclick = function() {
+		closeModal();
+	};
+
+	// Hiển thị model
+	<?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
+		e_modal.style.display = "block";
+	<?php endif; ?>
+});
+</script>
 
 <?php
 include 'include/footer.php';

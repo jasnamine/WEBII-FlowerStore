@@ -74,14 +74,6 @@
 						</p>
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media mr-4">
-							<p class="mb-0 d-flex">
-								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-							</p>
-						</div>
 						<div class="reg">
 							<p class="mb-0">
 								<?php if (isset($_SESSION['username'])) { ?>
@@ -164,7 +156,6 @@
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-						<li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 						<li class="nav-item dropdown active"><a class="nav-link " href="products.php">Products</a></li>
 					</ul>
 				</div>
