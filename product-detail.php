@@ -63,7 +63,7 @@ include 'include/header.php'
 							}
 							echo "</ul>";
 							?>
-							<p class="price" style="font-size: 18px;"><span class="price-value"><?php echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>'; ?></span></p>
+							<p class="price" style="font-size: 18px;"><span class="price-value"><?php echo '<span class="name">' . number_format($row["prd_price"], 0, ',', '.') . ' VND</span>'; ?></span></p>
 							
 							<div class="row mt-4">
 								<div class="input-group col-md-6 d-flex mb-3">

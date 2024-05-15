@@ -20,17 +20,29 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $products_per_page;
 
 // Tính toán số lượng trang
-if (isset($_GET['type']) && !empty($_GET['type'])) {
-    $selectedTypes = $_GET['type'];
-    $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
-    
-    // Đếm số lượng sản phẩm theo loại đã chọn
-    $placeholders = implode(',', array_fill(0, count($selectedTypes), '?'));
-    $total_products_sql = "SELECT COUNT(*) AS total FROM products WHERE cate_ID IN ($placeholders)";
-    $stmt = $conn->prepare($total_products_sql);
-    $stmt->bind_param(str_repeat('i', count($selectedTypes)), ...$selectedTypes);
-    $stmt->execute();
-    $total_products_result = $stmt->get_result();
+if ((isset($_GET['type']) && !empty($_GET['type'])) || (isset($_GET['search']) && !empty($_GET['search']))) {
+    // Kiểm tra nếu có loại sản phẩm được chọn hoặc có từ khóa tìm kiếm
+    if (isset($_GET['type']) && !empty($_GET['type'])) {
+        $selectedTypes = $_GET['type'];
+        $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
+
+        // Đếm số lượng sản phẩm theo loại đã chọn
+        $placeholders = implode(',', array_fill(0, count($selectedTypes), '?'));
+        $total_products_sql = "SELECT COUNT(*) AS total FROM products WHERE cate_ID IN ($placeholders)";
+        $stmt = $conn->prepare($total_products_sql);
+        $stmt->bind_param(str_repeat('i', count($selectedTypes)), ...$selectedTypes);
+        $stmt->execute();
+        $total_products_result = $stmt->get_result();
+    } elseif (isset($_GET['search']) && !empty($_GET['search'])) {
+        // Đếm số lượng sản phẩm theo từ khóa tìm kiếm
+        $search_query = $_GET['search'];
+        $search_query = "%$search_query%";
+        $total_products_sql = "SELECT COUNT(*) AS total FROM products WHERE prd_name LIKE ?";
+        $stmt = $conn->prepare($total_products_sql);
+        $stmt->bind_param("s", $search_query);
+        $stmt->execute();
+        $total_products_result = $stmt->get_result();
+    }
 } else {
     // Đếm số lượng sản phẩm tổng cộng
     $total_products_sql = "SELECT COUNT(*) AS total FROM products";
@@ -41,6 +53,7 @@ $total_products_row = $total_products_result->fetch_assoc();
 $total_products = $total_products_row['total'];
 
 $total_pages = ceil($total_products / $products_per_page);
+
 
 // Hiển thị tiêu đề banner
 ?>
@@ -67,9 +80,6 @@ $total_pages = ceil($total_products / $products_per_page);
                             <?php
                             // Lấy các loại sản phẩm được chọn từ URL
                             $selectedTypes = isset($_GET['type']) ? $_GET['type'] : [];
-                            foreach ($selectedTypes as $type) {
-                                echo '<input type="hidden" name="type[]" value="' . htmlspecialchars($type) . '">';
-                            }
                             ?>
                             <!-- Dropdown để chọn loại sản phẩm -->
                             <select name="type[]" class="selectpicker" multiple onchange="this.form.submit()">
@@ -87,9 +97,9 @@ $total_pages = ceil($total_products / $products_per_page);
                     // Tìm kiếm sản phẩm
                     if (isset($_GET['search']) && !empty($_GET['search'])) {
                         $search_query = $_GET['search'];
-                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_name LIKE ?";
-                        $stmt = $conn->prepare($sql);
                         $search_query = "%$search_query%";
+                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price FROM products WHERE prd_name LIKE ? LIMIT $products_per_page OFFSET $offset";
+                        $stmt = $conn->prepare($sql);
                         $stmt->bind_param("s", $search_query);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -177,14 +187,13 @@ $total_pages = ceil($total_products / $products_per_page);
                     ?>
                 </div>
                 <!-- Phân trang -->
-                <?php if (isset($_GET['type'])): ?>
                 <div class="row mt-5">
                     <div class="col text-center">
                         <div class="block-27">
                             <ul>
                                 <?php
                                 if ($current_page > 1) {
-                                    echo "<li><a href='?page=".($current_page - 1)."'>«</a></li>";
+                                    echo "<li><a href='?page=".($current_page - 1).(isset($_GET['type']) ? '&type[]=' . implode('&type[]=', $selectedTypes) : '').(isset($_GET['search']) ? '&search=' . $_GET['search'] : '')."'>«</a></li>";
                                 } else {
                                     echo "<li class='disabled'><span>«</span></li>";
                                 }
@@ -193,12 +202,12 @@ $total_pages = ceil($total_products / $products_per_page);
                                     if ($i == $current_page) {
                                         echo "<li class='active'><span>$i</span></li>";
                                     } else {
-                                        echo "<li><a href='?page=$i&type[]=" . implode('&type[]=', $selectedTypes) . "'>$i</a></li>";
+                                        echo "<li><a href='?page=$i".(isset($_GET['type']) ? '&type[]=' . implode('&type[]=', $selectedTypes) : '').(isset($_GET['search']) ? '&search=' . $_GET['search'] : '')."'>$i</a></li>";
                                     }
                                 }
 
                                 if ($current_page < $total_pages) {
-                                    echo "<li><a href='?page=".($current_page + 1)."&type[]=" . implode('&type[]=', $selectedTypes) . "'>»</a></li>";
+                                    echo "<li><a href='?page=".($current_page + 1).(isset($_GET['type']) ? '&type[]=' . implode('&type[]=', $selectedTypes) : '').(isset($_GET['search']) ? '&search=' . $_GET['search'] : '')."'>»</a></li>";
                                 } else {
                                     echo "<li class='disabled'><span>»</span></li>";
                                 }
@@ -207,7 +216,6 @@ $total_pages = ceil($total_products / $products_per_page);
                         </div>
                     </div>
                 </div>
-                <?php endif; ?>
                 <!-- End phân trang -->
             </div>
 

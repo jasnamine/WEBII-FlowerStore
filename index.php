@@ -50,7 +50,7 @@ include 'include/introduce.php';
 		<section class="ftco-section ftco-no-pb">
 			<div class="container">
 				<div class="row">
-				<div class="col-lg-2 col-md-4 ">
+				<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=4">
 							<div class="img" style="background-image: url(images/GraduationFlowers/SunnyDays.jpg);"></div>
@@ -58,7 +58,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=1">
 							<div class="img" style="background-image: url(images/GrandOpeningFlower/LuckyCharm.jpg);"></div>
@@ -66,7 +66,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=3">
 							<div class="img" style="background-image: url(images/ValentineFlower/BrightDay.jpg);"></div>
@@ -74,7 +74,7 @@ include 'include/introduce.php';
 						</a>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-4 ">
+					<div class="col-lg-3 col-md-3 ">
 						<div class="sort w-100 text-center ftco-animate">
 						<a href="products.php?type%5B%5D=2">
 							<div class="img" style="background-image: url(images/WeddingFlower/FirstLove.jpg);"></div>
@@ -247,7 +247,7 @@ include 'include/introduce.php';
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-4">
-						<a href="products.php" class="btn btn-primary d-block">View All Products <span class="fa fa-long-arrow-right"></span></a>
+						<a href="products.php" class="btn btn-primary d-block">View Products <span class="fa fa-long-arrow-right"></span></a>
 					</div>
 				</div>
 			</div>
