@@ -64,37 +64,29 @@ if (isset($_GET['prd_ID'])) {
 		</section>
 		<!--End banner-->
 
-		<section class="ftco-section">
-		<form method="post">
-            <input type="hidden" name="prd_ID" value="<?php echo $prd_ID; ?>">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 mb-5 ftco-animate">
-						<a href="<?php echo $product['prd_img']; ?>" class="image-popup prod-img-bg">
-						<img src="<?php echo $product['prd_img']; ?>" class="img-fluid" 
-							 alt="<?php echo $product['prd_name']; ?>">
-						</a>
-					</div>
-					<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-						<h3><?php echo $product['prd_name']; ?></h3>
-						<p><span>Designed With: </span></p>
-                		<?php
-                        echo "<ul>";
-                        foreach ($product_detail as $key => $value) {
-                            echo "<li><strong>$key:</strong> $value</li>";
-                        }
-                        echo "</ul>";
-                        ?>
-						<p class="price" style="font-size: 18px;">
-							<span class="price-value">
-								<?php echo '<span class="name">' . number_format($product["prd_price"],0,",",".") . ' VND</span>'; ?>
-							</span>
-						</p>
-
-						<div class="row mt-4">
-							<div class="input-group col-md-6 d-flex mb-3">
-								<span class="input-group-btn mr-2">
-									<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 mb-5 ftco-animate">
+							<a href="<?php echo $row['prd_img']; ?>" class="image-popup prod-img-bg"><img src="<?php echo $row['prd_img']; ?>" class="img-fluid" alt="<?php echo $row['prd_name']; ?>"></a>
+						</div>
+						<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+							<h3><?php echo $row['prd_name']; ?></h3>
+							<p><span>Designed With: </span></p>
+							
+							<?php
+							echo "<ul>";
+							foreach ($product_detail as $key => $value) {
+								echo "<li><strong>$key:</strong> $value</li>";
+							}
+							echo "</ul>";
+							?>
+							<p class="price" style="font-size: 18px;"><span class="price-value"><?php echo '<span class="name">' . number_format($row["prd_price"]) . ' VND</span>'; ?></span></p>
+							
+							<div class="row mt-4">
+								<div class="input-group col-md-6 d-flex mb-3">
+									<span class="input-group-btn mr-2">
+										<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
 										<i class="fa fa-minus"></i>
 									</button>
 								</span>

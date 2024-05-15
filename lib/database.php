@@ -1,6 +1,7 @@
 <?php
 require_once './lib/connect.php';
 
+
 // Hàm thực hiện truy vấn đến cơ sở dữ liệu
 function query($sql, $data = [], $check = false) {
     global $conn;
