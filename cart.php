@@ -85,7 +85,7 @@ function displayCartItems($username) {
 								<button class="btn btn-outline-secondary" type="button"
 									onclick="decreaseQuantity(this)">-</button>
 							</div>
-							<input type="text" name="quantity[<?php echo $item['od_ID']; ?>]" class="quantity form-control input-number" 
+							<input type="text" disabled name="quantity[<?php echo $item['od_ID']; ?>]" class="quantity form-control input-number" 
 								value="<?php echo $item['od_quantity']; ?>" min="1" max="100">
 							<div class="input-group-append">
 								<button class="btn btn-outline-secondary" type="button"

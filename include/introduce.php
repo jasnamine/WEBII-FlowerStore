@@ -1,5 +1,5 @@
 <!--introduce-->
-    <section class="ftco-section ftco-no-pb">
+    <section class="ftco-section ftco-no-pb" id="introduce_section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(images/fl_about2.jpg);">
@@ -21,5 +21,5 @@
 					</div>
 				</div>
 			</div>
-		</section>
-	<!--end introduce-->
+	</section>
+<!--end introduce-->

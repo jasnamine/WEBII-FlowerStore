@@ -122,21 +122,18 @@
 <script>
 $(document).ready(function() {
 
-    var quantitiy = 0;
-    $('.quantity-right-plus').click(function(e) {
+    var quantity = 0;
 
+    $('.quantity-right-plus').click(function(e) {
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
 
-        // If is not undefined
-
-        $('#quantity').val(quantity + 1);
-
-
-        // Increment
-
+        // If is not undefined and less than 100
+        if (!isNaN(quantity) && quantity < 100) {
+            $('#quantity').val(quantity + 1);
+        }
     });
 
     $('.quantity-left-minus').click(function(e) {
@@ -145,16 +142,15 @@ $(document).ready(function() {
         // Get the field name
         var quantity = parseInt($('#quantity').val());
 
-        // If is not undefined
-
-        // Increment
-        if (quantity > 0) {
+        // If is not undefined and greater than 1
+        if (!isNaN(quantity) && quantity > 1) {
             $('#quantity').val(quantity - 1);
         }
     });
 
 });
 </script>
+
 
 <script>
 //jQuery for password requirements

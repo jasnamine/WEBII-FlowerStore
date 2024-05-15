@@ -1,5 +1,5 @@
 <!--Start slider-->
-    <section class="ftco-section testimony-section img " style="background-image: url(images/fl_about.jpg); margin-bottom: 150px;">
+    <section class="ftco-section testimony-section img " style="background-image: url(images/fl_about.jpg);">
     	<div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center mb-5">
@@ -19,7 +19,7 @@
                     <div class="d-flex align-items-center">
                     	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
                     	<div class="pl-3">
-		                    <p class="name">Võ Hoàng Hà</p>
+		                    <p class="name">Hồng Phúc</p>
 		                    <span class="position">Marketing Manager</span>
 		                  </div>
 	                  </div>
@@ -34,7 +34,7 @@
                     <div class="d-flex align-items-center">
                     	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
                     	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
+		                    <p class="name">Quỳnh Hương</p>
 		                    <span class="position">Marketing Manager</span>
 		                  </div>
 	                  </div>
@@ -49,7 +49,7 @@
                     <div class="d-flex align-items-center">
                     	<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
                     	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
+		                    <p class="name">Duy Tín</p>
 		                    <span class="position">Marketing Manager</span>
 		                  </div>
 	                  </div>

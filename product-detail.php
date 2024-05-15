@@ -54,7 +54,7 @@ if (isset($_GET['prd_ID'])) {
 				<div class="row no-gutters slider-text align-items-end justify-content-center">
 					<div class="col-md-9 ftco-animate mb-5 text-center">
 						<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.php">Home <i
-										class="fa fa-chevron-right"></i></a></span> <span><a href="product.php">Products <i
+										class="fa fa-chevron-right"></i></a></span> <span><a href="products.php">Products <i
 										class="fa fa-chevron-right"></i></a></span> <span>Products Single <i
 									class="fa fa-chevron-right"></i></span></p>
 						<h2 class="mb-0 bread">Product's detail</h2>
@@ -98,8 +98,8 @@ if (isset($_GET['prd_ID'])) {
 										<i class="fa fa-minus"></i>
 									</button>
 								</span>
-								<input type="text" id="quantity" name="quantity" class="quantity form-control input-number"
-									value="1" min="1" max="100" style="color: #b7472a;">
+								<input type="text" disabled id="quantity" name="quantity" class="quantity form-control input-number"
+									value="1" min="1" max="100" style="color: #b7472a; margin-left:0">
 								<span class="input-group-btn ml-2">
 									<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 										<i class="fa fa-plus"></i>
