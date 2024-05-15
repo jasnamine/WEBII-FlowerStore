@@ -1,6 +1,6 @@
 <?php
 require_once './modules/categories/list.php';
-$pageTitle = "Category";
+
 
 ?>
 <?php
