@@ -266,5 +266,14 @@ function getTotalProducts($search_query = '', $selectedTypes = []) {
     return $totalProducts;
 }
 
+function updateOrderStatus($order_ID, $status){
+    $data = [
+        'order_status' => $status
+    ];
+    $condition = "order_ID = '$order_ID'";
+    $kq = update('orders',$data,$condition);
+    return $kq;
+}
+
 
 ?>
