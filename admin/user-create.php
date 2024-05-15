@@ -102,7 +102,8 @@ $pageTitle = "Create user";
                                 </label>
                                 <div class="col-md-9 col-xl-8">
                                     <input name="street_address" id="street_address" placeholder="Street Address"
-                                        type="text" class="form-control" value="">
+                                        type="text" class="form-control"
+                                        value="<?php echo old('street_address', $old); ?>">
                                 </div>
                             </div>
 
@@ -110,7 +111,7 @@ $pageTitle = "Create user";
                                 <label for="password" class="col-md-3 text-md-right col-form-label">Password</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input name="password" id="password" placeholder="ex: Username@123" type="password"
-                                        class="form-control" value="">
+                                        class="form-control" value="<?php echo old('password', $old); ?>">
 
                                     <?php echo form_error('password', '<span class="error">', '</span>', $errors); ?>
                                 </div>
@@ -121,7 +122,8 @@ $pageTitle = "Create user";
                                     Password</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input name="password_confirm" id="password_confirm" placeholder="Confirm Password"
-                                        type="password" class="form-control" value="">
+                                        type="password" class="form-control"
+                                        value="<?php echo old('password_confirm', $old); ?>">
 
                                     <?php echo form_error('password_confirm', '<span class="error">', '</span>', $errors); ?>
                                 </div>
