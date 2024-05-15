@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'My Account';
+
 ob_start();
 include 'include/header.php';
 ?>
@@ -33,6 +35,7 @@ else {
 ?>
 
 <?php
+// Xử lí cập nhật thông tin customer
 require "modules/auth/updatecustomer.php";
 
 $update_success_msg = "Update information successfully!";
@@ -40,10 +43,54 @@ $update_error_msg = "There was an error updating!";
 ?>
 
 <?php
+    //Xử lí logout
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         destroySession();
         ob_end_flush();
     }
+?>
+
+<?php
+
+    // Hàm hiển thị danh sách hóa đơn
+    function displayOrders($username) {
+    // Lấy danh sách hóa đơn của người dùng
+    $orders = getAllOrders($username);
+
+    // Kiểm tra nếu có hóa đơn
+    if ($orders) {
+        $no=1;
+        foreach ($orders as $order) {
+            $orderDate = date("d/m/Y", strtotime($order['order_date']));
+            $orderTotal = number_format($order['order_total_price'], 0, ',', '.');
+            switch ($order['order_status']) {
+                case 1:
+                    $orderStatus = 'Checkout / Pending';
+                    break;
+                case 2:
+                    $orderStatus = 'Delivering';
+                    break;
+                case 3:
+                    $orderStatus = 'Delivered';
+                    break;
+                case 4:
+                    $orderStatus =  'Canceled';
+                    break;
+            }
+            // Hiển thị thông tin của từng hóa đơn trong bảng
+            echo "<tr>";
+            echo "<td><a href='order_detail.php?order_ID={$order['order_ID']}'>$no</a></td>";
+            echo "<td>{$orderDate}</td>";
+            echo "<td>{$orderTotal} VND</td>";
+            echo "<td>{$orderStatus}</td>";
+            echo "</tr>";
+            $no+= 1;
+        }
+    } else {
+        // Hiển thị thông báo nếu không có hóa đơn
+        echo "<tr><td colspan='4'>No orders found</td></tr>";
+    }
+}
 ?>
 
 <div id="ErrorModal" class="modal-warning">
@@ -69,7 +116,8 @@ $update_error_msg = "There was an error updating!";
     </div>
 </div>
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images/fl_1.jpg')"
+<section class="hero-wrap hero-wrap-2" 
+    style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -91,53 +139,29 @@ $update_error_msg = "There was an error updating!";
         <div class="row">
             <div class="col-md-3">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <!-- <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab"
-                        role="tab">Dashboard</a> -->
+                    <a class="nav-link active" id="account-nav" data-toggle="pill" href="#account-tab" role="tab" aria-selected="true">Account Details</a>
                     <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">Orders</a>
-                    <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab">Account Details</a>
                     <a class="nav-link" href="?action=logout">Logout</a>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead class="thead-dark">
+                        <div class="table-responsive" id="OrderTable">
+                            <table class="table">
+                                <thead class="thead-primary">
                                     <tr>
                                         <th>No</th>
-                                        <th>Product</th>
+                                        <!-- <th>Product</th> -->
                                         <th>Date</th>
-                                        <th>Price</th>
+                                        <th>Total</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$22</td>
-                                        <td>Approved</td>
-                                        <td><button>View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$22</td>
-                                        <td>Approved</td>
-                                        <td><button>View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$22</td>
-                                        <td>Approved</td>
-                                        <td><button>View</button></td>
-                                    </tr>
+                                <?php displayOrders($username); ?>
                                 </tbody>
                             </table>
                         </div>
@@ -146,7 +170,7 @@ $update_error_msg = "There was an error updating!";
                     <!-- Cần bao gồm thư viện jQuery trước khi sử dụng -->
                     <script src="js/jquery.min.js"></script>
 
-                    <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                    <div class="tab-pane fade show active" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                         <h4>Account Details</h4>
                         <?php
                                     // Lấy thông tin người dùng từ cơ sở dữ liệu

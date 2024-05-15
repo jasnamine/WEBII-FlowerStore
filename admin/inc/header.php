@@ -268,7 +268,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
                 </div>
             </div>
             <script>
-            < script >
                 document.addEventListener("DOMContentLoaded",
                     function() {
                         // Lưu trữ dropdown của product

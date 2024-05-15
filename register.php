@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Registration';
 
 require_once('lib/database.php');
 require_once('helpers/format.php');
@@ -34,7 +35,7 @@ include 'include/header.php';
 
     <section
       class="hero-wrap hero-wrap-2"
-      style="background-image: url('images/fl_1.jpg')"
+      style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>

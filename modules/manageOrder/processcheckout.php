@@ -52,6 +52,7 @@ if (isPost()) {
             // echo $paymentMethod;
             // echo '<br>';
             echo "Checkout thành công!";
+            header("Location:order_detail.php?order_ID=$orderID");
         } else {
             // Xử lý khi giỏ hàng trống
             echo "Giỏ hàng trống!";

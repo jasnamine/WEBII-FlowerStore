@@ -1,9 +1,11 @@
 <?php
+$pageTitle = 'Checkout';
+
 ob_start();
 include 'include/header.php';
 
 checkSession('username');
-ob_end_flush();
+
 ?>
 
 <?php
@@ -25,6 +27,10 @@ $addressValue = $user['customer_address'];
 $districtValue = $user['customer_district'];
 $cityValue = $user['customer_city'];
 
+?>
+
+<?php
+    if ($cart && $totalItems >0) {
 ?>
 
 <section class="hero-wrap hero-wrap-2"
@@ -171,6 +177,13 @@ $cityValue = $user['customer_city'];
         </div>
     </div>
 </section>
+<?php
+}
+else {
+    header('Location: cart.php');
+    ob_end_flush();
+}
+?>
 <script src="js/jquery.min.js"></script>
 <script src="js/handleJS/checkout_validation.js"></script>
 

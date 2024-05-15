@@ -30,7 +30,6 @@
 		} else {
 			$totalItems = 0;
 		}
-
 	} 
 
 	?>
@@ -40,18 +39,16 @@
 	<html lang="en">
 
 	<head>
-		<title>Flower Store</title>
+		<title><?php echo $pageTitle?></title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 		<link
 			href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap"
 			rel="stylesheet">
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 		<link rel="stylesheet" href="css/animate.css">
-
 		<link rel="stylesheet" href="css/owl.carousel.min.css">
 		<link rel="stylesheet" href="css/owl.theme.default.min.css">
 		<link rel="stylesheet" href="css/magnific-popup.css">
@@ -61,7 +58,7 @@
 
 		<link rel="stylesheet" href="css/flaticon.css">
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/error-popup.css">
+		<link rel="stylesheet" href="css/mystyle.css">
 	</head>
 
 	<body>
@@ -148,7 +145,7 @@
 						<a class="dropdown-item text-center btn-link d-block w-100" style="background: white" 
 						onpointerenter="this.setAttribute(\'style\', \' background: #f0f0f0\')" onpointerleave="this.setAttribute(\'style\', \'background: white\')" href="cart.php">
 						<?php
-							if ($cart) {
+							if ($cart && $totalItems > 0) {
 								echo 'View All';
 							}
 							else {
@@ -169,7 +166,6 @@
 						<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
 						<li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 						<li class="nav-item dropdown active"><a class="nav-link " href="products.php">Products</a></li>
-						<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 					</ul>
 				</div>
 		</div>
