@@ -117,7 +117,7 @@ function changeCateName($cate_ID) {
                     if (isset($_GET['search']) && !empty($_GET['search'])) {
                         $search_query = $_GET['search'];
                         $search_query = "%$search_query%";
-                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE prd_name LIKE ? LIMIT $products_per_page OFFSET $offset";
+                        $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE prd_name LIKE ? AND (prd_status = 1 OR prd_status = 3) LIMIT $products_per_page OFFSET $offset";
                         $stmt = $conn->prepare($sql);
                         $stmt->bind_param("s", $search_query);
                         $stmt->execute();
@@ -150,7 +150,7 @@ function changeCateName($cate_ID) {
                             $selectedTypes = $_GET['type'];
                             $selectedTypes = is_array($selectedTypes) ? $selectedTypes : [$selectedTypes];
                             $placeholders = implode(',', array_fill(0, count($selectedTypes), '?'));
-                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE cate_ID IN ($placeholders) LIMIT $products_per_page OFFSET $offset";
+                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE cate_ID IN ($placeholders) AND (prd_status = 1 OR prd_status = 3) LIMIT $products_per_page OFFSET $offset";
                             $stmt = $conn->prepare($sql);
                             $stmt->bind_param(str_repeat('i', count($selectedTypes)), ...$selectedTypes);
                             $stmt->execute();
@@ -179,7 +179,7 @@ function changeCateName($cate_ID) {
                                 echo "Không có sản phẩm nào trong loại này.";
                             }
                         } else { // Hiển thị tất cả sản phẩm
-                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products LIMIT $products_per_page OFFSET $offset";
+                            $sql = "SELECT prd_ID, prd_name, prd_img, prd_price, cate_ID FROM products WHERE (prd_status = 1 OR prd_status = 3) LIMIT $products_per_page OFFSET $offset";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
