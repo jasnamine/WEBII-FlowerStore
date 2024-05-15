@@ -159,12 +159,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	// Lấy nút đóng modal
 	var closeButton = document.getElementsByClassName('error-close')[0];
 
-			// Khi người dùng nhấn nút đóng hoặc nút OK
-			function closeModal() {
-				e_modal.style.display = "none";
-				window.location.href = 'product-detail.php?prd_ID=<?php echo $prd_ID?>';
-				// console.log('OK btn submit');
-			}
+	// Khi người dùng nhấn nút đóng hoặc nút OK
+	function closeModal() {
+		e_modal.style.display = "none";
+		window.location.href = 'product-detail.php?prd_ID=<?php echo $prd_ID?>';
+		// console.log('OK btn submit');
+	}
 
 	// Khi người dùng nhấn nút đóng
 	closeButton.onclick = function() {
@@ -176,24 +176,12 @@ document.addEventListener("DOMContentLoaded", function() {
 		closeModal();
 	};
 
-			// Hiển thị model
-			<?php if (isset($_REQUEST['add_error']) || isset($_REQUEST['add_success'])): ?>
-				e_modal.style.display = "block";
-			<?php endif; ?>
-		});
-    	</script>
-	<?php
-    } else {
-        // Hiển thị thông báo nếu không tìm thấy sản phẩm
-        // echo "Không tìm thấy thông tin sản phẩm.";
-		header("Location: index.php");
-    }
-} else {
-    // Hiển thị thông báo nếu không có prd_ID trên URL
-    // echo "Không có thông tin sản phẩm.";
-	header("Location: index.php");
-}
-?>
+	// Hiển thị model
+	<?php if (isset($_REQUEST['add_error']) || isset($_REQUEST['add_success'])): ?>
+		e_modal.style.display = "block";
+	<?php endif; ?>
+});
+</script>
 
 <?php
 include 'include/footer.php';

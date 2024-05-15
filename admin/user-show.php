@@ -1,7 +1,7 @@
 <?php 
+$pageTitle = "View user";
 include 'inc/header.php';
 require_once './modules/users/detail.php';
-$pageTitle = "View user";
 
 ?>
 

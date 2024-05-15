@@ -142,10 +142,6 @@ if(isset($_REQUEST['order_ID']) && (getOrder($_REQUEST['order_ID'],$username))){
 					<input type="hidden" name="order_ID" value="<?php echo $get_orderID?>">
                     <button type="submit" name="canceled" class="btn btn-secondary py-3 px-4" value="1">Cancel Order</button>
 					<?php endif;?>
-					<?php if($order['order_status'] == 2): ?>
-					<input type="hidden" name="order_ID" value="<?php echo $get_orderID?>">
-                    <button type="submit" name="delivered" class="btn btn-success py-3 px-4 ml-4" value="1">&nbsp;&nbsp; Delivered &nbsp;&nbsp;</button>
-					<?php endif;?>
                 </p>
 				
             </div>
