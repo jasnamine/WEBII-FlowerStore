@@ -1,7 +1,6 @@
 <?php
+$pageTitle = 'Registration';
 
-require_once('lib/connect.php');
-require_once('config/config.php');
 require_once('lib/database.php');
 require_once('helpers/format.php');
 
@@ -33,9 +32,10 @@ require_once('helpers/format.php');
 include 'include/header.php';
 ?>
  <!--Start banner-->
+
     <section
       class="hero-wrap hero-wrap-2"
-      style="background-image: url('images/fl_1.jpg')"
+      style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>
@@ -106,7 +106,7 @@ include 'include/header.php';
                         id="email"
                         name="email"
                         value=""
-                        placeholder="Email"
+                        placeholder="Email (example: Tinle123@gmail.com)"
                       />
                     </div>
                     <div class="col-md-12 form-group p_star">
@@ -118,23 +118,26 @@ include 'include/header.php';
                         value=""
                         placeholder="Password"
                       />
-                      Password requirements: 
-                      <br>  
-                      + Minimum of 8 characters
-                      <br> 
-                      + Maximum of 20 characters
-                      <br> 
-                      + USE AT LEAST 3 of the following classes:
-                      <br> 
-                      - Lower case letters(s)
-                      <br> 
-                      - Upper case letter(s)
-                      <br>
-                      - Number(s)
-                      <br> 
-                      - Special Character(s) (@#$^&*+=)
-                      <br> 
-                      * Note that the % symbol is not allowed!
+                      <div class="password-requirements">	
+                        <button class="toggle-button" id="toggle-button">Show Password Requirements</button>
+                        <div class="requirements-content" id="passwordRequirements" style="display: none;">
+                          + Minimum of 8 characters
+                          <br> 
+                          + Maximum of 20 characters
+                          <br> 
+                          + USE AT LEAST 3 of the following classes:
+                          <br> 
+                          - Lower case letters(s)
+                          <br> 
+                          - Upper case letter(s)
+                          <br>
+                          - Number(s)
+                          <br> 
+                          - Special Character(s) (@#$^&*+=)
+                          <br> 
+                          * Note that the % symbol is not allowed!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-12 form-group p_star">
                       <input

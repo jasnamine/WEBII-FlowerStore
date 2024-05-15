@@ -49,15 +49,15 @@ function validationForm() {
     var password = document.forms['register_form']['password'].value;
     var confirm_password = document.forms['register_form']['confirm-password'].value;
 
-    console.log("username: " + username);
-    console.log("email: " + email);
-    console.log("password: " + password);
-    console.log("password: " + confirm_password);
+    // console.log("username: " + username);
+    // console.log("email: " + email);
+    // console.log("password: " + password);
+    // console.log("password: " + confirm_password);
 
-    console.log("Username valid: ", isValidUsername(username)); 
-    console.log("Email valid: ", isValidEmail(email));
-    console.log("Password valid: ", isValidPassword(password));
-    console.log("Confirm Password valid: ", confirmPassword(password, confirm_password));
+    // console.log("Username valid: ", isValidUsername(username)); 
+    // console.log("Email valid: ", isValidEmail(email));
+    // console.log("Password valid: ", isValidPassword(password));
+    // console.log("Confirm Password valid: ", confirmPassword(password, confirm_password));
 
     // Tất cả các trường input đều trống
     if (username === '' && email === '' && password === '' && confirm_password === '') {
@@ -80,7 +80,7 @@ function validationForm() {
         // form_valid = false;
     }
     else if (!(isValidEmail(email))) {
-        errors.push('Email not valid, please try again!');
+        errors.push('Email is not valid, please try again!');
         // form_valid = false;
     }
 

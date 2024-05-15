@@ -1,186 +1,159 @@
-                <?php
-                include 'inc/header.php';
-                 ?>
+<?php 
+require_once './modules/products/edit.php';
+require_once './modules/categories/list.php';
+$pageTitle = "Edit product";
+?>
+<?php
+include 'inc/header.php';
+?>
 
-            <div class="app-main__outer">
+<div class="app-main__outer">
 
-                <!-- Main -->
-                <div class="app-main__inner">
+    <!-- Main -->
+    <div class="app-main__inner">
 
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-heading">
-                                <div class="page-title-icon">
-                                    <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
-                                </div>
-                                <div>
-                                    Product
-                                    <div class="page-title-subheading">
-                                        View, create, update, delete and manage.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <form method="post" enctype="multipart/form-data"></form>
-                                        <div class="position-relative row form-group">
-                                            <label for="brand_id"
-                                                class="col-md-3 text-md-right col-form-label">Brand</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <select required name="brand_id" id="brand_id" class="form-control">
-                                                    <option value="">-- Brand --</option>
-                                                    <option value=0>
-                                                        Calvin Klein
-                                                    </option>
-                                                    <option value=1>
-                                                        Diesel
-                                                    </option>
-                                                    <option value=2>
-                                                        Polo
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="product_category_id"
-                                                class="col-md-3 text-md-right col-form-label">Category</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <select required name="product_category_id" id="product_category_id" class="form-control">
-                                                    <option value="">-- Category --</option>
-                                                    <option value=0>
-                                                        Men
-                                                    </option>
-                                                    <option value=1>
-                                                        Women
-                                                    </option>
-                                                    <option value=2>
-                                                        Kid
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="position-relative row form-group">
-                                            <label for="name" class="col-md-3 text-md-right col-form-label">Name</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="name" id="name" placeholder="Name" type="text"
-                                                    class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="content"
-                                                class="col-md-3 text-md-right col-form-label">Content</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="content" id="content"
-                                                    placeholder="Content" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="price"
-                                                class="col-md-3 text-md-right col-form-label">Price</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="price" id="price"
-                                                    placeholder="Price" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="discount"
-                                                class="col-md-3 text-md-right col-form-label">Discount</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="discount" id="discount"
-                                                    placeholder="Discount" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="weight"
-                                                class="col-md-3 text-md-right col-form-label">Weight</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="weight" id="weight"
-                                                    placeholder="Weight" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="position-relative row form-group">
-                                            <label for="sku"
-                                                class="col-md-3 text-md-right col-form-label">SKU</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="sku" id="sku"
-                                                    placeholder="SKU" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="tag"
-                                                class="col-md-3 text-md-right col-form-label">Tag</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <input required name="tag" id="tag"
-                                                    placeholder="Tag" type="text" class="form-control" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="featured"
-                                                class="col-md-3 text-md-right col-form-label">Featured</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <div class="position-relative form-check pt-sm-2">
-                                                    <input name="featured" id="featured" type="checkbox" value="1" class="form-check-input">
-                                                    <label for="featured" class="form-check-label">Featured</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group">
-                                            <label for="description"
-                                                class="col-md-3 text-md-right col-form-label">Description</label>
-                                            <div class="col-md-9 col-xl-8">
-                                                <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="position-relative row form-group mb-1">
-                                            <div class="col-md-9 col-xl-8 offset-md-2">
-                                                <a href="#" class="border-0 btn btn-outline-danger mr-1">
-                                                    <span class="btn-icon-wrapper pr-1 opacity-8">
-                                                        <i class="fa fa-times fa-w-20"></i>
-                                                    </span>
-                                                    <span>Cancel</span>
-                                                </a>
-
-                                                <button type="submit"
-                                                    class="btn-shadow btn-hover-shine btn btn-primary">
-                                                    <span class="btn-icon-wrapper pr-2 opacity-8">
-                                                        <i class="fa fa-download fa-w-20"></i>
-                                                    </span>
-                                                    <span>Save</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                    <div>
+                        Product
+                        <div class="page-title-subheading">
+                            View, create, update, delete and manage.
                         </div>
                     </div>
                 </div>
-                <!-- End Main -->
+            </div>
+        </div>
 
-                <?php
+        <?php
+        if(!empty($msgProE)){
+            getMsg($msgProE, $msgTypeProE);
+        }
+        ?>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+
+                            <div class="position-relative row form-group">
+                                <label for="product_category"
+                                    class="col-md-3 text-md-right col-form-label">Category</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <select name="product_category" class="form-control">
+
+
+                                        <?php
+                                    foreach ($listCategories as $item) {
+                                        if ($item['cate_ID'] == old('cate_ID', $old)) {
+                                            // Output the selected option
+                                            echo '<option value="' . $item['cate_ID'] . '" selected>' . $item['cate_name'] . '</option>';
+                                        }
+                                    }
+                                    ?>
+
+                                    </select>
+                                    <?php echo form_error('product_category', '<span class="error">', '</span>', $errors); ?>
+                                </div>
+
+                            </div>
+
+                            <div class="position-relative row form-group">
+                                <label for="" class="col-md-3 text-md-right col-form-label">Images</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <ul class="text-nowrap" id="images">
+
+                                        <li class="float-left d-inline-block mr-2 mb-2" style="width: 32%;">
+
+                                            <button type="submit"
+                                                onclick="return confirm('Do you really want to delete this item?')"
+                                                class="btn btn-sm btn-outline-danger border-0 position-absolute">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                            <div style="width: 100%; max-height: 220px; overflow: hidden;">
+                                                <img style="width: 100%; cursor: pointer;" class="thumbnail"
+                                                    data-toggle="tooltip" title="Click to add image"
+                                                    data-placement="bottom"
+                                                    src="<?php echo '../' . old('prd_img', $old); ?>" alt="Add Image">
+
+                                                <input name="image" type="file" onchange="changeImg(this);"
+                                                    style="display: none;" accept="image/x-png,image/gif,image/jpeg"
+                                                    class="image form-control-file">
+
+                                            </div>
+                                            <?php echo form_error('image', '<span class="error">', '</span>', $errors); ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="position-relative row form-group">
+                                <label for="name" class="col-md-3 text-md-right col-form-label">Name</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <input name="name" id="name" placeholder="Name" type="text" name="name"
+                                        value="<?php echo old('prd_name', $old); ?>" class="form-control" value="">
+                                    <?php echo form_error('name', '<span class="error">', '</span>', $errors); ?>
+                                </div>
+                            </div>
+
+
+
+                            <div class="position-relative row form-group">
+                                <label for="price" class="col-md-3 text-md-right col-form-label">Price</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <input name="price" id="price" placeholder="Price" type="text" class="form-control"
+                                        value="<?php echo old('prd_price', $old); ?>">
+                                    <?php echo form_error('price', '<span class="error">', '</span>', $errors); ?>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="position-relative row form-group">
+                                <label for="description"
+                                    class="col-md-3 text-md-right col-form-label">Description</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <textarea class="form-control" name="description" id="description" value=""
+                                        placeholder="Description"><?php echo old('prd_description', $old); ?> 
+
+                                    </textarea>
+                                    <?php echo form_error('desc', '<span class="error">', '</span>', $errors); ?>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="id" value="<?php echo $productID ?>">
+
+                            <div class=" position-relative row form-group mb-1">
+                                <div class="col-md-9 col-xl-8 offset-md-2">
+                                    <!-- <a href="#" class="border-0 btn btn-outline-danger mr-1">
+                                        <span class="btn-icon-wrapper pr-1 opacity-8">
+                                            <i class="fa fa-times fa-w-20"></i>
+                                        </span>
+                                        <span>Cancel</span>
+                                    </a> -->
+
+                                    <button type="submit" name="submit-btn"
+                                        class="btn-shadow btn-hover-shine btn btn-primary">
+                                        <span class="btn-icon-wrapper pr-2 opacity-8">
+                                            <i class="fa fa-download fa-w-20"></i>
+                                        </span>
+                                        <span>Save</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+    <?php
                 include 'inc/footer.php';
                  ?>
-    <script src="assets/scripts/jquery-3.2.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="./assets/scripts/main.js"></script>
-    <script type="text/javascript" src="./assets/scripts/my_script.js"></script>
-</body>
-
-</html>

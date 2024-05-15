@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Login';
+
 // session_start();
 ob_start();
 
@@ -20,14 +22,40 @@ require_once('lib/session.php');
 ?>
 
 <?php
-// Kiểm tra xem có thông báo lỗi không
-if (isset($_REQUEST['error'])) {
-    // Hiển thị thông báo lỗi
-    echo '<div class="error-message"> Invalid username or password </div>';
-}
+$msg_login = 'Invalid username or password! Please try again!';
+$msg_banned = 'You have been BANNED. Please contact administrator to solve the problem!';
 
-
+// // Kiểm tra xem có thông báo lỗi không
+// if (isset($_REQUEST['error_login'])) {
+//     // Hiển thị thông báo lỗi (incorrect login)
+//     echo '<div class="error-message"> Invalid username or password </div>';
+// }
 ?>
+
+
+        <div id="ErrorModal" class="modal-warning">
+          <div class="modal-content">
+            <span class="error-close">&times;</span>
+            <div class="modal-body">
+              <p>
+                <?php 
+                  if (isset($_REQUEST['error_active'])){
+                    // Hiển thị thông báo lỗi (banned)
+                    echo $msg_banned; 
+                  } 
+                  else if (isset($_REQUEST['error_login'])) {
+                    // Hiển thị thông báo lỗi (incorrect login)
+                    echo $msg_login;
+                  }
+                ?>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button id="modalOkBtn" class="btn btn-secondary">OK</button>
+            </div>
+          </div>
+        </div>
+
 
 <?php
   require "modules/auth/logincustomer.php";
@@ -36,7 +64,7 @@ if (isset($_REQUEST['error'])) {
 <!--Start Banner-->
 <section
       class="hero-wrap hero-wrap-2"
-      style="background-image: url('images/fl_1.jpg')"
+      style="background-image: url('images/fl_1.jpg'); background-color: #0005; background-blend-mode: darken;"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>
@@ -125,7 +153,38 @@ if (isset($_REQUEST['error'])) {
         </div>
       </section>
     </section>
-    <!-- <script src="js/handleJS/login_validation"></script> -->
+    <script src="js/handleJS/login_validation.js"></script>
+    <script type="text/javascript"> 
+    // JavaScript
+    document.addEventListener("DOMContentLoaded", function() {
+    // Lấy modal
+      var e_modal = document.getElementById('ErrorModal');
+
+      // Lấy nút đóng modal
+      var closeButton = document.getElementsByClassName('error-close')[0];
+
+      // Khi người dùng nhấn nút đóng hoặc nút OK
+      function closeModal() {
+        e_modal.style.display = "none";
+        // console.log('OK btn submit');
+      }
+
+      // Khi người dùng nhấn nút đóng
+      closeButton.onclick = function() {
+        closeModal();
+      };
+
+      // Khi người dùng nhấn nút OK
+      document.getElementById('modalOkBtn').onclick = function() {
+        closeModal();
+      };
+
+      // Hiển thị model
+      <?php if (isset($_REQUEST['error_login']) || isset($_REQUEST['error_active'])): ?>
+        e_modal.style.display = "block";
+      <?php endif; ?>
+	  });
+    </script>
 
     <?php
     include 'include/footer.php';

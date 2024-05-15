@@ -1,0 +1,96 @@
+/* Warning box */
+.modal, .modal-warning {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+    animation-name: modalopen;
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes modalopen {
+    from {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal-footer {
+    text-align: right;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+/* Button for password requirements */
+.password-requirements {
+  margin-top: 2%;
+}
+
+.toggle-button {
+  background-color: #b7472a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5cap;
+}
+
+.toggle-button:hover {
+  background-color: #a23f25;
+}
+
+#passwordRequirements {
+  padding-top: 10px;
+  display: none;
+}
+
+/* Thiết lập cho phần danh sách sản phẩm */
+.cart-items-container {
+  max-height: 300px; /* Đặt chiều cao tối đa cho phần danh sách sản phẩm */
+  overflow-y: auto; /* Tạo thanh cuộn khi cần thiết */
+}
+
+/* Đảm bảo "View All" cố định ở phía dưới */
+.dropdown-item:last-child {
+  position: relative; /* Thiết lập vị trí tương đối */
+  bottom: 0; /* Dịch chuyển lên đúng vị trí cuối cùng */
+}
+
+@media (min-width: 1200px) {
+
+#OrderTable {
+  width: 800px;
+  overflow: hidden;
+}
+}

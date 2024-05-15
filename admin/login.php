@@ -1,7 +1,6 @@
 <?php
-require_once '../modules/auth/loginadmin.php';
+require_once './modules/auth/login.php';
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -10,10 +9,11 @@ require_once '../modules/auth/loginadmin.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Login | Admin - CodeLean eShop</title>
+    <title>Login</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="CodeLean Design">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -24,10 +24,9 @@ require_once '../modules/auth/loginadmin.php';
 <body>
     <div class="app-container app-theme-white body-tabs-shadow">
         <div class="app-container">
-            <div class="h-100 bg-plum-plate bg-animation">
+            <div class="h-100  bg-animation">
                 <div class="d-flex h-100 justify-content-center align-items-center">
                     <div class="mx-auto app-login-box col-md-8">
-                        <div class="app-logo-inverse mx-auto mb-3"></div>
                         <div class="modal-dialog w-100 mx-auto">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -37,12 +36,17 @@ require_once '../modules/auth/loginadmin.php';
                                             <span>Please sign in to your account below.</span>
                                         </h4>
                                     </div>
+                                    <?php
+                                    if(!empty($msg)){
+                                        getMsg($msg, $msgType);
+                                    }
+                                    ?>
                                     <form action="" method="post" class="">
                                         <div class="form-row">
                                             <div class="col-md-12">
                                                 <div class="position-relative form-group">
-                                                    <input name="email" id="exampleEmail" placeholder="Email here..."
-                                                        type="email" class="form-control">
+                                                    <input name="username" id="exampleUsername"
+                                                        placeholder="Username here..." type="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -56,7 +60,7 @@ require_once '../modules/auth/loginadmin.php';
 
                                         <div class="modal-footer-login clearfix">
                                             <div class="float-right">
-                                                <button type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                                <button type="submit" class="btn btn-primary btn-lg">Login</button>
                                             </div>
                                         </div>
                                     </form>
